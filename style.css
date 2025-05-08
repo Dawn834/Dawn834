@@ -1,0 +1,243 @@
+* {
+    font-family: "Jost";
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+:root {
+    --fs-body-1: 15px;
+    --fs-body-2: 16px;
+    --fs-title: 24px;
+    --f-cl-drp: rgba(34, 34, 34, 0.6);
+    --f-cl-2: #222222;
+    --bg-main: #fff;
+    --gb-sub-main: #F4F4F4;
+}
+
+.container {
+    width: 100%;
+    padding: 0 100px;
+    
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--gb-sub-main);
+    height: 50px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50;
+    
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-right a {
+    text-decoration: none;
+    color: #2c3e50;
+}
+
+.cart-icon {
+    position: relative;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #ffd700;
+    color: #2c3e50;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.hero-content h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 12px 20px;
+    border: none;
+    background-color: #ffd700;
+    color: #2c3e50;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #ffec4d;
+}
+
+.hero-image {
+    flex: 1;
+    position: relative;
+}
+
+.hero-image img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.food-highlights {
+    width:60%;
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-radius:5px ;
+    padding: 30px 0;
+    text-align: center;
+}
+
+.highlight {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.icon-hl {
+    font-size: 30px;
+}
+
+.highlight-text {
+    text-align: left;
+}
+
+.highlight-text small {
+    color: #777;
+}
+
+/* category-restaurant------------------------- */
+.restaurants-container {
+    width: 100%;
+    padding: 0 100px;
+    margin: 50px 0;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+.show-all {
+    color: #666;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.restaurant-carousel {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 20px;
+}
+
+.restaurant-card {
+    flex: 0 0 280px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    scroll-snap-align: start;
+}
+
+.restaurant-card:hover {
+    transform: scale(1.03);
+}
+
+.restaurant-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.restaurant-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9;
+}
+
+.restaurant-logo img {
+    min-width: 50%;
+    height: 50%;
+}
+
+/* Scrollbar styling */
+.restaurant-carousel::-webkit-scrollbar {
+    height: 8px;
+}
+
+.restaurant-carousel::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.restaurant-carousel::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.restaurant-carousel::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Navigation buttons (optional) */
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+.nav-btn {
+    background: rgba(255,255,255,0.7);
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
