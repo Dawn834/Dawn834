@@ -228,7 +228,7 @@ body {
 
 .restaurant-carousel {
     position: relative;
-    overflow: hidden;
+    
 }
 
 .carousel-container {
@@ -241,13 +241,13 @@ body {
     background-color: white;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
 }
 
 .restaurant-image {
     height: 300px;
     width: 100%;
-    overflow: hidden;
     position: relative;
 }
 
