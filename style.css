@@ -241,8 +241,9 @@ body {
     background-color: white;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
+    cursor: pointer;
 }
 
 .restaurant-image {
@@ -383,9 +384,8 @@ body {
 
 /* Specialities */
 .spceialities-container {
-    width: 100%;
-    margin: 0 auto;
-    padding: 20px;
+    max-width: 100%;
+    margin: 5%;
 }
 
 .header {
@@ -400,8 +400,6 @@ body {
     border: none;
     border-radius: 20px;
     padding: 8px 20px;
-    color: #666;
-    font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -413,20 +411,26 @@ body {
 .carousel-container {
     position: relative;
     overflow: hidden;
-}
-
-.carousel {
     display: flex;
-    gap: 20px;
+    justify-content: space-between;
+    gap: 50px;
     transition: transform 0.5s ease;
     padding: 10px 0;
 }
 
-.card {
-    flex: 0 0 150px;
+/* .carousel {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    transition: transform 0.5s ease;
+    padding: 10px 0;
+} */
+
+.carousel-card {
+    flex: 1 1 200px;
     background-color: #fff;
     border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -435,7 +439,7 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card:hover {
+.carousel-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
@@ -492,7 +496,7 @@ body {
 }
 
 /* Food Icons Colors */
-.bagel-icon {
+/* .bagel-icon {
     fill: #FFD700;
 }
 
@@ -518,8 +522,8 @@ body {
 
 .pizza-icon {
     fill: #FFD700;
-}
+} */
 
-.pasta-icon {
+/* .pasta-icon {
     fill: #FFD700;
-}
+} */
