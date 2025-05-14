@@ -202,8 +202,85 @@
                 </div>
             </div>
         </div>
+        <!-- row 2 -->
+        <div class="carousel-container">
+            <div class="restaurant-card hidden">
+                <div class="restaurant-image">
+                    <img src="./asset/img/category-food/72d9af964d384fc2a16fd087c1062a7c.jpg" alt="">
+                </div>
+                <div class="restaurant-logo">
+                    <img src="./asset/img/logo/restaurants/belive.svg" alt="">
+                </div>
+            </div>
 
+            <div class="restaurant-card hidden">
+                <div class="restaurant-image">
+                    <img src="./asset/img/category-food/banh mi.jpg" alt="Il Pastificio food">
+                </div>
+                <div class="restaurant-logo">
+                    <img src="./asset/img/logo/restaurants/vietnamesefood.svg" alt="Il Pastificio logo">
+                </div>
+            </div>
+
+            <div class="restaurant-card hidden">
+                <div class="restaurant-image">
+                    <img src="./asset/img/category-food/buger.jpg" alt="Believe Restaurant Veggie food">
+                </div>
+                <div class="restaurant-logo">
+                    <img src="./asset/img/logo/restaurants/burger.svg" alt="Believe Restaurant Veggie logo">
+                </div>
+            </div>
+
+            <div class="restaurant-card hidden">
+                <div class="restaurant-image">
+                    <img src="./asset/img/category-food/pizza.jpg" alt="BO Vietnamese Urban Food">
+                </div>
+                <div class="restaurant-logo">
+                    <img src="./asset/img/logo/restaurants/Union.svg" alt="BO Vietnamese Urban Food logo">
+                </div>
+            </div>
+        </div>
+        <!-- row 3 -->
+        <div class="carousel-container">
+            <div class="restaurant-card hidden">
+                <div class="restaurant-image">
+                    <img src="./asset/img/category-food/72d9af964d384fc2a16fd087c1062a7c.jpg" alt="">
+                </div>
+                <div class="restaurant-logo">
+                    <img src="./asset/img/logo/restaurants/belive.svg" alt="">
+                </div>
+            </div>
+
+            <div class="restaurant-card hidden">
+                <div class="restaurant-image">
+                    <img src="./asset/img/category-food/banh mi.jpg" alt="Il Pastificio food">
+                </div>
+                <div class="restaurant-logo">
+                    <img src="./asset/img/logo/restaurants/vietnamesefood.svg" alt="Il Pastificio logo">
+                </div>
+            </div>
+
+            <div class="restaurant-card hidden">
+                <div class="restaurant-image">
+                    <img src="./asset/img/category-food/buger.jpg" alt="Believe Restaurant Veggie food">
+                </div>
+                <div class="restaurant-logo">
+                    <img src="./asset/img/logo/restaurants/burger.svg" alt="Believe Restaurant Veggie logo">
+                </div>
+            </div>
+
+            <div class="restaurant-card hidden">
+                <div class="restaurant-image">
+                    <img src="./asset/img/category-food/pizza.jpg" alt="BO Vietnamese Urban Food">
+                </div>
+                <div class="restaurant-logo">
+                    <img src="./asset/img/logo/restaurants/Union.svg" alt="BO Vietnamese Urban Food logo">
+                </div>
+            </div>
+        </div>
     </div>
+
+
 
     <!-- address  -->
     <section class="delivery-section">
@@ -560,9 +637,39 @@
                 <div>Terms</div>
                 <div class="cl">© 2025 kEneDyKitchen</div>
             </div>
-            
+
         </div>
 
+        <script>
+            document.querySelector('.show-all').addEventListener('click', function () {
+                const container = document.querySelector('.carousel-container');
+                const hiddenCards = document.querySelectorAll('.restaurant-card.hidden');
+                const showAllBtn = this;
+
+                if (showAllBtn.textContent.trim().toLowerCase() === 'show all') {
+                    // Hiển thị tất cả thẻ
+                    hiddenCards.forEach(card => {
+                        card.classList.remove('hidden');
+                    });
+                    showAllBtn.textContent = 'hide';
+
+                    // Cuộn xuống vị trí các thẻ mới hiện
+                    hiddenCards[0]?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                } else {
+                    // Ẩn các thẻ (trừ 4 thẻ đầu tiên)
+                    const allCards = document.querySelectorAll('.restaurant-card');
+                    allCards.forEach((card, index) => {
+                        if (index >= 4) { // Giữ lại 4 thẻ đầu, ẩn các thẻ còn lại
+                            card.classList.add('hidden');
+                        }
+                    });
+                    showAllBtn.textContent = 'show all';
+
+                    // Cuộn lên đầu danh sách
+                    container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        </script>
 
         <!-- <script>
         const carousel = document.getElementById('foodCarousel');
@@ -584,6 +691,7 @@
             carousel.style.transform = `translateX(-${currentPosition * cardWidth}px)`;
         });
     </script> -->
+
 </body>
 
 </html>

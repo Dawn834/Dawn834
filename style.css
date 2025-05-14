@@ -233,7 +233,7 @@ body {
 
 .carousel-container {
     display: flex;
-    gap: 20px;
+    justify-content: space-around;
 }
 
 .restaurant-card {
@@ -291,6 +291,10 @@ body {
     border: none;
     cursor: pointer;
     z-index: 2;
+}
+
+.restaurant-card.hidden {
+    display: none;
 }
 
 /* address */
@@ -408,7 +412,7 @@ body {
     background-color: #e4e7f0;
 }
 
-.carousel-container {
+.speccarousel-container .carousel-container {
     position: relative;
     overflow: hidden;
     display: flex;
