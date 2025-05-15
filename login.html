@@ -1,13 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modern Login Page</title>
-   
+    <style>
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 15px 0;
+            font-weight: 600;
+            cursor: pointer;
+            color: #666;
+            border-bottom: 2px solid #eee;
+            transition: all 0.3s ease;
+        }
+
+        .tab.active {
+            color: #0066ff;
+            border-bottom: 2px solid #0066ff;
+        }
+
+        #signup-form {
+            display: none;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0066ff 0%, #001b44 100%);
+            background: url(./asset/img/Colorful\ Retro\ Cartoon\ Playful\ Groovy\ Illustrative\ Foodie\ Favorite\ Food\ Presentation.svg) no-repeat;
+            background-size: cover;
+        }
+
+
+        .login-container {
+            display: flex;
+            width: 900px;
+            height: 600px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .welcome-panel {
+            flex: 1;
+            background: linear-gradient(135deg, #0091ff 0%, #0046b8 100%);
+            padding: 40px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .diagonal-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(45deg,
+                    rgba(255, 255, 255, 0.05),
+                    rgba(255, 255, 255, 0.05) 1px,
+                    transparent 1px,
+                    transparent 15px);
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+            max-width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .logo img{
+            width: 50%;
+            height: auto;
+            object-fit: cover;
+        }
+        .view-more-btn {
+            background: white;
+            color: #0046b8;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+            width: fit-content;
+        }
+
+        .login-panel {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+        }
+
+        .checkbox {
+            margin-right: 8px;
+        }
+
+        .forgot-link {
+            color: #0066ff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: #0066ff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 30px;
+        }
+
+        .signup-text {
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .signup-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #0091ff 0%, #0046b8 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+    </style>
 </head>
+
 <body>
+    <div class="logo">
+            <img src="./asset/img/logo/logo-transparent.png" alt="">
+        </div>
     <div class="login-container">
+        
         <!-- <div class="welcome-panel">
             <div class="diagonal-lines"></div>
             <div class="logo">
@@ -25,7 +211,7 @@
                 <div class="tab active" onclick="showLogin()">Login</div>
                 <div class="tab" onclick="showSignup()">Sign Up</div>
             </div>
-            
+
             <div id="login-form">
                 <div class="form-group">
                     <label class="form-label">Email address</label>
@@ -43,9 +229,10 @@
                     <a href="#" class="forgot-link">Forgot password?</a>
                 </div>
                 <button class="login-btn">Login</button>
-                <p class="signup-text">Not a member yet? <a href="#" onclick="showSignup(); return false;" style="color: #0066ff; text-decoration: none;">Sign up here</a></p>
+                <p class="signup-text">Not a member yet? <a href="#" onclick="showSignup(); return false;"
+                        style="color: #0066ff; text-decoration: none;">Sign up here</a></p>
             </div>
-            
+
             <div id="signup-form">
                 <div class="form-group">
                     <label class="form-label">Full Name</label>
@@ -70,7 +257,9 @@
                     </div>
                 </div>
                 <button class="signup-btn">Create Account</button>
-                <p class="signup-text" style="margin-top: 20px;">Already have an account? <a href="#" onclick="showLogin(); return false;" style="color: #0066ff; text-decoration: none;">Login here</a></p>
+                <p class="signup-text" style="margin-top: 20px;">Already have an account? <a href="#"
+                        onclick="showLogin(); return false;" style="color: #0066ff; text-decoration: none;">Login
+                        here</a></p>
             </div>
         </div>
     </div>
@@ -81,7 +270,7 @@
             document.querySelectorAll('.tab')[0].classList.add('active');
             document.querySelectorAll('.tab')[1].classList.remove('active');
         }
-        
+
         function showSignup() {
             document.getElementById('login-form').style.display = 'none';
             document.getElementById('signup-form').style.display = 'block';
@@ -90,4 +279,5 @@
         }
     </script>
 </body>
+
 </html>

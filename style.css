@@ -520,6 +520,7 @@ body {
     height: 600px;
     margin: 5%;
     background: url(./asset/img/Map.png) no-repeat;
+    background-position: center;
 }
 
 /* Social */
