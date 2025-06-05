@@ -19,37 +19,37 @@
                 <div class="menu-title">Menu</div>
                 <ul class="nav-menu">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="#" class="nav-link active">
                             <span class="nav-icon">📊</span>
                             Thống kê
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link active">
+                        <a href="#" class="nav-link" onclick="openTab('tab1')">
                             <span class="nav-icon">📦</span>
                             Sản phẩm
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="#" class="nav-link" onclick="openTab('tab2')">
                             <span class="nav-icon">👥</span>
                             Khách hàng
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="#" class="nav-link" onclick="openTab('tab3')">
                             <span class="nav-icon">🏷️</span>
                             Danh mục
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="#" class="nav-link" onclick="openTab('tab4')">
                             <span class="nav-icon">📋</span>
                             Đơn hàng
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="#" class="nav-link" onclick="openTab('tab5')">
                             <span class="nav-icon">🎫</span>
                             Khuyến mại
                         </a>
@@ -108,9 +108,9 @@
                     </div>
                 </div>
             </header>
-
+            <!-- Product -->
             <!-- Content Area -->
-            <div class="content-area">
+            <div class="content-area active" id="tab1">
                 <div class="breadcrumb">Thống kê / Sản phẩm</div>
                 <h1 class="page-title">Sản phẩm</h1>
 
@@ -121,7 +121,7 @@
                     </div>
 
                     <div class="action-buttons">
-                        <button class="btn btn-primary">
+                        <button class="btn btn-primary" id="openPopupBtn">
                             ➕ Thêm sản phẩm
                         </button>
                         <button class="btn btn-secondary">
@@ -401,51 +401,471 @@
                     </table>
                 </div>
             </div>
-        </main>
-        <!-- Popup Chỉnh sửa sản phẩm -->
-        <div id="editProductModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2>Chỉnh sửa sản phẩm</h2>
-                <form id="editProductForm">
-                    <input type="hidden" id="editProductId">
 
-                    <div class="image-upload-container">
-                        <img id="imagePreview" class="image-preview" src="" alt="Ảnh xem trước">
-                        <input type="file" id="imageUpload" accept="image/*" style="display: none;">
-                        <button type="button" class="upload-btn"
-                            onclick="document.getElementById('imageUpload').click()">Chọn ảnh mới</button>
-                    </div>
+            <!-- Popup Chỉnh sửa sản phẩm -->
+            <div id="editProductModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Chỉnh sửa sản phẩm</h2>
+                    <form id="editProductForm">
+                        <input type="hidden" id="editProductId">
 
-                    <div class="form-group">
-                        <label for="editProductName">Tên món ăn</label>
-                        <input type="text" id="editProductName" required>
-                    </div>
+                        <div class="image-upload-container">
+                            <img id="imagePreview" class="image-preview" src="" alt="Ảnh xem trước">
+                            <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+                            <button type="button" class="upload-btn"
+                                onclick="document.getElementById('imageUpload').click()">Chọn ảnh mới</button>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="editProductCategory">Danh mục</label>
-                        <select id="editProductCategory" required>
-                            <option value="Đồ Việt">Đồ Việt</option>
-                            <option value="Đồ Tây">Đồ Tây</option>
-                            <option value="Đồ Âu">Đồ Âu</option>
-                        </select>
-                    </div>
+                        <div class="form-group">
+                            <label for="editProductName">Tên món ăn</label>
+                            <input type="text" id="editProductName" required>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="editProductPrice">Giá bán (đồng)</label>
-                        <input type="number" id="editProductPrice" required>
-                    </div>
+                        <div class="form-group">
+                            <label for="editProductCategory">Danh mục</label>
+                            <select id="editProductCategory" required>
+                                <option value="Đồ Việt">Đồ Việt</option>
+                                <option value="Đồ Tây">Đồ Tây</option>
+                                <option value="Đồ Âu">Đồ Âu</option>
+                            </select>
+                        </div>
 
-                    <div class="form-actions">
-                        <button type="button" class="btn btn-cancel">Hủy</button>
-                        <button type="submit" class="btn btn-save">Lưu thay đổi</button>
-                    </div>
-                </form>
+                        <div class="form-group">
+                            <label for="editProductPrice">Giá bán (đồng)</label>
+                            <input type="number" id="editProductPrice" required>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-cancel">Hủy</button>
+                            <button type="submit" class="btn btn-save">Lưu thay đổi</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
+            <!-- Add new product -->
+            <div class="popup-overlay" id="Popup-add-product">
+                <div class="popup-container">
+                    <div class="popup-header">
+                        <h2 class="popup-title">Thêm sản phẩm</h2>
+                    </div>
+
+                    <div class="popup-content">
+                        <div class="left-section">
+                            <!-- Basic Information Section -->
+                            <div class="section">
+                                <h3 class="section-title">Tên sản phẩm</h3>
+                                <div class="form-group">
+                                    <input type="text" class="input-field" placeholder="Product Name" id="productName">
+                                </div>
+                            </div>
+
+                            <!-- Stock & Pricing Section -->
+                            <div class="section">
+                                <h3 class="section-title">Giá bán</h3>
+                                <div class="form-row">
+                                    <input type="number" class="input-field" placeholder="Price" step="0.01" id="price">
+                                </div>
+                                <div class="form-row" id="discountFields" style="display: none;">
+                                    <input type="number" class="input-field" placeholder="Discount %"
+                                        id="discountPercent">
+                                    <div class="input-field"
+                                        style="display: flex; align-items: center; gap: 8px; color: #6b7280;">
+                                        <span>💰</span>
+                                        <span>Select Date</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="right-section">
+                            <!-- Product Image Section -->
+                            <div class="section">
+                                <h3 class="section-title">Ảnh sản phẩm</h3>
+                                <div class="image-upload" onclick="document.getElementById('imageInput').click()">
+                                    <div class="upload-icon">🖼️</div>
+                                    <div class="upload-text">Tải ảnh của bạn vào đây</div>
+                                    <div class="upload-hint">Chỉ PNG, JPG được chấp nhận</div>
+                                    <div class="upload-hint">Yêu cầu 500x500px</div>
+                                </div>
+                                <input type="file" id="imageInput" accept=".png,.jpg,.jpeg" style="display: none;">
+                            </div>
+
+                            <!-- Visibility Section -->
+                            <div class="section">
+                                <h3 class="section-title">Danh mục sản phẩm</h3>
+                                <div class="radio-group">
+                                    <div class="radio-option">
+                                        <input type="radio" class="radio" name="visibility" value="published"
+                                            id="published">
+                                        <label for="published" class="radio-label">Đồ Việt</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" class="radio" name="visibility" value="scheduled"
+                                            id="scheduled" checked>
+                                        <label for="scheduled" class="radio-label">Đồ Tây</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" class="radio" name="visibility" value="hidden" id="hidden">
+                                        <label for="hidden" class="radio-label">Đồ Âu</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="popup-footer">
+                        <button class="btn btn-secondary" onclick="closePopup()">Cancel</button>
+                        <button class="btn btn-primary" onclick="closePopup()">Add Product</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Customer -->
+            <!-- Content Area -->
+            <div class="content-area" id="tab2">
+                <div class="breadcrumb">Thống kê / Khách hàng</div>
+                <h1 class="page-title">Khách hàng</h1>
+
+                <div class="content-header">
+                    <div class="content-search">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" placeholder="Search in product">
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" id="openPopupBtn">
+                            ➕ Thêm khách hàng
+                        </button>
+                        <button class="btn btn-secondary">
+                            <strong>X</strong> Xoá
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Products Table -->
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" class="checkbox"></th>
+                                <th>Tên khách hàng</th>
+                                <th>Số điện thoại</th>
+                                <th>Địa chỉ giao hàng</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="product-1">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <span class="product-name">Trần Minh Anh</span>
+                                    </div>
+                                </td>
+                                <td class="stock-count">0983 451 289</td>
+                                <td class="price">Hàng Trống, Hoàn Kiếm, Hà Nội</td>
+                                <td>
+                                    <div class="action-buttons-cell">
+                                        <button class="action-btn edit-btn edit-product-btn" data-id="1">✏️</button>
+                                        <button class="action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="product-2">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <span class="product-name">Nguyễn Văn Bình</span>
+                                    </div>
+                                </td>
+                                <td class="stock-count">0912 345 678</td>
+                                <td class="price">58 Quốc Tử Giám, Văn Miếu, Đống Đa, Hà Nội</td>
+                                <td>
+                                    <div class="action-buttons-cell">
+                                        <button class="action-btn edit-btn edit-product-btn" data-id="2">✏️</button>
+                                        <button class="action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="product-3">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <span class="product-name">Lê Thị Hương</span>
+                                    </div>
+                                </td>
+                                <td class="stock-count">0378 956 123</td>
+                                <td class="price">1 Tràng Tiền, Hoàn Kiếm, Hà Nội</td>
+                                <td>
+                                    <div class="action-buttons-cell">
+                                        <button class="action-btn edit-btn edit-product-btn" data-id="3">✏️</button>
+                                        <button class="action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="product-4">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <span class="product-name">Phạm Đức Cường</span>
+                                    </div>
+                                </td>
+                                <td class="stock-count">0856 789 012</td>
+                                <td class="price">Đồng Xuân, Hoàn Kiếm, Hà Nội</td>
+                                <td>
+                                    <div class="action-buttons-cell">
+                                        <button class="action-btn edit-btn edit-product-btn" data-id="4">✏️</button>
+                                        <button class="action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="product-5">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <span class="product-name">Hoàng Thị Lan</span>
+                                    </div>
+                                </td>
+                                <td class="stock-count">0904 567 890</td>
+                                <td class="price">458 Minh Khai, Vĩnh Tuy, Hai Bà Trưng, Hà Nội</td>
+                                <td>
+                                    <div class="action-buttons-cell">
+                                        <button class="action-btn edit-btn edit-product-btn" data-id="5">✏️</button>
+                                        <button class="action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <!-- Category -->
+            <!-- Content Area -->
+            <div class="content-area" id="tab3">
+                <div class="breadcrumb">Thống kê / Danh mục</div>
+                <h1 class="page-title">Danh mục</h1>
+
+                <div class="content-header">
+                    <div class="content-search">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" placeholder="Search in product">
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" id="openPopupBtn">
+                            ➕ Thêm danh mục
+                        </button>
+                        <button class="btn btn-secondary">
+                            <strong>X</strong> Xoá
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Products Table -->
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" class="checkbox"></th>
+                                <th>Tên danh mục</th>
+                                <th>Số lượng sản phẩm</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="product-1">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <span class="product-name">Đồ Việt</span>
+                                    </div>
+                                </td>
+                                <td class="stock-count">07</td>
+                                <td>
+                                    <div class="action-buttons-cell">
+                                        <button class="action-btn edit-btn edit-product-btn" data-id="1">✏️</button>
+                                        <button class="action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr id="product-2">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <span class="product-name">Đồ Tây</span>
+                                    </div>
+                                </td>
+                                <td class="stock-count">03</td>
+                                <td>
+                                    <div class="action-buttons-cell">
+                                        <button class="action-btn edit-btn edit-product-btn" data-id="2">✏️</button>
+                                        <button class="action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="product-3">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <span class="product-name">Đồ Âu</span>
+                                    </div>
+                                </td>
+                                <td class="stock-count">02</td>
+                                <td>
+                                    <div class="action-buttons-cell">
+                                        <button class="action-btn edit-btn edit-product-btn" data-id="3">✏️</button>
+                                        <button class="action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Order -->
+            <!-- Content Area -->
+            <div class="content-area" id="tab4">
+                <div class="breadcrumb">Thống kê / Đơn hàng</div>
+                <h1 class="page-title">Đơn hàng</h1>
+
+                <div class="content-header">
+                    <div class="content-search">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" placeholder="Search in product">
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-secondary">
+                            <strong>X</strong> Xoá
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Products Table -->
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" class="checkbox"></th>
+                                <th>Khách hàng</th>
+                                <th>Trạng thái thanh toán</th>
+                                <th>Trạng thái đơn hàng</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="product-1">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <span class="product-name">Trần Minh Anh</span>
+                                    </div>
+                                </td>
+                                <td class="stock-count">Đã thanh toán</td>
+                                <td class="price">Đang giao</td>
+                                <td>
+                                    <div class="action-buttons-cell">
+                                        <button class="action-btn edit-btn edit-product-btn" data-id="1">✏️</button>
+                                        <button class="action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="product-2">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <span class="product-name">Nguyễn Văn Bình</span>
+                                    </div>
+                                </td>
+                                <td class="stock-count">Chưa thanh toán</td>
+                                <td class="price">Đang giao</td>
+                                <td>
+                                    <div class="action-buttons-cell">
+                                        <button class="action-btn edit-btn edit-product-btn" data-id="2">✏️</button>
+                                        <button class="action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="product-3">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <span class="product-name">Lê Thị Hương</span>
+                                    </div>
+                                </td>
+                                <td class="stock-count">Đã thanh toán</td>
+                                <td class="price">Đã giao</td>
+                                <td>
+                                    <div class="action-buttons-cell">
+                                        <button class="action-btn edit-btn edit-product-btn" data-id="3">✏️</button>
+                                        <button class="action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="product-4">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <span class="product-name">Phạm Đức Cường</span>
+                                    </div>
+                                </td>
+                                <td class="stock-count">Đã thanh toán</td>
+                                <td class="price">Đã giao</td>
+                                <td>
+                                    <div class="action-buttons-cell">
+                                        <button class="action-btn edit-btn edit-product-btn" data-id="4">✏️</button>
+                                        <button class="action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="product-5">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <span class="product-name">Hoàng Thị Lan</span>
+                                    </div>
+                                </td>
+                                <td class="stock-count">Chưa thanh toán</td>
+                                <td class="price">Đang giao</td>
+                                <td>
+                                    <div class="action-buttons-cell">
+                                        <button class="action-btn edit-btn edit-product-btn" data-id="5">✏️</button>
+                                        <button class="action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </main>
     </div>
 
+
+    </div>
+
+
+
     <script>
+        function openTab(tabId) {
+            // Ẩn tất cả nội dung tab
+            const tabContents = document.querySelectorAll('.content-area');
+            tabContents.forEach(tab => tab.classList.remove('active'));
+
+            // Bỏ active tất cả các nút tab
+            const tabButtons = document.querySelectorAll('.nav-link');
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+
+            // Hiển thị tab được chọn và thêm class active
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
         // Navigation functionality
         document.querySelectorAll('.nav-link').forEach(link => { //document.querySelectorAll('.nav-link'): Sẽ select toàn bộ thẻ có class nav-link, tạo thành 1 nodelist, sau đó dùng forEach(link => {...}) để duyệt qua từng link trong nodelist 
             link.addEventListener('click', function (e) {  //add sự kiện click với hàm callback
@@ -474,7 +894,7 @@
         });
 
         // Xoá all
-        
+
 
         // Biến lưu trữ sản phẩm đang chỉnh sửa
         let currentEditingProduct = null;
@@ -520,6 +940,31 @@
         popup.addEventListener('click', (e) => {
             if (e.target === popup) {
                 popup.style.display = 'none';
+            }
+        });
+
+
+        //Popup add new product
+        document.addEventListener('DOMContentLoaded', function () {
+            // Lấy các phần tử DOM
+            const openPopupBtn = document.getElementById('openPopupBtn');
+            const popup = document.getElementById('Popup-add-product');
+
+            // Mở popup khi click vào nút
+            openPopupBtn.addEventListener('click', function () {
+                popup.style.display = 'flex';
+            });
+        })
+
+
+        function closePopup() {
+            document.querySelector('.popup-overlay').style.display = 'none';
+        }
+
+        // Close popup when clicking outside
+        document.querySelector('.popup-overlay').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closePopup();
             }
         });
     </script>

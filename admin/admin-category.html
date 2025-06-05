@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Admin Dashboard</title>
+    <link rel="stylesheet" href="./admin-style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Content Area -->
+            <div class="content-area" id="tab3">
+                <div class="breadcrumb">Thống kê / Danh mục</div>
+                <h1 class="page-title">Danh mục</h1>
+
+                <div class="content-header">
+                    <div class="content-search">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" placeholder="Search in product">
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" id="openPopupBtn">
+                            ➕ Thêm danh mục
+                        </button>
+                        <button class="btn btn-secondary">
+                            <strong>X</strong> Xoá
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Products Table -->
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" class="checkbox"></th>
+                                <th>Tên khách hàng</th>
+                                <th>Số điện thoại</th>
+                                <th>Địa chỉ giao hàng</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="product-1">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <span class="product-name">Trần Minh Anh</span>
+                                    </div>
+                                </td>
+                                <td class="stock-count">0983 451 289</td>
+                                <td class="price">Hàng Trống, Hoàn Kiếm, Hà Nội</td>
+                                <td>
+                                    <div class="action-buttons-cell">
+                                        <button class="action-btn edit-btn edit-product-btn" data-id="1">✏️</button>
+                                        <button class="action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="product-2">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <span class="product-name">Nguyễn Văn Bình</span>
+                                    </div>
+                                </td>
+                                <td class="stock-count">0912 345 678</td>
+                                <td class="price">58 Quốc Tử Giám, Văn Miếu, Đống Đa, Hà Nội</td>
+                                <td>
+                                    <div class="action-buttons-cell">
+                                        <button class="action-btn edit-btn edit-product-btn" data-id="2">✏️</button>
+                                        <button class="action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="product-3">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <span class="product-name">Lê Thị Hương</span>
+                                    </div>
+                                </td>
+                                <td class="stock-count">0378 956 123</td>
+                                <td class="price">1 Tràng Tiền, Hoàn Kiếm, Hà Nội</td>
+                                <td>
+                                    <div class="action-buttons-cell">
+                                        <button class="action-btn edit-btn edit-product-btn" data-id="3">✏️</button>
+                                        <button class="action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="product-4">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <span class="product-name">Phạm Đức Cường</span>
+                                    </div>
+                                </td>
+                                <td class="stock-count">0856 789 012</td>
+                                <td class="price">Đồng Xuân, Hoàn Kiếm, Hà Nội</td>
+                                <td>
+                                    <div class="action-buttons-cell">
+                                        <button class="action-btn edit-btn edit-product-btn" data-id="4">✏️</button>
+                                        <button class="action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="product-5">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <span class="product-name">Hoàng Thị Lan</span>
+                                    </div>
+                                </td>
+                                <td class="stock-count">0904 567 890</td>
+                                <td class="price">458 Minh Khai, Vĩnh Tuy, Hai Bà Trưng, Hà Nội</td>
+                                <td>
+                                    <div class="action-buttons-cell">
+                                        <button class="action-btn edit-btn edit-product-btn" data-id="5">✏️</button>
+                                        <button class="action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

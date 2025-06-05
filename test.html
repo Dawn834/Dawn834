@@ -1,376 +1,93 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản lý sản phẩm</title>
+    <title>Sidebar với Tabs</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
-        /* CSS cơ bản */
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-        
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        .product-cell {
             display: flex;
-            align-items: center;
-            gap: 15px;
+            margin: 0;
+            padding: 0;
         }
-        
-        .product-image img {
-            width: 60px;
-            height: 60px;
-            object-fit: cover;
-            border-radius: 4px;
+
+        .sidebar {
+            width: 200px;
+            background: #f1f1f1;
+            padding: 20px;
         }
-        
-        .category-badge {
-            background-color: #e3f2fd;
-            color: #1976d2;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 12px;
-        }
-        
-        .price {
-            color: #d32f2f;
-            font-weight: bold;
-        }
-        
-        .action-buttons-cell {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .action-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 18px;
-            padding: 5px;
-        }
-        
-        .edit-btn {
-            color: #388e3c;
-        }
-        
-        .delete-btn {
-            color: #f44336;
-        }
-        
-        /* CSS cho popup */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.7);
-        }
-        
-        .modal-content {
-            background-color: #fff;
-            margin: 5% auto;
-            padding: 25px;
-            width: 60%;
-            max-width: 500px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-        
-        .close {
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            color: #aaa;
-        }
-        
-        .close:hover {
-            color: #000;
-        }
-        
-        .form-group {
-            margin-bottom: 15px;
-        }
-        
-        .form-group label {
+
+        .tab-btn {
             display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        
-        .form-group input, 
-        .form-group select {
             width: 100%;
-            padding: 8px;
-            box-sizing: border-box;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        
-        .image-upload-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        
-        .image-preview {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            border: 1px dashed #ccc;
-        }
-        
-        .upload-btn {
-            background-color: #2196F3;
-            color: white;
-            padding: 8px 16px;
+            padding: 10px;
+            margin-bottom: 5px;
             border: none;
-            border-radius: 4px;
+            background: #ddd;
             cursor: pointer;
+            text-align: left;
         }
-        
-        .form-actions {
-            margin-top: 20px;
-            text-align: right;
-        }
-        
-        .btn {
-            padding: 8px 16px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        
-        .btn-save {
-            background-color: #4CAF50;
+
+        .tab-btn.active {
+            background: #4CAF50;
             color: white;
         }
-        
-        .btn-cancel {
-            background-color: #f44336;
-            color: white;
-            margin-right: 10px;
+
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
         }
     </style>
 </head>
-<body>
-    <!-- Bảng sản phẩm -->
-    <table>
-        <thead>
-            <tr>
-                <th></th>
-                <th>SẢN PHẨM</th>
-                <th>DANH MỤC</th>
-                <th>SỐ LƯỢNG BÁN</th>
-                <th>GIÁ BÁN</th>
-                <th>THAO TÁC</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr id="product-1">
-                <td><input type="checkbox" class="checkbox"></td>
-                <td>
-                    <div class="product-cell">
-                        <div class="product-image">
-                            <img id="productImage-1" src="/asset/img/category-food/banh mi.jpg" alt="Bánh mì">
-                        </div>
-                        <span class="product-name">Bánh mì Việt Nam</span>
-                    </div>
-                </td>
-                <td><span class="category-badge">Món Việt</span></td>
-                <td class="stock-count">220</td>
-                <td class="price">30.000đ</td>
-                <td>
-                    <div class="action-buttons-cell">
-                        <button class="action-btn edit-btn edit-product-btn" data-id="1">✏️</button>
-                        <button class="action-btn delete-btn">🗑️</button>
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
 
-    <!-- Popup Chỉnh sửa sản phẩm -->
-    <div id="editProductModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Chỉnh sửa sản phẩm</h2>
-            <form id="editProductForm">
-                <input type="hidden" id="editProductId">
-                
-                <div class="image-upload-container">
-                    <img id="imagePreview" class="image-preview" src="" alt="Ảnh xem trước">
-                    <input type="file" id="imageUpload" accept="image/*" style="display: none;">
-                    <button type="button" class="upload-btn" onclick="document.getElementById('imageUpload').click()">Chọn ảnh mới</button>
-                </div>
-                
-                <div class="form-group">
-                    <label for="editProductName">Tên món ăn</label>
-                    <input type="text" id="editProductName" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="editProductCategory">Danh mục</label>
-                    <select id="editProductCategory" required>
-                        <option value="Món Việt">Món Việt</option>
-                        <option value="Món Tây">Món Tây</option>
-                        <option value="Món Nhật">Món Nhật</option>
-                        <option value="Món Hàn">Món Hàn</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="editProductPrice">Giá bán (đồng)</label>
-                    <input type="number" id="editProductPrice" required>
-                </div>
-                
-                <div class="form-actions">
-                    <button type="button" class="btn btn-cancel">Hủy</button>
-                    <button type="submit" class="btn btn-save">Lưu thay đổi</button>
-                </div>
-            </form>
+<body>
+    <div class="sidebar">
+        <button class="tab-btn active" onclick="openTab('tab1')">Tab 1</button>
+        <button class="tab-btn" onclick="openTab('tab2')">Tab 2</button>
+        <button class="tab-btn" onclick="openTab('tab3')">Tab 3</button>
+    </div>
+
+    <div class="content">
+        <div id="tab1" class="tab-content active">
+            <h2>Nội dung Tab 1</h2>
+            <p>Đây là nội dung của Tab 1.</p>
+        </div>
+        <div id="tab2" class="tab-content">
+            <h2>Nội dung Tab 2</h2>
+            <p>Đây là nội dung của Tab 2.</p>
+        </div>
+        <div id="tab3" class="tab-content">
+            <h2>Nội dung Tab 3</h2>
+            <p>Đây là nội dung của Tab 3.</p>
         </div>
     </div>
 
     <script>
-        // Biến lưu trữ sản phẩm đang chỉnh sửa
-        let currentEditingProduct = null;
-        let newImageFile = null;
-        
-        // Mở popup chỉnh sửa khi click nút ✏️
-        document.querySelector('.edit-product-btn').addEventListener('click', function() {
-            const productId = this.getAttribute('data-id');
-            const productRow = document.getElementById(`product-${productId}`);
-            
-            // Lấy thông tin sản phẩm từ hàng trong bảng
-            currentEditingProduct = {
-                id: productId,
-                name: productRow.querySelector('.product-name').textContent,
-                category: productRow.querySelector('.category-badge').textContent,
-                price: productRow.querySelector('.price').textContent.replace(/\D/g, ''),
-                image: productRow.querySelector('.product-image img').src
-            };
-            
-            // Điền thông tin vào form chỉnh sửa
-            document.getElementById('editProductId').value = currentEditingProduct.id;
-            document.getElementById('editProductName').value = currentEditingProduct.name;
-            document.getElementById('editProductCategory').value = currentEditingProduct.category;
-            document.getElementById('editProductPrice').value = currentEditingProduct.price;
-            document.getElementById('imagePreview').src = currentEditingProduct.image;
-            newImageFile = null;
-            
-            // Hiển thị popup
-            document.getElementById('editProductModal').style.display = 'block';
-        });
-        
-        // Xử lý khi chọn ảnh mới
-        document.getElementById('imageUpload').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                if (!file.type.match('image.*')) {
-                    alert('Vui lòng chọn file ảnh!');
-                    return;
-                }
-                
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    document.getElementById('imagePreview').src = event.target.result;
-                    newImageFile = file;
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-        
-        // Đóng popup khi click nút đóng
-        document.querySelector('.close').addEventListener('click', closeEditModal);
-        
-        // Đóng popup khi click nút hủy
-        document.querySelector('.btn-cancel').addEventListener('click', closeEditModal);
-        
-        // Đóng popup khi click bên ngoài
-        window.addEventListener('click', function(event) {
-            if (event.target === document.getElementById('editProductModal')) {
-                closeEditModal();
-            }
-        });
-        
-        // Xử lý khi submit form chỉnh sửa
-        document.getElementById('editProductForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Lấy giá trị từ form
-            const productId = document.getElementById('editProductId').value;
-            const newName = document.getElementById('editProductName').value;
-            const newCategory = document.getElementById('editProductCategory').value;
-            const newPrice = document.getElementById('editProductPrice').value;
-            
-            // Cập nhật thông tin sản phẩm trong bảng
-            const productRow = document.getElementById(`product-${productId}`);
-            productRow.querySelector('.product-name').textContent = newName;
-            productRow.querySelector('.category-badge').textContent = newCategory;
-            productRow.querySelector('.price').textContent = `${parseInt(newPrice).toLocaleString('vi-VN')}đ`;
-            
-            // Cập nhật ảnh nếu có
-            if (newImageFile) {
-                const productImage = productRow.querySelector('.product-image img');
-                productImage.src = document.getElementById('imagePreview').src;
-                
-                // Ở đây bạn có thể thêm code để upload ảnh lên server
-                // uploadImageToServer(newImageFile, productId);
-            }
-            
-            // Đóng popup
-            closeEditModal();
-            
-            // Thông báo thành công
-            alert('Cập nhật sản phẩm thành công!');
-        });
-        
-        // Hàm đóng popup chỉnh sửa
-        function closeEditModal() {
-            document.getElementById('editProductModal').style.display = 'none';
-            currentEditingProduct = null;
-            newImageFile = null;
-        }
-        
-        // Hàm upload ảnh lên server (ví dụ)
-        function uploadImageToServer(file, productId) {
-            const formData = new FormData();
-            formData.append('image', file);
-            formData.append('productId', productId);
-            
-            fetch('/api/upload-product-image', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Upload ảnh thành công:', data);
-            })
-            .catch(error => {
-                console.error('Lỗi upload ảnh:', error);
-            });
+        function openTab(tabId) {
+            // Ẩn tất cả nội dung tab
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(tab => tab.classList.remove('active'));
+
+            // Bỏ active tất cả các nút tab
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+
+            // Hiển thị tab được chọn và thêm class active
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
         }
     </script>
 </body>
+
 </html>
