@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Admin Dashboard</title>
+    <link rel="stylesheet" href="./admin-style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+            </div>
+
+            <div class="menu-section">
+                <div class="menu-title">Menu</div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon">📊</span>
+                            Thống kê
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active">
+                            <span class="nav-icon">📦</span>
+                            Sản phẩm
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon">👥</span>
+                            Khách hàng
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon">🏷️</span>
+                            Danh mục
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon">📋</span>
+                            Đơn hàng
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon">🎫</span>
+                            Khuyến mại
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon">💬</span>
+                            Liên hệ
+                            <span class="badge">4</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="menu-section">
+                <div class="menu-title">Other</div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon">⚙️</span>
+                            Cài đặt
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span class="nav-icon">🚪</span>
+                            Đăng xuất
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Search something here">
+                </div>
+
+                <div class="header-right">
+                    <button class="notification-btn">
+                        🔔
+                        <span class="notification-badge"></span>
+                    </button>
+
+                    <div class="user-profile">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTYiIGZpbGw9IiM0RjQ2RTUiLz4KPHN2ZyB4PSI4IiB5PSI4IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSI+CjxwYXRoIGQ9Ik04IDhDMTAuMjA5MSA4IDEyIDYuMjA5MTQgMTIgNEMxMiAxLjc5MDg2IDEwLjIwOTEgMCA4IDBDNS43OTA4NiAwIDQgMS43OTA4NiA0IDRDNCA2LjIwOTE0IDUuNzkwODYgOCA4IDhaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMCAxNkMwIDEyLjY4NjMgMS43OTA4NiAxMSA0IDExSDEyQzE0LjIwOTEgMTEgMTYgMTIuNjg2MyAxNiAxNlYxNkgwVjE2WiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cjwvc3ZnPgo="
+                            alt="User Avatar" class="user-avatar">
+                        <div class="user-info">
+                            <h4>Arfi Ganteng</h4>
+                            <p>arfi.ganteng@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <div class="breadcrumb">Thống kê / Sản phẩm</div>
+                <h1 class="page-title">Sản phẩm</h1>
+
+                <div class="content-header">
+                    <div class="content-search">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" placeholder="Search in product">
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-primary">
+                            ➕ Thêm sản phẩm
+                        </button>
+                        <button class="btn btn-secondary">
+                            <strong>X</strong> Xoá
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Products Table -->
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" class="checkbox"></th>
+                                <th>Sản phẩm</th>
+                                <th>Danh mục</th>
+                                <th>Số lượng bán</th>
+                                <th>Giá bán</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="product-1">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <div class="product-image">
+                                            <img id="productImage-1" src="/asset/img/category-food/banh mi.jpg"
+                                                alt="Bánh mì">
+                                        </div>
+                                        <span class="product-name">Bánh mì Việt Nam</span>
+                                    </div>
+                                </td>
+                                <td><span class="category-badge">Đồ Việt</span></td>
+                                <td class="stock-count">220</td>
+                                <td class="price">30.000đ</td>
+                                <td>
+                                    <div class="action-buttons-cell">
+                                        <button class="action-btn edit-btn edit-product-btn" data-id="1">✏️</button>
+                                        <button class="action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="product-2">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <div class="product-image">
+                                            <img id="productImage-2" src="/asset/img/category-food/buger.jpg"
+                                                alt="Buger">
+                                        </div>
+                                        <span class="product-name">Buger</span>
+                                    </div>
+                                </td>
+                                <td><span class="category-badge">Đồ Tây</span></td>
+                                <td class="stock-count">180</td>
+                                <td class="price">40.000đ</td>
+                                <td>
+                                    <div class="action-buttons-cell">
+                                        <button class="action-btn edit-btn edit-product-btn" data-id="2">✏️</button>
+                                        <button class="action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="product-3">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <div class="product-image">
+                                            <img id="productImage-3" src="/asset/img/category-food/bundau.jpg"
+                                                alt="Bánh mì">
+                                        </div>
+                                        <span class="product-name">Bún nem rán</span>
+                                    </div>
+                                </td>
+                                <td><span class="category-badge">Đồ Việt</span></td>
+                                <td class="stock-count">200</td>
+                                <td class="price">40.000đ</td>
+                                <td>
+                                    <div class="action-buttons-cell">
+                                        <button class="action-btn edit-btn edit-product-btn" data-id="3">✏️</button>
+                                        <button class="action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="product-4">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <div class="product-image">
+                                            <img id="productImage-4" src="/asset/img/category-food/buntron.jpg"
+                                                alt="Bánh mì">
+                                        </div>
+                                        <span class="product-name">Bún trộn</span>
+                                    </div>
+                                </td>
+                                <td><span class="category-badge">Đồ Việt</span></td>
+                                <td class="stock-count">260</td>
+                                <td class="price">35.000đ</td>
+                                <td>
+                                    <div class="action-buttons-cell">
+                                        <button class="action-btn edit-btn edit-product-btn" data-id="4">✏️</button>
+                                        <button class="action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="product-5">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <div class="product-image">
+                                            <img id="productImage-1" src="/asset/img/category-food/chickenfried.jpg"
+                                                alt="Bánh mì">
+                                        </div>
+                                        <span class="product-name">Gà rán</span>
+                                    </div>
+                                </td>
+                                <td><span class="category-badge">Đồ Tây</span></td>
+                                <td class="stock-count">123</td>
+                                <td class="price">40.000đ</td>
+                                <td>
+                                    <div class="action-buttons-cell">
+                                        <button class="action-btn edit-btn edit-product-btn" data-id="5">✏️</button>
+                                        <button class="action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="product-6">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <div class="product-image">
+                                            <img id="productImage-1" src="/asset/img/category-food/nemran.jpg"
+                                                alt="Bánh mì">
+                                        </div>
+                                        <span class="product-name">Nem rán</span>
+                                    </div>
+                                </td>
+                                <td><span class="category-badge">Đồ Việt</span></td>
+                                <td class="stock-count">300</td>
+                                <td class="price">40.000đ</td>
+                                <td>
+                                    <div class="action-buttons-cell">
+                                        <button class="action-btn edit-btn edit-product-btn" data-id="6">✏️</button>
+                                        <button class="action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="product-7">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <div class="product-image">
+                                            <img id="productImage-7" src="/asset/img/category-food/pho.jpg"
+                                                alt="Bánh mì">
+                                        </div>
+                                        <span class="product-name">Phở gà</span>
+                                    </div>
+                                </td>
+                                <td><span class="category-badge">Đồ Việt</span></td>
+                                <td class="stock-count">400</td>
+                                <td class="price">35.000đ</td>
+                                <td>
+                                    <div class="action-buttons-cell">
+                                        <button class="action-btn edit-btn edit-product-btn" data-id="7">✏️</button>
+                                        <button class="action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="product-8">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <div class="product-image">
+                                            <img id="productImage-8" src="/asset/img/category-food/pizza.jpg"
+                                                alt="Bánh mì">
+                                        </div>
+                                        <span class="product-name">Pizza</span>
+                                    </div>
+                                </td>
+                                <td><span class="category-badge">Đồ Âu</span></td>
+                                <td class="stock-count">100</td>
+                                <td class="price">70.000đ</td>
+                                <td>
+                                    <div class="action-buttons-cell">
+                                        <button class="action-btn edit-btn edit-product-btn" data-id="8">✏️</button>
+                                        <button class="action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="product-9">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <div class="product-image">
+                                            <img id="productImage-9" src="/asset/img/category-food/rice.jpg"
+                                                alt="Bánh mì">
+                                        </div>
+                                        <span class="product-name">Cơm tấm</span>
+                                    </div>
+                                </td>
+                                <td><span class="category-badge">Đồ Việt</span></td>
+                                <td class="stock-count">430</td>
+                                <td class="price">40.000đ</td>
+                                <td>
+                                    <div class="action-buttons-cell">
+                                        <button class="action-btn edit-btn edit-product-btn" data-id="9">✏️</button>
+                                        <button class="action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="product-10">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <div class="product-image">
+                                            <img id="productImage-1" src="/asset/img/category-food/spageti.jpg"
+                                                alt="Bánh mì">
+                                        </div>
+                                        <span class="product-name">Mỳ spageti</span>
+                                    </div>
+                                </td>
+                                <td><span class="category-badge">Đồ Âu</span></td>
+                                <td class="stock-count">180</td>
+                                <td class="price">60.000đ</td>
+                                <td>
+                                    <div class="action-buttons-cell">
+                                        <button class="action-btn edit-btn edit-product-btn" data-id="10">✏️</button>
+                                        <button class="action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="product-11">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <div class="product-image">
+                                            <img id="productImage-11" src="/asset/img/category-food/springroll.jpg"
+                                                alt="Bánh mì">
+                                        </div>
+                                        <span class="product-name">Phở cuốn</span>
+                                    </div>
+                                </td>
+                                <td><span class="category-badge">Đồ Việt</span></td>
+                                <td class="stock-count">500</td>
+                                <td class="price">50.000đ</td>
+                                <td>
+                                    <div class="action-buttons-cell">
+                                        <button class="action-btn edit-btn edit-product-btn" data-id="11">✏️</button>
+                                        <button class="action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="product-12">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <div class="product-image">
+                                            <img id="productImage-12"
+                                                src="/asset/img/category-food/72d9af964d384fc2a16fd087c1062a7c.jpg"
+                                                alt="Bánh mì">
+                                        </div>
+                                        <span class="product-name">Salad ức gà</span>
+                                    </div>
+                                </td>
+                                <td><span class="category-badge">Đồ Tây</span></td>
+                                <td class="stock-count">200</td>
+                                <td class="price">60.000đ</td>
+                                <td>
+                                    <div class="action-buttons-cell">
+                                        <button class="action-btn edit-btn edit-product-btn" data-id="12">✏️</button>
+                                        <button class="action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+        <!-- Popup Chỉnh sửa sản phẩm -->
+        <div id="editProductModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Chỉnh sửa sản phẩm</h2>
+                <form id="editProductForm">
+                    <input type="hidden" id="editProductId">
+
+                    <div class="image-upload-container">
+                        <img id="imagePreview" class="image-preview" src="" alt="Ảnh xem trước">
+                        <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+                        <button type="button" class="upload-btn"
+                            onclick="document.getElementById('imageUpload').click()">Chọn ảnh mới</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editProductName">Tên món ăn</label>
+                        <input type="text" id="editProductName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editProductCategory">Danh mục</label>
+                        <select id="editProductCategory" required>
+                            <option value="Đồ Việt">Đồ Việt</option>
+                            <option value="Đồ Tây">Đồ Tây</option>
+                            <option value="Đồ Âu">Đồ Âu</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editProductPrice">Giá bán (đồng)</label>
+                        <input type="number" id="editProductPrice" required>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-cancel">Hủy</button>
+                        <button type="submit" class="btn btn-save">Lưu thay đổi</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation functionality
+        document.querySelectorAll('.nav-link').forEach(link => { //document.querySelectorAll('.nav-link'): Sẽ select toàn bộ thẻ có class nav-link, tạo thành 1 nodelist, sau đó dùng forEach(link => {...}) để duyệt qua từng link trong nodelist 
+            link.addEventListener('click', function (e) {  //add sự kiện click với hàm callback
+                e.preventDefault(); //ngăn cho e (sự kiện) chạy defalt của thẻ a: ko chuyển trang khi click
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active')); // tương tự như đầu, select toàn bộ thẻ có class nav-link, sau đó remove trạng thái active.
+                this.classList.add('active'); //thêm class active vào link mình vừa click
+            });
+        });
+
+        document.querySelectorAll('.delete-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                if (confirm('Bạn có chắc muốn xoá sản phẩm')) { // tạo hàm if. mở hộp confirm, nếu ấn OK thì chạy hàm callback dưới. No thì huỷ
+                    this.closest('tr').remove(); // chọn hàng có nút delete-btn mà click gần nhất, remove hàng đó
+                }
+            });
+        });
+
+        // Checkbox functionality
+        const selectAllCheckbox = document.querySelector('thead input[type="checkbox"]'); // tạo biến selectAllCheckbox = thẻ thead đầu tiên có thuộc tính type=checkbox
+        const rowCheckboxes = document.querySelectorAll('tbody input[type="checkbox"]'); // tương tự
+
+        selectAllCheckbox.addEventListener('change', function () { //thêm sự kiện change vào selectAllCheckbox, hàm callback
+            rowCheckboxes.forEach(checkbox => { // duyệt checkbox từ nodelist được tạo từ rowCheckboxes
+                checkbox.checked = this.checked // checkbox sẽ gán trạng thái checked nếu như this (selectAllCheckbox) đã có trạng thái checked, nếu this bỏ checked thì các checkbox khác đều bỏ
+            });
+        });
+
+        // Xoá all
+        
+
+        // Biến lưu trữ sản phẩm đang chỉnh sửa
+        let currentEditingProduct = null;
+        let newImageFile = null;
+
+        // Gán sự kiện cho tất cả nút chỉnh sửa
+        document.querySelectorAll('.edit-product-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const productId = this.getAttribute('data-id'); // tạo biến productId = giá trị data-id khi click vào btn có class edit-product-btn
+                const productRow = document.getElementById(`product-${productId}`); //tạo biến productRow = giá trị product có productId
+
+                // Lấy thông tin sản phẩm từ hàng trong bảng
+                currentEditingProduct = { // tạo 1 obj có id, name, category, price, image
+                    id: productId,
+                    name: productRow.querySelector('.product-name').textContent, //name = giá trị của thẻ đầu tiên trong hàng có class product-name, in ra text
+                    category: productRow.querySelector('.category-badge').textContent, // tương tự
+                    price: productRow.querySelector('.price').textContent.replace(/\D/g, ''), // in ra giá, replace(/\D/g, ''):
+                    //Loại bỏ tất cả ký tự không phải số(ví dụ: dấu,, $, đ) từ chuỗi giá.
+                    // \D: Biểu thức chính quy(regex) khớp với ký tự không phải số.
+                    image: productRow.querySelector('.product-image img').src
+                };
+
+                // Điền thông tin vào form chỉnh sửa
+                document.getElementById('editProductId').value = currentEditingProduct.id; //truy cập vào thẻ có id editProductId, thay đổi giá trị id của thẻ = giá trị id của obj vừa tạo
+                document.getElementById('editProductName').value = currentEditingProduct.name;
+                document.getElementById('editProductCategory').value = currentEditingProduct.category;
+                document.getElementById('editProductPrice').value = currentEditingProduct.price;
+                document.getElementById('imagePreview').src = currentEditingProduct.image;
+                newImageFile = null;
+
+                // Hiển thị popup
+                document.getElementById('editProductModal').style.display = 'block';
+            });
+        });
+        //Đóng popup
+        let popup = document.getElementById("editProductModal");
+        let closeBtn = document.querySelector(".close");
+        // Hàm đóng popup chỉnh sửa
+        closeBtn.addEventListener('click', () => {
+            popup.style.display = 'none';
+        });
+        // Đóng popup khi click bên ngoài
+        popup.addEventListener('click', (e) => {
+            if (e.target === popup) {
+                popup.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,408 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quên Mật Khẩu</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ddea66 0%, #e18733 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e1e5e9;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #d0ea66 0%, #ef9a24 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-link a {
+            color: #fc831f;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .back-link a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        .success-message,
+        .error-message {
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+            transition: all 0.3s ease;
+        }
+
+        .success-message {
+            background: rgba(46, 204, 113, 0.15);
+            color: #27ae60;
+            border: 2px solid rgba(46, 204, 113, 0.3);
+        }
+
+        .error-message {
+            background: rgba(231, 76, 60, 0.15);
+            color: #e74c3c;
+            border: 2px solid rgba(231, 76, 60, 0.3);
+        }
+
+        .success-message.show,
+        .error-message.show {
+            display: block !important;
+            animation: slideInDown 0.4s ease-out;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Quên Mật Khẩu?</h1>
+            <p>Nhập địa chỉ email của bạn và chúng tôi sẽ gửi liên kết đặt lại mật khẩu</p>
+        </div>
+
+        <div id="successMessage" class="success-message">
+            Email đặt lại mật khẩu đã được gửi! Vui lòng kiểm tra hộp thư của bạn.
+        </div>
+
+        <div id="errorMessage" class="error-message">
+            Có lỗi xảy ra. Vui lòng thử lại sau.
+        </div>
+
+        <form id="forgotPasswordForm">
+            <div class="form-group">
+                <label for="email">Địa chỉ Email</label>
+                <input type="email" id="email" name="email" placeholder="Nhập địa chỉ email của bạn" required>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">
+                <span id="btnText">Gửi Liên Kết Đặt Lại</span>
+            </button>
+        </form>
+
+        <div class="back-link">
+            <a href="./login.html" onclick="goBack()">← Quay lại đăng nhập</a>
+        </div>
+    </div>
+
+    <script>
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('forgotPasswordForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            const emailInput = document.getElementById('email');
+
+            // Hide messages initially
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                console.log('Form submitted');
+
+                const email = emailInput.value.trim();
+                console.log('Email nhập vào:', email);
+
+                if (!email) {
+                    console.log('Email trống');
+                    showError('Vui lòng nhập địa chỉ email');
+                    return;
+                }
+
+                if (!isValidEmail(email)) {
+                    console.log('Email không hợp lệ');
+                    showError('Vui lòng nhập địa chỉ email hợp lệ');
+                    return;
+                }
+
+                console.log('Email hợp lệ, bắt đầu xử lý...');
+                // Show loading state
+                setLoading(true);
+                hideMessages();
+
+                // Simulate API call with setTimeout
+                setTimeout(() => {
+                    // Simulate success (you can change this logic)
+                    if (Math.random() > 0.2) { // 80% success rate
+                        console.log('Gửi email thành công');
+                        showSuccess();
+                        emailInput.value = '';
+                    } else {
+                        console.log('Gửi email thất bại');
+                        showError('Không thể gửi email đặt lại mật khẩu. Vui lòng thử lại sau.');
+                    }
+                    setLoading(false);
+                }, 2000);
+            });
+
+            function setLoading(loading) {
+                if (loading) {
+                    submitBtn.disabled = true;
+                    btnText.innerHTML = '<span class="loading"></span>Đang gửi...';
+                } else {
+                    submitBtn.disabled = false;
+                    btnText.innerHTML = 'Gửi Liên Kết Đặt Lại';
+                }
+            }
+
+            function showSuccess() {
+                console.log('Hiển thị thông báo thành công');
+                hideMessages();
+                successMessage.style.display = 'block';
+                successMessage.classList.add('show');
+
+                // Auto hide after 5 seconds
+                setTimeout(() => {
+                    hideMessages();
+                }, 5000);
+            }
+
+            function showError(message) {
+                console.log('Hiển thị lỗi:', message);
+                hideMessages();
+                errorMessage.textContent = message;
+                errorMessage.style.display = 'block';
+                errorMessage.classList.add('show');
+
+                // Auto hide after 5 seconds
+                setTimeout(() => {
+                    hideMessages();
+                }, 5000);
+            }
+
+            function hideMessages() {
+                console.log('Ẩn tất cả thông báo');
+                successMessage.classList.remove('show');
+                errorMessage.classList.remove('show');
+
+                // Hide after animation completes
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                    errorMessage.style.display = 'none';
+                }, 300);
+            }
+
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+
+            // Make functions globally accessible
+            window.showSuccess = showSuccess;
+            window.showError = showError;
+            window.setLoading = setLoading;
+            window.isValidEmail = isValidEmail;
+        });
+
+        function setLoading(loading) {
+            if (loading) {
+                submitBtn.disabled = true;
+                btnText.innerHTML = '<span class="loading"></span>Đang gửi...';
+            } else {
+                submitBtn.disabled = false;
+                btnText.innerHTML = 'Gửi Liên Kết Đặt Lại';
+            }
+        }
+
+        function showSuccess() {
+            hideMessages();
+            successMessage.classList.add('show');
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 5000);
+        }
+
+        function showError(message) {
+            hideMessages();
+            errorMessage.textContent = message;
+            errorMessage.classList.add('show');
+            setTimeout(() => {
+                errorMessage.classList.remove('show');
+            }, 5000);
+        }
+
+        function hideMessages() {
+            successMessage.classList.remove('show');
+            errorMessage.classList.remove('show');
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function goBack() {
+            console.log('Chuyển về trang đăng nhập...');
+            alert('Sẽ chuyển về trang đăng nhập!');
+            // Trong thực tế, bạn sẽ chuyển hướng về trang đăng nhập
+            // window.location.href = '/login';
+        }
+
+        // Add smooth animations on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            const container = document.querySelector('.container');
+            container.style.opacity = '0';
+            container.style.transform = 'translateY(30px)';
+
+            setTimeout(() => {
+                container.style.transition = 'all 0.6s ease';
+                container.style.opacity = '1';
+                container.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body>
+
+</html>

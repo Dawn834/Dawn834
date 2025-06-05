@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Alex Smith's App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .settings-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+            width: 100%;
+            max-width: 900px;
+            height: 600px;
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .sidebar {
+            width: 280px;
+            background: #f8f9fa;
+            border-right: 1px solid #e9ecef;
+            padding: 0;
+            overflow-y: auto;
+        }
+
+        .app-header {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .app-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .app-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .menu-section {
+            padding: 20px 0;
+        }
+
+        .menu-label {
+            padding: 0 20px 8px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            color: #495057;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            gap: 12px;
+            border: none;
+            background: none;
+            width: 100%;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .menu-item:hover {
+            background: #e9ecef;
+            color: #2c3e50;
+        }
+
+        .menu-item.active {
+            background: #007bff;
+            color: white;
+            font-weight: 500;
+        }
+
+        .menu-icon {
+            width: 16px;
+            height: 16px;
+            opacity: 0.7;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+            background: white;
+        }
+
+        .content-header {
+            margin-bottom: 30px;
+        }
+
+        .content-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 4px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #495057;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            background: white;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            background: #6c757d;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 4px;
+        }
+
+        .profile-subtitle {
+            font-size: 13px;
+            color: #6c757d;
+            margin-bottom: 8px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .btn-primary {
+            background: #007bff;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0056b3;
+            transform: translateY(-1px);
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+        }
+
+        .phone-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .phone-info {
+            color: #6c757d;
+            font-size: 14px;
+        }
+
+        .deactivate-section {
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .deactivate-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #dc3545;
+            margin-bottom: 8px;
+        }
+
+        .deactivate-subtitle {
+            font-size: 13px;
+            color: #6c757d;
+            margin-bottom: 15px;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .security-section {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .security-header {
+            margin-bottom: 25px;
+        }
+
+        .security-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 6px;
+        }
+
+        .security-subtitle {
+            font-size: 14px;
+            color: #6c757d;
+        }
+
+        .password-form {
+            max-width: 500px;
+        }
+
+        .password-requirements {
+            margin-top: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .requirement {
+            font-size: 12px;
+            color: #dc3545;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .requirement.valid {
+            color: #28a745;
+        }
+
+        .requirement::before {
+            content: "✗";
+            font-size: 10px;
+        }
+
+        .requirement.valid::before {
+            content: "✓";
+        }
+
+        .password-match-indicator {
+            margin-top: 8px;
+            font-size: 12px;
+            min-height: 16px;
+        }
+
+        .password-match-indicator.match {
+            color: #28a745;
+        }
+
+        .password-match-indicator.no-match {
+            color: #dc3545;
+        }
+
+        .two-factor-section {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .two-factor-status {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .status-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .status-icon.disabled {
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+        }
+
+        .status-icon.enabled {
+            background: #d4edda;
+            border: 2px solid #28a745;
+        }
+
+        .status-info {
+            flex: 1;
+        }
+
+        .status-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: #2c3e50;
+            margin-bottom: 2px;
+        }
+
+        .status-subtitle {
+            font-size: 12px;
+            color: #6c757d;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .verify-badge {
+            background: #28a745;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .settings-container {
+                flex-direction: column;
+                height: auto;
+                max-height: 90vh;
+            }
+            
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #e9ecef;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="settings-container">
+        <nav class="sidebar">
+            <div class="app-header">
+                <div class="app-icon">AS</div>
+                <span class="app-title">Alex Smith's App</span>
+            </div>
+            
+            <div class="menu-section">
+                <div class="menu-label">General</div>
+                <button class="menu-item active" data-tab="general">
+                    <span>📋</span>
+                    General
+                </button>
+                <!-- <button class="menu-item" data-tab="preferences">
+                    <span>⚙️</span>
+                    Preferences
+                </button>
+                <button class="menu-item" data-tab="developers">
+                    <span>👨‍💻</span>
+                    Developers
+                </button> -->
+                <button class="menu-item" data-tab="security">
+                    <span>🔒</span>
+                    Security
+                </button>
+            </div>
+            
+            <!-- <div class="menu-section">
+                <div class="menu-label">Developers</div>
+                <button class="menu-item">
+                    <span>⬆️</span>
+                    Upgrade
+                </button>
+                <button class="menu-item">
+                    <span>📋</span>
+                    Your plan
+                </button>
+                <button class="menu-item">
+                    <span>🧾</span>
+                    Invoices
+                </button>
+                <button class="menu-item">
+                    <span>💳</span>
+                    Billing details
+                </button>
+            </div> -->
+            
+            <div class="menu-section">
+                <div class="menu-label">Other</div>
+                <!-- <button class="menu-item">
+                    <span>🔗</span>
+                    Integrations
+                </button> -->
+                <button class="menu-item">
+                    <span>💬</span>
+                    Contact support
+                </button>
+                <button class="menu-item">
+                    <span>🚪</span>
+                    Sign out
+                </button>
+            </div>
+        </nav>
+        
+        <main class="main-content">
+            <div class="content-header">
+                <h1 class="content-title" id="content-title">General</h1>
+            </div>
+            
+            <!-- General Content -->
+            <div id="general-content" class="tab-content active">
+                <div class="profile-section">
+                    <div class="profile-avatar">SE</div>
+                    <div class="profile-info">
+                        <div class="profile-title">Profile photo</div>
+                        <div class="profile-subtitle">We support PNGs, JPEGs and GIFs under 10MB</div>
+                        <button class="btn btn-secondary">Upload new picture</button>
+                    </div>
+                </div>
+                
+                <form id="general-form">
+                    <div class="form-group">
+                        <label class="form-label">First name</label>
+                        <input type="text" class="form-input" value="Summangeon" placeholder="Enter your first name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Last name</label>
+                        <input type="text" class="form-input" value="Endy" placeholder="Enter your last name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <input type="email" class="form-input" value="doe.mobileemail@gmail.com" style="flex: 1;">
+                            <span class="verify-badge">Verify</span>
+                        </div>
+                    </div>
+                    
+                    <div class="phone-section">
+                        <div>
+                            <div class="form-label" style="margin-bottom: 4px;">Phone</div>
+                            <div class="phone-info">No phone number</div>
+                        </div>
+                        <button type="button" class="btn btn-secondary">Add phone number</button>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </form>
+                
+                <div class="deactivate-section">
+                    <div class="deactivate-title">Deactivate account</div>
+                    <div class="deactivate-subtitle">This will remove you from all workspaces</div>
+                    <button class="btn btn-danger">Deactivate account</button>
+                </div>
+            </div>
+
+            <!-- Security Content -->
+            <div id="security-content" class="tab-content">
+                <div class="security-section">
+                    <div class="security-header">
+                        <h3 class="security-title">Change Password</h3>
+                        <p class="security-subtitle">Update your password to keep your account secure</p>
+                    </div>
+                    
+                    <form id="password-form" class="password-form">
+                        <div class="form-group">
+                            <label class="form-label">Current Password</label>
+                            <input type="password" class="form-input" id="current-password" placeholder="Enter your current password" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">New Password</label>
+                            <input type="password" class="form-input" id="new-password" placeholder="Enter your new password" required>
+                            <div class="password-requirements">
+                                <small class="requirement" id="length-req">At least 8 characters</small>
+                                <small class="requirement" id="uppercase-req">One uppercase letter</small>
+                                <small class="requirement" id="lowercase-req">One lowercase letter</small>
+                                <small class="requirement" id="number-req">One number</small>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Confirm New Password</label>
+                            <input type="password" class="form-input" id="confirm-password" placeholder="Confirm your new password" required>
+                            <div class="password-match-indicator" id="match-indicator"></div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary" id="change-password-btn">Change Password</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="two-factor-section">
+                    <div class="security-header">
+                        <h3 class="security-title">Two-Factor Authentication</h3>
+                        <p class="security-subtitle">Add an extra layer of security to your account</p>
+                    </div>
+                    
+                    <div class="two-factor-status">
+                        <div class="status-indicator">
+                            <span class="status-icon disabled">🔒</span>
+                            <div class="status-info">
+                                <div class="status-title">Two-factor authentication is disabled</div>
+                                <div class="status-subtitle">Secure your account with 2FA</div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary">Enable 2FA</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove active class from all menu items
+                document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('active'));
+                // Add active class to clicked item
+                this.classList.add('active');
+                
+                // Hide all tab contents
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Get tab data attribute
+                const tabName = this.getAttribute('data-tab');
+                const contentTitle = document.getElementById('content-title');
+                
+                // Show corresponding content based on data-tab attribute
+                if (tabName === 'security') {
+                    contentTitle.textContent = 'Security';
+                    document.getElementById('security-content').classList.add('active');
+                } else if (tabName === 'general') {
+                    contentTitle.textContent = 'General';
+                    document.getElementById('general-content').classList.add('active');
+                } else {
+                    // For other tabs that don't have content yet, show general as default
+                    const menuText = this.textContent.trim();
+                    contentTitle.textContent = menuText;
+                    document.getElementById('general-content').classList.add('active');
+                }
+            });
+        });
+
+        // General form handling
+        document.getElementById('general-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Profile updated successfully!');
+        });
+
+        // Password validation
+        const newPasswordInput = document.getElementById('new-password');
+        const confirmPasswordInput = document.getElementById('confirm-password');
+        const matchIndicator = document.getElementById('match-indicator');
+        
+        function validatePassword() {
+            const password = newPasswordInput.value;
+            
+            // Check requirements
+            const lengthReq = document.getElementById('length-req');
+            const uppercaseReq = document.getElementById('uppercase-req');
+            const lowercaseReq = document.getElementById('lowercase-req');
+            const numberReq = document.getElementById('number-req');
+            
+            // Length check
+            if (password.length >= 8) {
+                lengthReq.classList.add('valid');
+            } else {
+                lengthReq.classList.remove('valid');
+            }
+            
+            // Uppercase check
+            if (/[A-Z]/.test(password)) {
+                uppercaseReq.classList.add('valid');
+            } else {
+                uppercaseReq.classList.remove('valid');
+            }
+            
+            // Lowercase check
+            if (/[a-z]/.test(password)) {
+                lowercaseReq.classList.add('valid');
+            } else {
+                lowercaseReq.classList.remove('valid');
+            }
+            
+            // Number check
+            if (/\d/.test(password)) {
+                numberReq.classList.add('valid');
+            } else {
+                numberReq.classList.remove('valid');
+            }
+        }
+        
+        function checkPasswordMatch() {
+            const password = newPasswordInput.value;
+            const confirmPassword = confirmPasswordInput.value;
+            
+            if (confirmPassword === '') {
+                matchIndicator.textContent = '';
+                matchIndicator.className = 'password-match-indicator';
+            } else if (password === confirmPassword) {
+                matchIndicator.textContent = '✓ Passwords match';
+                matchIndicator.className = 'password-match-indicator match';
+            } else {
+                matchIndicator.textContent = '✗ Passwords do not match';
+                matchIndicator.className = 'password-match-indicator no-match';
+            }
+        }
+        
+        // Add event listeners only if elements exist (Security tab)
+        if (newPasswordInput && confirmPasswordInput) {
+            newPasswordInput.addEventListener('input', validatePassword);
+            confirmPasswordInput.addEventListener('input', checkPasswordMatch);
+            newPasswordInput.addEventListener('input', checkPasswordMatch);
+        }
+
+        // Password form submission
+        const passwordForm = document.getElementById('password-form');
+        if (passwordForm) {
+            passwordForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const currentPassword = document.getElementById('current-password').value;
+                const newPassword = document.getElementById('new-password').value;
+                const confirmPassword = document.getElementById('confirm-password').value;
+                
+                if (!currentPassword || !newPassword || !confirmPassword) {
+                    alert('Please fill in all password fields.');
+                    return;
+                }
+                
+                if (newPassword !== confirmPassword) {
+                    alert('New passwords do not match.');
+                    return;
+                }
+                
+                // Check if all requirements are met
+                const requirements = document.querySelectorAll('.requirement');
+                const allValid = Array.from(requirements).every(req => req.classList.contains('valid'));
+                
+                if (!allValid) {
+                    alert('Please ensure your new password meets all requirements.');
+                    return;
+                }
+                
+                alert('Password changed successfully!');
+                
+                // Reset form
+                this.reset();
+                matchIndicator.textContent = '';
+                matchIndicator.className = 'password-match-indicator';
+                requirements.forEach(req => req.classList.remove('valid'));
+            });
+        }
+
+        // Other existing functionality
+        const deactivateBtn = document.querySelector('.btn-danger');
+        if (deactivateBtn && deactivateBtn.textContent.includes('Deactivate')) {
+            deactivateBtn.addEventListener('click', function() {
+                if (confirm('Are you sure you want to deactivate your account? This action cannot be undone.')) {
+                    alert('Account deactivation process initiated.');
+                }
+            });
+        }
+
+        const uploadBtn = document.querySelector('.profile-section .btn');
+        if (uploadBtn) {
+            uploadBtn.addEventListener('click', function() {
+                const input = document.createElement('input');
+                input.type = 'file';
+                input.accept = 'image/png,image/jpeg,image/gif';
+                input.click();
+            });
+        }
+
+        document.querySelectorAll('.btn-secondary').forEach(btn => {
+            if (btn.textContent.trim() === 'Add phone number') {
+                btn.addEventListener('click', function() {
+                    const phone = prompt('Enter your phone number:');
+                    if (phone) {
+                        const phoneSection = this.parentElement;
+                        phoneSection.querySelector('.phone-info').textContent = phone;
+                        this.textContent = 'Update phone number';
+                    }
+                });
+            }
+        });
+
+        // 2FA functionality
+        const twoFactorBtn = document.querySelector('.two-factor-section .btn-primary');
+        if (twoFactorBtn) {
+            twoFactorBtn.addEventListener('click', function() {
+                if (this.textContent === 'Enable 2FA') {
+                    alert('Two-factor authentication setup initiated. Please follow the instructions sent to your email.');
+                    this.textContent = 'Disable 2FA';
+                    document.querySelector('.status-title').textContent = 'Two-factor authentication is enabled';
+                    document.querySelector('.status-subtitle').textContent = 'Your account is secured with 2FA';
+                    document.querySelector('.status-icon').classList.remove('disabled');
+                    document.querySelector('.status-icon').classList.add('enabled');
+                    this.classList.remove('btn-primary');
+                    this.classList.add('btn-danger');
+                } else {
+                    if (confirm('Are you sure you want to disable two-factor authentication?')) {
+                        alert('Two-factor authentication has been disabled.');
+                        this.textContent = 'Enable 2FA';
+                        document.querySelector('.status-title').textContent = 'Two-factor authentication is disabled';
+                        document.querySelector('.status-subtitle').textContent = 'Secure your account with 2FA';
+                        document.querySelector('.status-icon').classList.remove('enabled');
+                        document.querySelector('.status-icon').classList.add('disabled');
+                        this.classList.remove('btn-danger');
+                        this.classList.add('btn-primary');
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
