@@ -20,13 +20,10 @@
                 <div class="content-header">
                     <div class="content-search">
                         <span class="search-icon">🔍</span>
-                        <input type="text" placeholder="Search in product">
+                        <input type="text" placeholder="Tìm kiếm đơn">
                     </div>
 
                     <div class="action-buttons">
-                        <button class="btn btn-primary" id="openPopupBtn">
-                            ➕ Thêm đơn hàng
-                        </button>
                         <button class="btn btn-secondary">
                             <strong>X</strong> Xoá
                         </button>
@@ -39,7 +36,7 @@
                         <thead>
                             <tr>
                                 <th><input type="checkbox" class="checkbox"></th>
-                                <th>Tên khách hàng</th>
+                                <th>Khách hàng</th>
                                 <th>Trạng thái thanh toán</th>
                                 <th>Trạng thái đơn hàng</th>
                                 <th>Thao tác</th>
@@ -53,7 +50,7 @@
                                         <span class="product-name">Trần Minh Anh</span>
                                     </div>
                                 </td>
-                                <td class="stock-count">Chuyển khoản</td>
+                                <td class="stock-count">Đã thanh toán</td>
                                 <td class="price">Đang giao</td>
                                 <td>
                                     <div class="action-buttons-cell">
@@ -69,7 +66,7 @@
                                         <span class="product-name">Nguyễn Văn Bình</span>
                                     </div>
                                 </td>
-                                <td class="stock-count">Tiền mặt</td>
+                                <td class="stock-count">Chưa thanh toán</td>
                                 <td class="price">Đang giao</td>
                                 <td>
                                     <div class="action-buttons-cell">
@@ -85,7 +82,7 @@
                                         <span class="product-name">Lê Thị Hương</span>
                                     </div>
                                 </td>
-                                <td class="stock-count">Chuyển khoản</td>
+                                <td class="stock-count">Đã thanh toán</td>
                                 <td class="price">Đã giao</td>
                                 <td>
                                     <div class="action-buttons-cell">
@@ -101,7 +98,7 @@
                                         <span class="product-name">Phạm Đức Cường</span>
                                     </div>
                                 </td>
-                                <td class="stock-count">Chuyển khoản</td>
+                                <td class="stock-count">Đã thanh toán</td>
                                 <td class="price">Đã giao</td>
                                 <td>
                                     <div class="action-buttons-cell">
@@ -117,7 +114,7 @@
                                         <span class="product-name">Hoàng Thị Lan</span>
                                     </div>
                                 </td>
-                                <td class="stock-count">Chuyển khoản</td>
+                                <td class="stock-count">Chưa thanh toán</td>
                                 <td class="price">Đang giao</td>
                                 <td>
                                     <div class="action-buttons-cell">
@@ -128,89 +125,6 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
-
-
-            </div>
-            <div class="popup-overlay">
-                <div class="popup-container">
-                    <div class="popup-header">
-                        <h2 class="popup-title">Thông tin order</h2>
-                    </div>
-
-                    <div class="popup-content">
-                        <div class="left-section">
-                            <!-- Basic Information Section -->
-                            <div class="section">
-                                <h3 class="section-title">Thông tin khách hàng</h3>
-                                <div class="form-group">
-                                    <input type="text" class="input-field" placeholder="Tên khách hàng"
-                                        id="productName">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="input-field" placeholder="Số điện thoại" id="productName">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="input-field" placeholder="Địa chỉ" id="productName">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="input-field" placeholder="Email" id="productName">
-                                </div>
-                                <!-- <div class="form-group">
-                                    <textarea class="input-field textarea-field" placeholder="Descriptions"
-                                        id="description"></textarea>
-                                </div> -->
-                            </div>
-
-                            <!-- Stock & Pricing Section -->
-                            <div class="section">
-                                <h3 class="section-title">Trạng thái đơn hàng & Trạng thái thanh toán </h3>
-                                <div class="form-row">
-                                    <input type="number" class="input-field" placeholder="Đang giao/đã giao" id="stock">
-                                    <input type="number" class="input-field" placeholder="Đã/chưa thanh toán"
-                                        step="0.01" id="price">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="right-section">
-                            <!-- Product Image Section -->
-                            <div class="section">
-                                <h3 class="section-title">Sản phẩm</h3>
-                                <div class="image-upload">
-                                    <img src="/asset/img/category-food/banh mi.jpg" alt="">
-                                </div>
-                                <h3 class="section-title">Bánh mỳ Việt Nam</h3>
-                                <p>Giá: 30.000đ <span> / Voucher: 20%</span></p>
-                                <div class="form-group">
-                                    <input type="text" class="input-field" placeholder="Số lượng" id="productName">
-                                </div>
-                            </div>
-
-                            <!-- Visibility Section -->
-                            <div class="section">
-                                <h3 class="section-title">Phương thức thanh toán</h3>
-                                <div class="radio-group">
-                                    <div class="radio-option">
-                                        <input type="radio" class="radio" name="visibility">
-                                        <label for="published" class="radio-label">Chuyển khoản</label>
-                                    </div>
-                                    <div class="radio-option">
-                                        <input type="radio" class="radio" name="visibility">
-                                        <label for="scheduled" class="radio-label">Tiền mặt</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="popup-footer">
-                        <h2>Tổng tiền: </h2>
-                        <div class="footer-btn"> 
-                            <button class="btn btn-secondary" onclick="closePopup()">Huỷ</button>
-                            <button class="btn btn-primary" onclick="addProduct()">Xác nhận</button>
-                        </div>
-                    </div>
                 </div>
             </div>
 

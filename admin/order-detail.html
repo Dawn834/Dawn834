@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            background-color: white;
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .order-number {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .close-btn {
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+            background: none;
+            border: none;
+            padding: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-btn:hover {
+            color: #333;
+        }
+
+        .order-title {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .section {
+            padding: 24px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .item-image {
+            width: 60px;
+            height: 60px;
+            background-color: #f8f8f8;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e0e0e0;
+        }
+
+        .item-image img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .item-details {
+            flex: 1;
+        }
+
+        .item-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .item-category {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .item-price {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .item-quantity {
+            font-size: 14px;
+            color: #666;
+            margin-right: 24px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .info-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-label {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .info-value {
+            font-size: 14px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .email-link {
+            color: #007AFF;
+            text-decoration: none;
+        }
+
+        .email-link:hover {
+            text-decoration: underline;
+        }
+
+        .timeline {
+            padding: 24px;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 32px;
+            width: 2px;
+            height: calc(100% + 8px);
+            background-color: #e0e0e0;
+        }
+
+        .timeline-dot {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-dot.active {
+            background-color: #007AFF;
+        }
+
+        .timeline-dot.completed {
+            background-color: #34C759;
+        }
+
+        .timeline-dot.pending {
+            background-color: #e0e0e0;
+        }
+
+        .timeline-dot::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: white;
+        }
+
+        .timeline-content {
+            flex: 1;
+        }
+
+        .timeline-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .timeline-description {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .jacket-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, #333, #555);
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .jacket-icon::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            bottom: 8px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 4px;
+        }
+
+        .jacket-icon::after {
+            content: '';
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 16px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 2px;
+        }
+
+        .info-row-editable {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .info-row-editable:last-child {
+            margin-bottom: 0;
+        }
+
+        .edit-btn {
+            background: none;
+            border: none;
+            color: #007AFF;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-left: 8px;
+            transition: background-color 0.2s;
+        }
+
+        .edit-btn:hover {
+            background-color: rgba(0, 122, 255, 0.1);
+        }
+
+        .info-value-container {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            justify-content: flex-end;
+        }
+
+        .edit-input {
+            border: 1px solid #007AFF;
+            border-radius: 4px;
+            padding: 6px 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+            background-color: #f8f9ff;
+            outline: none;
+            min-width: 200px;
+        }
+
+        .edit-input:focus {
+            border-color: #0051d5;
+            box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.2);
+        }
+
+        .edit-actions {
+            display: flex;
+            gap: 8px;
+            margin-left: 8px;
+        }
+
+        .save-btn, .cancel-btn {
+            background: none;
+            border: none;
+            font-size: 12px;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .save-btn {
+            color: #34C759;
+        }
+
+        .save-btn:hover {
+            background-color: rgba(52, 199, 89, 0.1);
+        }
+
+        .cancel-btn {
+            color: #FF3B30;
+        }
+
+        .cancel-btn:hover {
+            background-color: rgba(255, 59, 48, 0.1);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .edit-all-btn {
+            background: none;
+            border: 1px solid #007AFF;
+            color: #007AFF;
+            font-size: 12px;
+            cursor: pointer;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .edit-all-btn:hover {
+            background-color: #007AFF;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div>
+                <div class="order-number">#AT456BB</div>
+                <div class="order-title">Order details</div>
+            </div>
+            <button class="close-btn">×</button>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Sản phẩm</div>
+            <div class="item">
+                <div class="item-image">
+                    <div class="jacket-icon"></div>
+                </div>
+                <div class="item-details">
+                    <div class="item-name">Tên món ăn</div>
+                    <div class="item-category">Tên danh mục</div>
+                </div>
+                <div class="item-quantity">số lượng</div>
+                <div class="item-price">Tiền</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="info-row">
+                <div class="info-label">Tạo lúc</div>
+                <div class="info-value">March 03, 2024</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">Phương thức thanh toán</div>
+                <div class="info-value">Chuyển khoản/Tiền mặt</div>
+            </div>
+            <!-- <div class="info-row">
+                <div class="info-label">Status</div>
+                <div class="info-value">Processed</div>
+            </div> -->
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-title">Thông tin khách hàng</div>
+                <button class="edit-all-btn" onclick="toggleEditAll()">Sửa tất cả</button>
+            </div>
+            
+            <div class="info-row-editable">
+                <div class="info-label">Tên khách hàng</div>
+                <div class="info-value-container">
+                    <div class="info-value" id="customer-name-display">Cameron Williamson</div>
+                    <input type="text" class="edit-input" id="customer-name-input" value="Cameron Williamson" style="display: none;">
+                    <button class="edit-btn" onclick="editField('customer-name')">Edit</button>
+                    <div class="edit-actions" id="customer-name-actions" style="display: none;">
+                        <button class="save-btn" onclick="saveField('customer-name')">Save</button>
+                        <button class="cancel-btn" onclick="cancelEdit('customer-name')">Cancel</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-row-editable">
+                <div class="info-label">Email</div>
+                <div class="info-value-container">
+                    <div class="info-value" id="email-display">
+                        <a href="mailto:cameronwilliamson@mail.com" class="email-link">cameronwilliamson@mail.com</a>
+                    </div>
+                    <input type="email" class="edit-input" id="email-input" value="cameronwilliamson@mail.com" style="display: none;">
+                    <button class="edit-btn" onclick="editField('email')">Edit</button>
+                    <div class="edit-actions" id="email-actions" style="display: none;">
+                        <button class="save-btn" onclick="saveField('email')">Save</button>
+                        <button class="cancel-btn" onclick="cancelEdit('email')">Cancel</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-row-editable">
+                <div class="info-label">Số điện thoại</div>
+                <div class="info-value-container">
+                    <div class="info-value" id="phone-display">(+1) 840-492-1485</div>
+                    <input type="tel" class="edit-input" id="phone-input" value="(+1) 840-492-1485" style="display: none;">
+                    <button class="edit-btn" onclick="editField('phone')">Edit</button>
+                    <div class="edit-actions" id="phone-actions" style="display: none;">
+                        <button class="save-btn" onclick="saveField('phone')">Save</button>
+                        <button class="cancel-btn" onclick="cancelEdit('phone')">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline">
+            <div class="section-title">Theo dõi đơn hàng</div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot active"></div>
+                <div class="timeline-content">
+                    <div class="timeline-title">Đã tạo đơn</div>
+                    <div class="timeline-description">Đang chuẩn bị đơn</div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot completed"></div>
+                <div class="timeline-content">
+                    <div class="timeline-title">Đang vận chuyển</div>
+                    <div class="timeline-description">Đơn hàng đang được ship đến địa chỉ của khách hàng</div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot completed"></div>
+                <div class="timeline-content">
+                    <div class="timeline-title">Đã nhận đơn</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let originalValues = {};
+        let editMode = false;
+
+        // Add click functionality to close button
+        document.querySelector('.close-btn').addEventListener('click', function() {
+            alert('Close button clicked');
+        });
+
+        function editField(fieldName) {
+            const display = document.getElementById(fieldName + '-display');
+            const input = document.getElementById(fieldName + '-input');
+            const editBtn = display.parentElement.querySelector('.edit-btn');
+            const actions = document.getElementById(fieldName + '-actions');
+
+            // Store original value
+            originalValues[fieldName] = fieldName === 'email' ? 
+                display.querySelector('.email-link').textContent : 
+                display.textContent;
+
+            // Hide display and edit button, show input and actions
+            display.style.display = 'none';
+            editBtn.style.display = 'none';
+            input.style.display = 'block';
+            actions.style.display = 'flex';
+
+            // Focus on input
+            input.focus();
+            input.select();
+        }
+
+        function saveField(fieldName) {
+            const display = document.getElementById(fieldName + '-display');
+            const input = document.getElementById(fieldName + '-input');
+            const editBtn = display.parentElement.querySelector('.edit-btn');
+            const actions = document.getElementById(fieldName + '-actions');
+
+            // Validate input
+            if (!input.value.trim()) {
+                alert('Vui lòng nhập thông tin hợp lệ');
+                return;
+            }
+
+            if (fieldName === 'email' && !isValidEmail(input.value)) {
+                alert('Vui lòng nhập địa chỉ email hợp lệ');
+                return;
+            }
+
+            // Update display value
+            if (fieldName === 'email') {
+                display.innerHTML = `<a href="mailto:${input.value}" class="email-link">${input.value}</a>`;
+            } else {
+                display.textContent = input.value;
+            }
+
+            // Show display and edit button, hide input and actions
+            display.style.display = 'block';
+            editBtn.style.display = 'block';
+            input.style.display = 'none';
+            actions.style.display = 'none';
+
+            // Show success message
+            showNotification('Thông tin đã được cập nhật thành công!', 'success');
+        }
+
+        function cancelEdit(fieldName) {
+            const display = document.getElementById(fieldName + '-display');
+            const input = document.getElementById(fieldName + '-input');
+            const editBtn = display.parentElement.querySelector('.edit-btn');
+            const actions = document.getElementById(fieldName + '-actions');
+
+            // Restore original value
+            input.value = originalValues[fieldName];
+
+            // Show display and edit button, hide input and actions
+            display.style.display = 'block';
+            editBtn.style.display = 'block';
+            input.style.display = 'none';
+            actions.style.display = 'none';
+        }
+
+        function toggleEditAll() {
+            const editAllBtn = document.querySelector('.edit-all-btn');
+            
+            if (!editMode) {
+                // Enter edit mode
+                editField('customer-name');
+                editField('email');
+                editField('phone');
+                editAllBtn.textContent = 'Huỷ';
+                editMode = true;
+            } else {
+                // Exit edit mode
+                cancelEdit('customer-name');
+                cancelEdit('email');
+                cancelEdit('phone');
+                editAllBtn.textContent = 'Sửa tất cả';
+                editMode = false;
+            }
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function showNotification(message, type = 'info') {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#34C759' : '#007AFF'};
+                color: white;
+                padding: 12px 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+                z-index: 1000;
+                font-size: 14px;
+                font-weight: 500;
+                max-width: 300px;
+                animation: slideIn 0.3s ease-out;
+            `;
+            notification.textContent = message;
+
+            // Add animation keyframes
+            if (!document.querySelector('#notification-styles')) {
+                const style = document.createElement('style');
+                style.id = 'notification-styles';
+                style.textContent = `
+                    @keyframes slideIn {
+                        from { transform: translateX(100%); opacity: 0; }
+                        to { transform: translateX(0); opacity: 1; }
+                    }
+                    @keyframes slideOut {
+                        from { transform: translateX(0); opacity: 1; }
+                        to { transform: translateX(100%); opacity: 0; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+
+            document.body.appendChild(notification);
+
+            // Remove notification after 3 seconds
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease-in';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                // Cancel all editing
+                if (editMode) {
+                    toggleEditAll();
+                }
+            }
+            if (e.key === 'Enter' && e.target.classList.contains('edit-input')) {
+                // Save field when Enter is pressed
+                const fieldName = e.target.id.replace('-input', '');
+                saveField(fieldName);
+            }
+        });
+    </script>
+</body>
+</html>

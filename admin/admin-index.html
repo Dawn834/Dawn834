@@ -443,7 +443,8 @@
                     </form>
                 </div>
             </div>
-            <!-- Add new product -->
+            
+            <!-- Popup add new product -->
             <div class="popup-overlay" id="Popup-add-product">
                 <div class="popup-container">
                     <div class="popup-header">
@@ -454,27 +455,36 @@
                         <div class="left-section">
                             <!-- Basic Information Section -->
                             <div class="section">
-                                <h3 class="section-title">Tên sản phẩm</h3>
+                                <h3 class="section-title">Thông tin cơ bản của sản phẩm</h3>
                                 <div class="form-group">
-                                    <input type="text" class="input-field" placeholder="Product Name" id="productName">
+                                    <input type="text" class="input-field" placeholder="Tên sản phẩm" id="productName">
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="input-field textarea-field" placeholder="Mô tả sản phẩm"
+                                        id="description"></textarea>
                                 </div>
                             </div>
 
                             <!-- Stock & Pricing Section -->
                             <div class="section">
-                                <h3 class="section-title">Giá bán</h3>
+                                <h3 class="section-title">Stock & Pricing</h3>
                                 <div class="form-row">
+                                    <input type="number" class="input-field" placeholder="Stock" id="stock">
                                     <input type="number" class="input-field" placeholder="Price" step="0.01" id="price">
                                 </div>
-                                <div class="form-row" id="discountFields" style="display: none;">
-                                    <input type="number" class="input-field" placeholder="Discount %"
-                                        id="discountPercent">
-                                    <div class="input-field"
-                                        style="display: flex; align-items: center; gap: 8px; color: #6b7280;">
-                                        <span>💰</span>
-                                        <span>Select Date</span>
-                                    </div>
-                                </div>
+
+                                <!-- <div class="checkbox-container">
+                            <input type="checkbox" class="checkbox" id="scheduleDiscount">
+                            <label for="scheduleDiscount" class="checkbox-label">Schedule a discount</label>
+                        </div>
+                        
+                        <div class="form-row" id="discountFields" style="display: none;">
+                            <input type="number" class="input-field" placeholder="Discount %" id="discountPercent">
+                            <div class="input-field" style="display: flex; align-items: center; gap: 8px; color: #6b7280;">
+                                <span>💰</span>
+                                <span>Select Date</span>
+                            </div>
+                        </div> -->
                             </div>
                         </div>
 
@@ -484,42 +494,43 @@
                                 <h3 class="section-title">Ảnh sản phẩm</h3>
                                 <div class="image-upload" onclick="document.getElementById('imageInput').click()">
                                     <div class="upload-icon">🖼️</div>
-                                    <div class="upload-text">Tải ảnh của bạn vào đây</div>
-                                    <div class="upload-hint">Chỉ PNG, JPG được chấp nhận</div>
-                                    <div class="upload-hint">Yêu cầu 500x500px</div>
+                                    <div class="upload-text">Tải ảnh của sản phẩm</div>
                                 </div>
                                 <input type="file" id="imageInput" accept=".png,.jpg,.jpeg" style="display: none;">
                             </div>
 
                             <!-- Visibility Section -->
                             <div class="section">
-                                <h3 class="section-title">Danh mục sản phẩm</h3>
+                                <h3 class="section-title">Danh mục đồ ăn</h3>
                                 <div class="radio-group">
                                     <div class="radio-option">
-                                        <input type="radio" class="radio" name="visibility" value="published"
-                                            id="published">
+                                        <input type="radio" class="radio" name="visibility">
                                         <label for="published" class="radio-label">Đồ Việt</label>
                                     </div>
                                     <div class="radio-option">
-                                        <input type="radio" class="radio" name="visibility" value="scheduled"
-                                            id="scheduled" checked>
+                                        <input type="radio" class="radio" name="visibility">
                                         <label for="scheduled" class="radio-label">Đồ Tây</label>
                                     </div>
                                     <div class="radio-option">
-                                        <input type="radio" class="radio" name="visibility" value="hidden" id="hidden">
+                                        <input type="radio" class="radio" name="visibility">
                                         <label for="hidden" class="radio-label">Đồ Âu</label>
                                     </div>
                                 </div>
+
+                                <!-- <div class="date-input" id="scheduleDate">
+                            <input type="date" class="input-field" placeholder="Select Date" id="publishDate">
+                        </div> -->
                             </div>
                         </div>
                     </div>
 
                     <div class="popup-footer">
                         <button class="btn btn-secondary" onclick="closePopup()">Cancel</button>
-                        <button class="btn btn-primary" onclick="closePopup()">Add Product</button>
+                        <button class="btn btn-primary" onclick="addProduct()">Add Product</button>
                     </div>
                 </div>
             </div>
+
             <!-- Customer -->
             <!-- Content Area -->
             <div class="content-area" id="tab2">
@@ -529,13 +540,13 @@
                 <div class="content-header">
                     <div class="content-search">
                         <span class="search-icon">🔍</span>
-                        <input type="text" placeholder="Search in product">
+                        <input type="text" placeholder="Tìm kiếm khách hàng">
                     </div>
 
                     <div class="action-buttons">
-                        <button class="btn btn-primary" id="openPopupBtn">
+                        <!-- <button class="btn btn-primary" id="openPopupBtn">
                             ➕ Thêm khách hàng
-                        </button>
+                        </button> -->
                         <button class="btn btn-secondary">
                             <strong>X</strong> Xoá
                         </button>
@@ -650,13 +661,13 @@
                 <div class="content-header">
                     <div class="content-search">
                         <span class="search-icon">🔍</span>
-                        <input type="text" placeholder="Search in product">
+                        <input type="text" placeholder="Tìm kiếm danh mục">
                     </div>
 
                     <div class="action-buttons">
-                        <button class="btn btn-primary" id="openPopupBtn">
+                        <!-- <button class="btn btn-primary" id="openPopupBtn">
                             ➕ Thêm danh mục
-                        </button>
+                        </button> -->
                         <button class="btn btn-secondary">
                             <strong>X</strong> Xoá
                         </button>
@@ -735,7 +746,7 @@
                 <div class="content-header">
                     <div class="content-search">
                         <span class="search-icon">🔍</span>
-                        <input type="text" placeholder="Search in product">
+                        <input type="text" placeholder="Tìm kiếm đơn">
                     </div>
 
                     <div class="action-buttons">
@@ -842,132 +853,126 @@
                     </table>
                 </div>
             </div>
+            
+            <!-- Voucher -->
+             <div class="content-area" id="tab5">
+                <div class="breadcrumb">Thống kê / Khuyến mại</div>
+                <h1 class="page-title">Khuyến mại</h1>
+
+                <div class="content-header">
+                    <div class="content-search">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" placeholder="Tìm kiếm khuyến mại">
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" id="openPopupBtn">
+                            ➕ Thêm khuyến mại
+                        </button>
+                        <button class="btn btn-secondary">
+                            <strong>X</strong> Xoá
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Products Table -->
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" class="checkbox"></th>
+                                <th>Sản phẩm khuyến mại</th>
+                                <th>Phần trăm khuyến mại</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="product-1">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <span class="product-name">Trần Minh Anh</span>
+                                    </div>
+                                </td>
+                                <td class="stock-count">0983 451 289</td>
+                                <td>
+                                    <div class="action-buttons-cell">
+                                        <button class="action-btn edit-btn edit-product-btn" data-id="1">✏️</button>
+                                        <button class="action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="product-2">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <span class="product-name">Nguyễn Văn Bình</span>
+                                    </div>
+                                </td>
+                                <td class="stock-count">0912 345 678</td>
+                                <td>
+                                    <div class="action-buttons-cell">
+                                        <button class="action-btn edit-btn edit-product-btn" data-id="2">✏️</button>
+                                        <button class="action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="product-3">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <span class="product-name">Lê Thị Hương</span>
+                                    </div>
+                                </td>
+                                <td class="stock-count">0378 956 123</td>
+                                <td>
+                                    <div class="action-buttons-cell">
+                                        <button class="action-btn edit-btn edit-product-btn" data-id="3">✏️</button>
+                                        <button class="action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="product-4">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <span class="product-name">Phạm Đức Cường</span>
+                                    </div>
+                                </td>
+                                <td class="stock-count">0856 789 012</td>
+                                <td>
+                                    <div class="action-buttons-cell">
+                                        <button class="action-btn edit-btn edit-product-btn" data-id="4">✏️</button>
+                                        <button class="action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="product-5">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="product-cell">
+                                        <span class="product-name">Hoàng Thị Lan</span>
+                                    </div>
+                                </td>
+                                <td class="stock-count">0904 567 890</td>
+                                <td>
+                                    <div class="action-buttons-cell">
+                                        <button class="action-btn edit-btn edit-product-btn" data-id="5">✏️</button>
+                                        <button class="action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
         </main>
     </div>
 
 
     </div>
-
-
-
-    <script>
-        function openTab(tabId) {
-            // Ẩn tất cả nội dung tab
-            const tabContents = document.querySelectorAll('.content-area');
-            tabContents.forEach(tab => tab.classList.remove('active'));
-
-            // Bỏ active tất cả các nút tab
-            const tabButtons = document.querySelectorAll('.nav-link');
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-
-            // Hiển thị tab được chọn và thêm class active
-            document.getElementById(tabId).classList.add('active');
-            event.currentTarget.classList.add('active');
-        }
-
-        // Navigation functionality
-        document.querySelectorAll('.nav-link').forEach(link => { //document.querySelectorAll('.nav-link'): Sẽ select toàn bộ thẻ có class nav-link, tạo thành 1 nodelist, sau đó dùng forEach(link => {...}) để duyệt qua từng link trong nodelist 
-            link.addEventListener('click', function (e) {  //add sự kiện click với hàm callback
-                e.preventDefault(); //ngăn cho e (sự kiện) chạy defalt của thẻ a: ko chuyển trang khi click
-                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active')); // tương tự như đầu, select toàn bộ thẻ có class nav-link, sau đó remove trạng thái active.
-                this.classList.add('active'); //thêm class active vào link mình vừa click
-            });
-        });
-
-        document.querySelectorAll('.delete-btn').forEach(btn => {
-            btn.addEventListener('click', function () {
-                if (confirm('Bạn có chắc muốn xoá sản phẩm')) { // tạo hàm if. mở hộp confirm, nếu ấn OK thì chạy hàm callback dưới. No thì huỷ
-                    this.closest('tr').remove(); // chọn hàng có nút delete-btn mà click gần nhất, remove hàng đó
-                }
-            });
-        });
-
-        // Checkbox functionality
-        const selectAllCheckbox = document.querySelector('thead input[type="checkbox"]'); // tạo biến selectAllCheckbox = thẻ thead đầu tiên có thuộc tính type=checkbox
-        const rowCheckboxes = document.querySelectorAll('tbody input[type="checkbox"]'); // tương tự
-
-        selectAllCheckbox.addEventListener('change', function () { //thêm sự kiện change vào selectAllCheckbox, hàm callback
-            rowCheckboxes.forEach(checkbox => { // duyệt checkbox từ nodelist được tạo từ rowCheckboxes
-                checkbox.checked = this.checked // checkbox sẽ gán trạng thái checked nếu như this (selectAllCheckbox) đã có trạng thái checked, nếu this bỏ checked thì các checkbox khác đều bỏ
-            });
-        });
-
-        // Xoá all
-
-
-        // Biến lưu trữ sản phẩm đang chỉnh sửa
-        let currentEditingProduct = null;
-        let newImageFile = null;
-
-        // Gán sự kiện cho tất cả nút chỉnh sửa
-        document.querySelectorAll('.edit-product-btn').forEach(btn => {
-            btn.addEventListener('click', function () {
-                const productId = this.getAttribute('data-id'); // tạo biến productId = giá trị data-id khi click vào btn có class edit-product-btn
-                const productRow = document.getElementById(`product-${productId}`); //tạo biến productRow = giá trị product có productId
-
-                // Lấy thông tin sản phẩm từ hàng trong bảng
-                currentEditingProduct = { // tạo 1 obj có id, name, category, price, image
-                    id: productId,
-                    name: productRow.querySelector('.product-name').textContent, //name = giá trị của thẻ đầu tiên trong hàng có class product-name, in ra text
-                    category: productRow.querySelector('.category-badge').textContent, // tương tự
-                    price: productRow.querySelector('.price').textContent.replace(/\D/g, ''), // in ra giá, replace(/\D/g, ''):
-                    //Loại bỏ tất cả ký tự không phải số(ví dụ: dấu,, $, đ) từ chuỗi giá.
-                    // \D: Biểu thức chính quy(regex) khớp với ký tự không phải số.
-                    image: productRow.querySelector('.product-image img').src
-                };
-
-                // Điền thông tin vào form chỉnh sửa
-                document.getElementById('editProductId').value = currentEditingProduct.id; //truy cập vào thẻ có id editProductId, thay đổi giá trị id của thẻ = giá trị id của obj vừa tạo
-                document.getElementById('editProductName').value = currentEditingProduct.name;
-                document.getElementById('editProductCategory').value = currentEditingProduct.category;
-                document.getElementById('editProductPrice').value = currentEditingProduct.price;
-                document.getElementById('imagePreview').src = currentEditingProduct.image;
-                newImageFile = null;
-
-                // Hiển thị popup
-                document.getElementById('editProductModal').style.display = 'block';
-            });
-        });
-        //Đóng popup
-        let popup = document.getElementById("editProductModal");
-        let closeBtn = document.querySelector(".close");
-        // Hàm đóng popup chỉnh sửa
-        closeBtn.addEventListener('click', () => {
-            popup.style.display = 'none';
-        });
-        // Đóng popup khi click bên ngoài
-        popup.addEventListener('click', (e) => {
-            if (e.target === popup) {
-                popup.style.display = 'none';
-            }
-        });
-
-
-        //Popup add new product
-        document.addEventListener('DOMContentLoaded', function () {
-            // Lấy các phần tử DOM
-            const openPopupBtn = document.getElementById('openPopupBtn');
-            const popup = document.getElementById('Popup-add-product');
-
-            // Mở popup khi click vào nút
-            openPopupBtn.addEventListener('click', function () {
-                popup.style.display = 'flex';
-            });
-        })
-
-
-        function closePopup() {
-            document.querySelector('.popup-overlay').style.display = 'none';
-        }
-
-        // Close popup when clicking outside
-        document.querySelector('.popup-overlay').addEventListener('click', function (e) {
-            if (e.target === this) {
-                closePopup();
-            }
-        });
-    </script>
+    <script src="/admin/admin.js"></script>
 </body>
 
 </html>
