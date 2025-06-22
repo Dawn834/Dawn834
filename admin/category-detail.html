@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết Danh Mục</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup-container {
+            background: white;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            position: relative;
+        }
+
+        .popup-header {
+            padding: 24px 24px 0 24px;
+            border-bottom: 1px solid #e5e7eb;
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .popup-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 24px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #6b7280;
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .close-btn:hover {
+            background-color: #f3f4f6;
+            color: #374151;
+        }
+
+        .popup-content {
+            padding: 0 24px 24px 24px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 8px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 16px;
+            color: #1f2937;
+            background-color: #f9fafb;
+            transition: all 0.2s ease;
+            resize: vertical;
+            min-height: 44px;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            background-color: white;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-input.textarea {
+            min-height: 100px;
+            font-family: inherit;
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 16px;
+            color: #1f2937;
+            background-color: #f9fafb;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 12px center;
+            background-repeat: no-repeat;
+            background-size: 16px;
+            padding-right: 40px;
+            appearance: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .form-select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            background-color: white;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        /* Custom Dropdown Styles */
+        .custom-dropdown {
+            position: relative;
+            width: 100%;
+        }
+
+        .dropdown-header {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            background-color: #f9fafb;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s ease;
+            min-height: 48px;
+        }
+
+        .dropdown-header:hover {
+            border-color: #9ca3af;
+        }
+
+        .dropdown-header.active {
+            border-color: #3b82f6;
+            background-color: white;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .dropdown-text {
+            color: #374151;
+            font-size: 16px;
+            flex: 1;
+        }
+
+        .dropdown-arrow {
+            color: #6b7280;
+            transition: transform 0.2s ease;
+            font-size: 12px;
+        }
+
+        .dropdown-header.active .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 2px solid #d1d5db;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-content.show {
+            display: block;
+        }
+
+        .dropdown-search {
+            padding: 12px;
+            border-bottom: 1px solid #e5e7eb;
+            background-color: #f9fafb;
+        }
+
+        .dropdown-search input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .dropdown-search input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+        }
+
+        .dropdown-options {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .dropdown-option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .dropdown-option:hover {
+            background-color: #f8fafc;
+        }
+
+        .dropdown-option:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-option img {
+            width: 40px;
+            height: 40px;
+            border-radius: 6px;
+            margin-right: 12px;
+            object-fit: cover;
+        }
+
+        .option-info {
+            flex: 1;
+        }
+
+        .option-name {
+            font-weight: 500;
+            color: #1f2937;
+            margin-bottom: 2px;
+        }
+
+        .option-price {
+            font-size: 14px;
+            color: #059669;
+            font-weight: 600;
+        }
+
+        .option-stock {
+            font-size: 12px;
+            color: #6b7280;
+            margin-left: 12px;
+        }
+
+        .dropdown-footer {
+            padding: 12px;
+            border-top: 1px solid #e5e7eb;
+            background-color: #f9fafb;
+        }
+
+        .btn-add-product {
+            width: 100%;
+            padding: 8px 16px;
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-add-product:hover {
+            background-color: #2563eb;
+        }
+
+        /* Delete product button */
+        .btn-delete-product {
+            background: none;
+            border: none;
+            color: #6b7280;
+            cursor: pointer;
+            padding: 8px;
+            margin-left: 8px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 32px;
+            height: 32px;
+        }
+
+        .btn-delete-product:hover {
+            background-color: #fee2e2;
+            color: #dc2626;
+            transform: scale(1.1);
+        }
+
+        .btn-delete-product svg {
+            transition: transform 0.2s ease;
+        }
+
+        .btn-delete-product:hover svg {
+            transform: scale(1.1);
+        }
+
+        /* Hide delete button in readonly mode */
+        .dropdown-readonly .btn-delete-product {
+            display: none;
+        }
+
+        /* Scrollbar styling */
+        .dropdown-options::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .dropdown-options::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .dropdown-options::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 2px;
+        }
+
+        .dropdown-options::-webkit-scrollbar-thumb:hover {
+            background: #a1a1a1;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 32px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background-color: #3b82f6;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #2563eb;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-danger {
+            background-color: #ef4444;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: #dc2626;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .popup-container {
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .popup-container {
+                margin: 20px;
+                max-width: calc(100% - 40px);
+            }
+            
+            .popup-header, .popup-content {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-container">
+            <div class="popup-header">
+                <h2 class="popup-title">Chi tiết danh mục</h2>
+                <button class="close-btn" onclick="closePopup()">&times;</button>
+            </div>
+            
+            <div class="popup-content">
+                <form id="categoryForm">
+                    <div class="form-group">
+                        <label class="form-label" for="categoryName">Tên danh mục</label>
+                        <input type="text" id="categoryName" name="categoryName" class="form-input"
+                            value="" placeholder="Nhập tên danh mục...">
+                    </div>
+
+                     <div class="form-group">
+                        <label class="form-label" for="categoryDescription">Mô tả</label>
+                        <textarea id="categoryDescription" name="categoryDescription" class="form-input textarea"
+                            placeholder="Nhập mô tả danh mục..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Danh sách sản phẩm</label>
+                        <div class="custom-dropdown" id="productDropdown">
+                            <div class="dropdown-header" onclick="toggleDropdown()">
+                                <span class="dropdown-text">Bánh mỳ, Phở cuốn, Bún chả...</span>
+                                <span class="dropdown-arrow">▼</span>
+                            </div>
+                            <div class="dropdown-content" id="dropdownContent">
+                                <div class="dropdown-search">
+                                    <input type="text" placeholder="Tìm kiếm sản phẩm..." id="searchInput" onkeyup="filterProducts()">
+                                </div>
+                                <div class="dropdown-options" id="dropdownOptions">
+                                    <div class="dropdown-option" data-value="banhmy">
+                                        <img src="/asset/img/category-food/banh mi.jpg" alt="iPhone">
+                                        <div class="option-info">
+                                            <div class="option-name">Bánh Mỳ</div>
+                                            <div class="option-price">30.000 VNĐ</div>
+                                        </div>
+                                        <div class="option-stock">Còn: 25</div>
+                                        <button class="btn-delete-product" onclick="removeProduct(this, 'Bánh mỳ')" title="Xóa sản phẩm khỏi danh mục">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <polyline points="3,6 5,6 21,6"></polyline>
+                                                <path d="m19,6v14a2,2 0 0,1 -2,2H7a2,2 0 0,1 -2,-2V6m3,0V4a2,2 0 0,1 2,-2h4a2,2 0 0,1 2,2v2"></path>
+                                                <line x1="10" y1="11" x2="10" y2="17"></line>
+                                                <line x1="14" y1="11" x2="14" y2="17"></line>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div class="dropdown-option" data-value="banhmy">
+                                        <img src="/asset/img/category-food/banh mi.jpg" alt="iPhone">
+                                        <div class="option-info">
+                                            <div class="option-name">Bánh Mỳ</div>
+                                            <div class="option-price">30.000 VNĐ</div>
+                                        </div>
+                                        <div class="option-stock">Còn: 25</div>
+                                        <button class="btn-delete-product" onclick="removeProduct(this, 'Bánh mỳ')" title="Xóa sản phẩm khỏi danh mục">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <polyline points="3,6 5,6 21,6"></polyline>
+                                                <path d="m19,6v14a2,2 0 0,1 -2,2H7a2,2 0 0,1 -2,-2V6m3,0V4a2,2 0 0,1 2,-2h4a2,2 0 0,1 2,2v2"></path>
+                                                <line x1="10" y1="11" x2="10" y2="17"></line>
+                                                <line x1="14" y1="11" x2="14" y2="17"></line>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div class="dropdown-option" data-value="banhmy">
+                                        <img src="/asset/img/category-food/banh mi.jpg" alt="iPhone">
+                                        <div class="option-info">
+                                            <div class="option-name">Bánh Mỳ</div>
+                                            <div class="option-price">30.000 VNĐ</div>
+                                        </div>
+                                        <div class="option-stock">Còn: 25</div>
+                                        <button class="btn-delete-product" onclick="removeProduct(this, 'Bánh mỳ')" title="Xóa sản phẩm khỏi danh mục">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <polyline points="3,6 5,6 21,6"></polyline>
+                                                <path d="m19,6v14a2,2 0 0,1 -2,2H7a2,2 0 0,1 -2,-2V6m3,0V4a2,2 0 0,1 2,-2h4a2,2 0 0,1 2,2v2"></path>
+                                                <line x1="10" y1="11" x2="10" y2="17"></line>
+                                                <line x1="14" y1="11" x2="14" y2="17"></line>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div class="dropdown-option" data-value="banhmy">
+                                        <img src="/asset/img/category-food/banh mi.jpg" alt="iPhone">
+                                        <div class="option-info">
+                                            <div class="option-name">Bánh Mỳ</div>
+                                            <div class="option-price">30.000 VNĐ</div>
+                                        </div>
+                                        <div class="option-stock">Còn: 25</div>
+                                        <button class="btn-delete-product" onclick="removeProduct(this, 'Bánh mỳ')" title="Xóa sản phẩm khỏi danh mục">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <polyline points="3,6 5,6 21,6"></polyline>
+                                                <path d="m19,6v14a2,2 0 0,1 -2,2H7a2,2 0 0,1 -2,-2V6m3,0V4a2,2 0 0,1 2,-2h4a2,2 0 0,1 2,2v2"></path>
+                                                <line x1="10" y1="11" x2="10" y2="17"></line>
+                                                <line x1="14" y1="11" x2="14" y2="17"></line>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div class="dropdown-option" data-value="charger">
+                                        <img src="https://via.placeholder.com/40x40/6f42c1/ffffff?text=SC" alt="Charger">
+                                        <div class="option-info">
+                                            <div class="option-name">Sạc dự phòng 10000mAh</div>
+                                            <div class="option-price">599.000₫</div>
+                                        </div>
+                                        <div class="option-stock">Còn: 89</div>
+                                        <button class="btn-delete-product" onclick="removeProduct(this, 'Sạc dự phòng 10000mAh')" title="Xóa sản phẩm khỏi danh mục">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <polyline points="3,6 5,6 21,6"></polyline>
+                                                <path d="m19,6v14a2,2 0 0,1 -2,2H7a2,2 0 0,1 -2,-2V6m3,0V4a2,2 0 0,1 2,-2h4a2,2 0 0,1 2,2v2"></path>
+                                                <line x1="10" y1="11" x2="10" y2="17"></line>
+                                                <line x1="14" y1="11" x2="14" y2="17"></line>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div class="dropdown-option" data-value="cable">
+                                        <img src="https://via.placeholder.com/40x40/17a2b8/ffffff?text=CB" alt="Cable">
+                                        <div class="option-info">
+                                            <div class="option-name">Cáp sạc Lightning</div>
+                                            <div class="option-price">199.000₫</div>
+                                        </div>
+                                        <div class="option-stock">Còn: 203</div>
+                                        <button class="btn-delete-product" onclick="removeProduct(this, 'Cáp sạc Lightning')" title="Xóa sản phẩm khỏi danh mục">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <polyline points="3,6 5,6 21,6"></polyline>
+                                                <path d="m19,6v14a2,2 0 0,1 -2,2H7a2,2 0 0,1 -2,-2V6m3,0V4a2,2 0 0,1 2,-2h4a2,2 0 0,1 2,2v2"></path>
+                                                <line x1="10" y1="11" x2="10" y2="17"></line>
+                                                <line x1="14" y1="11" x2="14" y2="17"></line>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div class="dropdown-option" data-value="headphone">
+                                        <img src="https://via.placeholder.com/40x40/fd7e14/ffffff?text=HP" alt="Headphone">
+                                        <div class="option-info">
+                                            <div class="option-name">Tai nghe Sony WH-1000XM4</div>
+                                            <div class="option-price">7.990.000₫</div>
+                                        </div>
+                                        <div class="option-stock">Còn: 12</div>
+                                        <button class="btn-delete-product" onclick="removeProduct(this, 'Tai nghe Sony WH-1000XM4')" title="Xóa sản phẩm khỏi danh mục">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <polyline points="3,6 5,6 21,6"></polyline>
+                                                <path d="m19,6v14a2,2 0 0,1 -2,2H7a2,2 0 0,1 -2,-2V6m3,0V4a2,2 0 0,1 2,-2h4a2,2 0 0,1 2,2v2"></path>
+                                                <line x1="10" y1="11" x2="10" y2="17"></line>
+                                                <line x1="14" y1="11" x2="14" y2="17"></line>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div class="dropdown-option" data-value="tablet">
+                                        <img src="https://via.placeholder.com/40x40/20c997/ffffff?text=TB" alt="Tablet">
+                                        <div class="option-info">
+                                            <div class="option-name">iPad Air 5</div>
+                                            <div class="option-price">16.990.000₫</div>
+                                        </div>
+                                        <div class="option-stock">Còn: 8</div>
+                                        <button class="btn-delete-product" onclick="removeProduct(this, 'iPad Air 5')" title="Xóa sản phẩm khỏi danh mục">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <polyline points="3,6 5,6 21,6"></polyline>
+                                                <path d="m19,6v14a2,2 0 0,1 -2,2H7a2,2 0 0,1 -2,-2V6m3,0V4a2,2 0 0,1 2,-2h4a2,2 0 0,1 2,2v2"></path>
+                                                <line x1="10" y1="11" x2="10" y2="17"></line>
+                                                <line x1="14" y1="11" x2="14" y2="17"></line>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="dropdown-footer">
+                                    <button class="btn-add-product" onclick="addNewProduct()">+ Thêm sản phẩm mới</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button type="button" class="btn btn-primary" onclick="updateCategory()">
+                            Cập nhật thông tin
+                        </button>
+                        <button type="button" class="btn btn-danger" onclick="deleteCategory()">
+                            Xóa
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- function closePopup() {
+            const popup = document.getElementById('popupOverlay');
+            popup.style.animation = 'fadeOut 0.3s ease-out';
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 300);
+        } -->
+    <script>
+        
+
+        function updateCategory() {
+            // Enable editing
+            const nameInput = document.getElementById('categoryName');
+            const descInput = document.getElementById('categoryDescription');
+            const dropdownHeader = document.querySelector('.dropdown-header');
+            const dropdown = document.getElementById('productDropdown');
+            
+            if (nameInput.readOnly) {
+                nameInput.readOnly = false;
+                descInput.readOnly = false;
+                dropdownHeader.style.pointerEvents = 'auto';
+                dropdownHeader.style.opacity = '1';
+                dropdown.classList.remove('dropdown-readonly');
+                
+                nameInput.style.backgroundColor = 'white';
+                descInput.style.backgroundColor = 'white';
+                dropdownHeader.style.backgroundColor = 'white';
+                
+                document.querySelector('.btn-primary').textContent = 'Lưu thay đổi';
+                document.querySelector('.btn-primary').style.backgroundColor = '#10b981';
+            } else {
+                // Save changes
+                nameInput.readOnly = true;
+                descInput.readOnly = true;
+                dropdownHeader.style.pointerEvents = 'none';
+                dropdownHeader.style.opacity = '0.7';
+                dropdown.classList.add('dropdown-readonly');
+                
+                nameInput.style.backgroundColor = '#f9fafb';
+                descInput.style.backgroundColor = '#f9fafb';
+                dropdownHeader.style.backgroundColor = '#f9fafb';
+                
+                document.querySelector('.btn-primary').textContent = 'Cập nhật thông tin';
+                document.querySelector('.btn-primary').style.backgroundColor = '#3b82f6';
+                
+                // Close dropdown if open
+                closeDropdown();
+                
+                // Show success message
+                showNotification('Cập nhật danh mục thành công!', 'success');
+            }
+        }
+
+        function removeProduct(button, productName) {
+            // Prevent event bubbling to avoid selecting the product
+            event.stopPropagation();
+            
+            // Confirm deletion
+            if (confirm(`Bạn có chắc chắn muốn xóa "${productName}" khỏi danh mục này không?`)) {
+                // Add fade out animation
+                const productOption = button.closest('.dropdown-option');
+                productOption.style.animation = 'fadeOutProduct 0.3s ease-out forwards';
+                
+                setTimeout(() => {
+                    productOption.remove();
+                    updateProductCount();
+                    showNotification(`Đã xóa "${productName}" khỏi danh mục!`, 'success');
+                }, 300);
+            }
+        }
+
+        function updateProductCount() {
+            const remainingProducts = document.querySelectorAll('.dropdown-option').length;
+            const dropdownText = document.querySelector('.dropdown-text');
+            
+            if (remainingProducts === 0) {
+                dropdownText.textContent = 'Không có sản phẩm nào';
+            } else if (remainingProducts === 1) {
+                const productName = document.querySelector('.dropdown-option .option-name').textContent;
+                dropdownText.textContent = `${productName} (1 sản phẩm)`;
+            } else {
+                const firstProduct = document.querySelector('.dropdown-option .option-name').textContent;
+                dropdownText.textContent = `${firstProduct}... (${remainingProducts} sản phẩm)`;
+            }
+        }
+
+        function toggleDropdown() {
+            const dropdown = document.getElementById('productDropdown');
+            const content = document.getElementById('dropdownContent');
+            const header = dropdown.querySelector('.dropdown-header');
+            
+            if (content.classList.contains('show')) {
+                closeDropdown();
+            } else {
+                content.classList.add('show');
+                header.classList.add('active');
+            }
+        }
+
+        function closeDropdown() {
+            const content = document.getElementById('dropdownContent');
+            const header = document.querySelector('.dropdown-header');
+            content.classList.remove('show');
+            header.classList.remove('active');
+        }
+
+        function filterProducts() {
+            const searchInput = document.getElementById('searchInput');
+            const options = document.querySelectorAll('.dropdown-option');
+            const searchTerm = searchInput.value.toLowerCase();
+
+            options.forEach(option => {
+                const productName = option.querySelector('.option-name').textContent.toLowerCase();
+                if (productName.includes(searchTerm)) {
+                    option.style.display = 'flex';
+                } else {
+                    option.style.display = 'none';
+                }
+            });
+        }
+
+        function addNewProduct() {
+            showNotification('Chức năng thêm sản phẩm mới đang được phát triển!', 'info');
+            closeDropdown();
+        }
+
+        // Click on product option
+        document.addEventListener('DOMContentLoaded', function() {
+            const options = document.querySelectorAll('.dropdown-option');
+            options.forEach(option => {
+                option.addEventListener('click', function() {
+                    const productName = this.querySelector('.option-name').textContent;
+                    showNotification(`Đã chọn sản phẩm: ${productName}`, 'success');
+                    closeDropdown();
+                });
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            const dropdown = document.getElementById('productDropdown');
+            if (!dropdown.contains(e.target)) {
+                closeDropdown();
+            }
+        });
+
+        function deleteCategory() {
+            if (confirm('Bạn có chắc chắn muốn xóa danh mục này không?')) {
+                showNotification('Đã xóa danh mục thành công!', 'success');
+                setTimeout(() => {
+                    closePopup();
+                }, 1500);
+            }
+        }
+
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#10b981' : '#3b82f6'};
+                color: white;
+                padding: 12px 24px;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                z-index: 10000;
+                animation: slideIn 0.3s ease-out;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Close popup when clicking outside
+        document.getElementById('popupOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePopup();
+            }
+        });
+
+        // Close popup with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closePopup();
+            }
+        });
+
+        // Add CSS for notification animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes fadeOut {
+                from {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+                to {
+                    opacity: 0;
+                    transform: scale(0.95);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

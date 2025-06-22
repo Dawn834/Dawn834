@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nike Initiator Class 2.2 - Product Detail</title>
+    <title>Chi Tiết Sản Phẩm</title>
     <style>
         * {
             margin: 0;
@@ -12,614 +13,555 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: #ffffff;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            display: grid;
-            grid-template-columns: 120px 1fr 400px;
-            gap: 40px;
-        }
-
-        /* Thumbnail Gallery */
-        .thumbnail-gallery {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: rgba(0, 0, 0, 0);
             display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .thumbnail {
-            width: 80px;
-            height: 80px;
-            border: 2px solid transparent;
-            border-radius: 8px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: border-color 0.2s;
-            background-color: #f5f5f5;
-            display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
         }
 
-        .thumbnail.active {
-            border-color: #333;
-        }
-
-        .thumbnail:hover {
-            border-color: #666;
-        }
-
-        .thumbnail img {
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
         }
 
-        /* Main Product Image */
-        .main-image-container {
+        .popup-container {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
             position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #f8f8f8;
-            border-radius: 12px;
-            min-height: 500px;
+            font-size: 18px;
         }
 
-        .main-image {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
+        .close-btn:hover {
+            background: rgba(0, 0, 0, 0.7);
         }
 
-        .nav-button {
+        .left-section {
+            flex: 1;
+            position: relative;
+        }
+
+        .image-slider {
+            position: relative;
+            height: 400px;
+            background: #f0f0f0;
+            overflow: hidden;
+            top: 5%;
+            left: 5%;
+            border-radius: 15px;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide:nth-child(1) {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .slide:nth-child(2) {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .slide:nth-child(3) {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .slider-nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: rgba(255, 255, 255, 0.9);
-            border: 1px solid #ddd;
-            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
             width: 40px;
             height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 18px;
-            color: #333;
         }
 
-        .nav-button:hover {
-            background-color: white;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        .slider-nav:hover {
+            background: rgba(0, 0, 0, 0.7);
         }
 
-        .nav-button.prev {
-            left: 20px;
+        .prev {
+            left: 10px;
         }
 
-        .nav-button.next {
-            right: 20px;
+        .next {
+            right: 10px;
         }
 
-        /* Product Info */
-        .product-info {
-            padding-left: 20px;
-        }
-
-        .product-title {
-            font-size: 32px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: #111;
-        }
-
-        .rating {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .stars {
-            color: #ffc107;
-            font-size: 16px;
-        }
-
-        .review-count {
-            color: #666;
-            font-size: 14px;
-        }
-
-        .price {
-            font-size: 24px;
-            font-weight: 600;
-            color: #111;
-            margin-bottom: 5px;
-        }
-
-        .original-price {
-            color: #999;
-            text-decoration: line-through;
-            font-size: 18px;
-            margin-left: 10px;
-        }
-
-        .discount {
-            color: #059669;
-            font-size: 14px;
-            font-weight: 600;
-            margin-left: 10px;
-        }
-
-        .stock-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 30px;
-            font-size: 14px;
-        }
-
-        .viewing-count {
-            color: #666;
-        }
-
-        .stock-count {
-            color: #059669;
-        }
-
-        .section-title {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: #111;
-        }
-
-        /* Color Selection */
-        .color-options {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 30px;
-        }
-
-        .color-option {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 3px solid transparent;
-            cursor: pointer;
-            transition: border-color 0.2s;
-            position: relative;
-        }
-
-        .color-option.active {
-            border-color: #333;
-        }
-
-        .color-option.white {
-            background-color: #f8f8f8;
-            border: 3px solid #ddd;
-        }
-
-        .color-option.white.active {
-            border-color: #333;
-        }
-
-        .color-option.beige {
-            background-color: #d4c4a8;
-        }
-
-        .color-option.black {
-            background-color: #333;
-        }
-
-        /* Size Selection */
-        .size-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .size-guide {
-            color: #666;
-            text-decoration: underline;
-            font-size: 14px;
-            cursor: pointer;
-        }
-
-        .size-options {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-bottom: 30px;
-        }
-
-        .size-option {
-            padding: 12px 16px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .size-option:hover {
-            border-color: #333;
-        }
-
-        .size-option.active {
-            background-color: #333;
-            color: white;
-            border-color: #333;
-        }
-
-        .size-option.unavailable {
-            background-color: #f5f5f5;
-            color: #999;
-            cursor: not-allowed;
-            text-decoration: line-through;
-        }
-
-        /* Action Buttons */
-        .action-buttons {
+        .right-section {
+            flex: 1;
+            padding: 30px;
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            margin-bottom: 30px;
         }
 
-        .add-to-cart {
-            background-color: #111;
-            color: white;
-            padding: 16px 24px;
-            border: none;
-            border-radius: 30px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-
-        .add-to-cart:hover {
-            background-color: #333;
-        }
-
-        .favorite-btn {
-            background-color: white;
-            color: #333;
-            padding: 16px 24px;
-            border: 1px solid #ddd;
-            border-radius: 30px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
+        .product-tabs {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
         }
 
-        .favorite-btn:hover {
-            border-color: #333;
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
         }
 
-        .favorite-btn.active {
-            background-color: #ff4757;
-            color: white;
-            border-color: #ff4757;
+        .tab.active {
+            border-bottom-color: #007bff;
+            color: #007bff;
         }
 
-        /* Product Description */
-        .product-description {
-            margin-top: 30px;
+        .product-info {
+            flex: 1;
         }
 
-        .description-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: #111;
+        .product-options {
+            margin: 20px 0;
         }
 
-        .description-text {
-            color: #666;
-            line-height: 1.6;
+        .option-group {
             margin-bottom: 15px;
         }
 
-        .product-details {
+        .option-label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .option-select {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: white;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
             margin-top: 20px;
         }
 
-        .detail-item {
-            display: flex;
-            margin-bottom: 8px;
-            font-size: 14px;
+        .btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
 
-        .detail-label {
+        .btn-primary {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #218838;
+        }
+
+        .btn-secondary {
+            background: #17a2b8;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #138496;
+        }
+
+        .reviews-section {
+            margin-top: 30px;
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 15px;
+            background: #fafafa;
+        }
+
+        .reviews-section::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .reviews-section::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .reviews-section::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 10px;
+        }
+
+        .reviews-section::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+
+        .reviews-header {
+            font-size: 18px;
             font-weight: 600;
-            width: 60px;
-            color: #111;
+            margin-bottom: 15px;
+            color: #333;
         }
 
-        .detail-value {
+        .review-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .reviewer-name {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .rating {
+            color: #ffc107;
+        }
+
+        .review-text {
             color: #666;
+            font-size: 14px;
+            line-height: 1.4;
         }
 
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .container {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
+        .tab-content {
+            display: none;
+        }
 
-            .thumbnail-gallery {
-                flex-direction: row;
-                overflow-x: auto;
-                padding-bottom: 10px;
-            }
+        .tab-content.active {
+            display: block;
+        }
+        .form-group {
+            margin-bottom: 24px;
+        }
 
-            .thumbnail {
-                flex-shrink: 0;
-            }
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 8px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 16px;
+            color: #1f2937;
+            background-color: white;
+            transition: all 0.2s ease;
+            resize: vertical;
+            min-height: 44px;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            background-color: white;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .popup-flex{
+            display: flex;
         }
 
         @media (max-width: 768px) {
-            .container {
-                padding: 20px 15px;
+            .popup-container {
+                flex-direction: column;
+                max-height: 95vh;
+                overflow-y: auto;
             }
 
-            .product-title {
-                font-size: 24px;
+            .image-slider {
+                height: 250px;
             }
 
-            .price {
-                font-size: 20px;
+            .right-section {
+                padding: 20px;
             }
-
-            .size-options {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .main-image {
-            animation: fadeIn 0.3s ease-in-out;
-        }
-
-        /* Heart icon animation */
-        @keyframes heartBeat {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-        .favorite-btn.active .heart {
-            animation: heartBeat 0.3s ease-in-out;
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
+    <div class="popup-overlay">
+        <div class="popup-container">
+            <button class="close-btn" onclick="closePopup()">&times;</button>
+            <div class="popup-flex">
+                 <div class="left-section">
+                <div class="image-slider">
+                    <div class="slide active">
+                        <img src="/asset/img/category-food/banh mi.jpg" alt="">
+                    </div>
+                    <!-- <div class="slide">Hình ảnh sản phẩm 2</div>
+                    <div class="slide">Hình ảnh sản phẩm 3</div>
+                    <button class="slider-nav prev" onclick="prevSlide()">‹</button>
+                    <button class="slider-nav next" onclick="nextSlide()">›</button> -->
+                </div>
+            </div>
 
-        <!-- Main Product Image -->
-        <div class="main-image-container">
-            <div class="main-image" id="mainImage" style="width: 400px; height: 400px; background: linear-gradient(45deg, #f0f0f0, #e0e0e0); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 120px;">👟</div>
-            <button class="nav-button prev">‹</button>
-            <button class="nav-button next">›</button>
+            <div class="right-section">
+                <div class="product-tabs">
+                    <div class="tab active" onclick="showTab('info')">Tên sản phẩm</div>
+                </div>
+
+                <div class="tab-content active" id="info">
+                    <div class="product-info">
+                        <div class="product-options">
+                            <div class="form-group">
+                                <label class="form-label" for="productPrice">Giá</label>
+                                <input type="text" id="productPrice" name="productPrice" class="form-input" value="Giá"
+                                    placeholder="">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="productDecription">Mô tả</label>
+                                <input type="text" id="productDecriptio" name="productDecriptio" class="form-input" value="Decriptions"
+                                    placeholder="">
+                            </div>
+
+                            <div class="option-group">
+                                <label class="option-label">Số lượng</label>
+                                <select class="option-select">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+
+                            <div class="option-group">
+                                <label class="option-label">Voucher</label>
+                                <select class="option-select">
+                                    <option>Chọn voucher</option>
+                                    <option>Giảm 10%</option>
+                                    <option>Giảm 20%</option>
+                                    <option>Freeship</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="action-buttons">
+                            <button class="btn btn-secondary">Thêm vào giỏ</button>
+                            <button class="btn btn-primary">Mua ngay</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+           
+            <div class="reviews-section">
+                    <div class="reviews-header">Đánh giá sản phẩm</div>
+
+                    <div class="review-item">
+                        <div class="review-header">
+                            <span class="reviewer-name">Username</span>
+                            <span class="rating">★★★★★</span>
+                        </div>
+                        <div class="review-text">Sản phẩm rất tốt, chất lượng như mô tả. Giao hàng nhanh!</div>
+                    </div>
+
+                    <div class="review-item">
+                        <div class="review-header">
+                            <span class="reviewer-name">Username</span>
+                            <span class="rating">★★★★★</span>
+                        </div>
+                        <div class="review-text">Đóng gói cẩn thận, sản phẩm đẹp. Sẽ mua lại.</div>
+                    </div>
+
+                    <div class="review-item">
+                        <div class="review-header">
+                            <span class="reviewer-name">Username</span>
+                            <span class="rating">★★★★★</span>
+                        </div>
+                        <div class="review-text">Giá cả hợp lý, chất lượng tốt. Recommend!</div>
+                    </div>
+
+                    <div class="review-item">
+                        <div class="review-header">
+                            <span class="reviewer-name">Username</span>
+                            <span class="rating">★★★★★</span>
+                        </div>
+                        <div class="review-text">Shop phục vụ tận tình, sản phẩm đúng như hình.</div>
+                    </div>
+
+                    <div class="review-item">
+                        <div class="review-header">
+                            <span class="reviewer-name">Nguyễn Văn A</span>
+                            <span class="rating">★★★★☆</span>
+                        </div>
+                        <div class="review-text">Sản phẩm ổn, giao hàng hơi chậm nhưng chất lượng tốt.</div>
+                    </div>
+
+                    <div class="review-item">
+                        <div class="review-header">
+                            <span class="reviewer-name">Lê Thị B</span>
+                            <span class="rating">★★★★★</span>
+                        </div>
+                        <div class="review-text">Mình rất hài lòng với sản phẩm này. Đúng với mong đợi, sẽ tiếp tục ủng
+                            hộ shop.</div>
+                    </div>
+
+                    <div class="review-item">
+                        <div class="review-header">
+                            <span class="reviewer-name">Trần Văn C</span>
+                            <span class="rating">★★★★★</span>
+                        </div>
+                        <div class="review-text">Chất lượng tuyệt vời, giá cả phải chăng. Đóng gói rất cẩn thận.</div>
+                    </div>
+
+                    <div class="review-item">
+                        <div class="review-header">
+                            <span class="reviewer-name">Phạm Thị D</span>
+                            <span class="rating">★★★★☆</span>
+                        </div>
+                        <div class="review-text">Sản phẩm đẹp, nhưng size hơi nhỏ so với mô tả. Nhìn chung vẫn hài lòng.
+                        </div>
+                    </div>
+
+                    <div class="review-item">
+                        <div class="review-header">
+                            <span class="reviewer-name">Hoàng Văn E</span>
+                            <span class="rating">★★★★★</span>
+                        </div>
+                        <div class="review-text">Tuyệt vời! Chất lượng vượt mong đợi. Shop tư vấn rất nhiệt tình.</div>
+                    </div>
+
+                    <div class="review-item">
+                        <div class="review-header">
+                            <span class="reviewer-name">Vũ Thị F</span>
+                            <span class="rating">★★★★★</span>
+                        </div>
+                        <div class="review-text">Mình đã mua nhiều lần ở shop này. Lần nào cũng hài lòng về chất lượng
+                            và dịch vụ.</div>
+                    </div>
+                </div>
         </div>
-
-        <!-- Product Info -->
-        <div class="product-info">
-            <h1 class="product-title">Nike Initiator Class 2.2</h1>
-            
-            <div class="rating">
-                <span class="stars">★★★★★</span>
-                <span class="review-count">87 Customer Review</span>
-            </div>
-
-            <div class="price">
-                $125.00
-                <span class="original-price">$160.00</span>
-                <span class="discount">Save 23%</span>
-            </div>
-
-            <div class="stock-info">
-                <span class="viewing-count">👁 26 viewing right now</span>
-                <span class="stock-count">✅ Only 3 item(s) left in stock</span>
-            </div>
-
-            <div class="color-section">
-                <h3 class="section-title">Color</h3>
-                <div class="color-options">
-                    <div class="color-option white active" data-color="white"></div>
-                    <div class="color-option beige" data-color="beige"></div>
-                    <div class="color-option black" data-color="black"></div>
-                </div>
-            </div>
-
-            <div class="size-section">
-                <div class="size-header">
-                    <h3 class="section-title">Select Size</h3>
-                    <span class="size-guide">Size guide</span>
-                </div>
-                <div class="size-options">
-                    <div class="size-option" data-size="6.5">UK 6.5</div>
-                    <div class="size-option" data-size="6.5">UK 6.5</div>
-                    <div class="size-option active" data-size="7">UK 7</div>
-                    <div class="size-option" data-size="7.5">UK 7.5</div>
-                    <div class="size-option" data-size="8">UK 8</div>
-                    <div class="size-option" data-size="8.5">UK 8.5</div>
-                    <div class="size-option" data-size="9">UK 9</div>
-                    <div class="size-option" data-size="9.5">UK 9.5</div>
-                    <div class="size-option" data-size="10">UK 10</div>
-                    <div class="size-option" data-size="10.5">UK 10.5</div>
-                    <div class="size-option" data-size="10.5">UK 10.5</div>
-                    <div class="size-option" data-size="11">UK 11</div>
-                    <div class="size-option" data-size="11.5">UK 11.5</div>
-                </div>
-            </div>
-
-            <div class="action-buttons">
-                <button class="add-to-cart">Add to Cart</button>
-                <button class="favorite-btn" id="favoriteBtn">
-                    <span class="heart">♡</span>
-                    Favorite
-                </button>
-            </div>
-
-            <div class="product-description">
-                <h3 class="description-title">About the product</h3>
-                <p class="description-text">
-                    Go the distance in comfort with the Nike Initiator. Designed for breathability and soft cushioning, this running shoe provides the support you need to hit your stride with confidence.
-                </p>
-                
-                <div class="product-details">
-                    <div class="detail-item">
-                        <span class="detail-label">Color:</span>
-                        <span class="detail-value">Light Bone/Limestone/Olive Aura/Khaki</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Style:</span>
-                        <span class="detail-value">NY7576-021</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Origin:</span>
-                        <span class="detail-value">Vietnam/Prod</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
     </div>
 
     <script>
-        let currentImageIndex = 0;
-        const totalImages = 6;
-        let selectedColor = 'white';
-        let selectedSize = '7';
-        let isFavorite = false;
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
 
-        // Image data
-        const imageData = {
-            1: { bg: 'linear-gradient(45deg, #f0f0f0, #e0e0e0)', color: '#333' },
-            2: { bg: 'linear-gradient(45deg, #2c2c2c, #1c1c1c)', color: 'white' },
-            3: { bg: 'linear-gradient(45deg, #e8e8e8, #d8d8d8)', color: '#333' },
-            4: { bg: 'linear-gradient(45deg, #8B4513, #654321)', color: 'white' },
-            5: { bg: 'linear-gradient(45deg, #DC143C, #B22222)', color: 'white' },
-            6: { bg: 'linear-gradient(45deg, #f5f5f5, #e5e5e5)', color: '#333' }
-        };
-
-        // Thumbnail click functionality
-        document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
-            thumb.addEventListener('click', function() {
-                document.querySelector('.thumbnail.active').classList.remove('active');
-                this.classList.add('active');
-                currentImageIndex = index;
-                updateMainImage();
-            });
-        });
-
-        // Navigation buttons
-        document.querySelector('.nav-button.prev').addEventListener('click', function() {
-            currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
-            updateThumbnails();
-            updateMainImage();
-        });
-
-        document.querySelector('.nav-button.next').addEventListener('click', function() {
-            currentImageIndex = (currentImageIndex + 1) % totalImages;
-            updateThumbnails();
-            updateMainImage();
-        });
-
-        function updateMainImage() {
-            const mainImage = document.getElementById('mainImage');
-            const imageKey = currentImageIndex + 1;
-            const imageInfo = imageData[imageKey];
-            
-            mainImage.style.background = imageInfo.bg;
-            mainImage.style.color = imageInfo.color;
-        }
-
-        function updateThumbnails() {
-            document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
-                thumb.classList.toggle('active', index === currentImageIndex);
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
             });
         }
 
-        // Color selection
-        document.querySelectorAll('.color-option').forEach(option => {
-            option.addEventListener('click', function() {
-                document.querySelector('.color-option.active').classList.remove('active');
-                this.classList.add('active');
-                selectedColor = this.dataset.color;
-            });
-        });
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
 
-        // Size selection
-        document.querySelectorAll('.size-option').forEach(option => {
-            option.addEventListener('click', function() {
-                if (this.classList.contains('unavailable')) return;
-                
-                document.querySelector('.size-option.active')?.classList.remove('active');
-                this.classList.add('active');
-                selectedSize = this.dataset.size;
-            });
-        });
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
 
-        // Add to cart functionality
-        document.querySelector('.add-to-cart').addEventListener('click', function() {
-            const originalText = this.textContent;
-            this.textContent = 'Added to Cart!';
-            this.style.backgroundColor = '#059669';
-            
-            setTimeout(() => {
-                this.textContent = originalText;
-                this.style.backgroundColor = '#111';
-            }, 2000);
-        });
+        function showTab(tabName) {
+            // Remove active class from all tabs and contents
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
 
-        // Favorite functionality
-        document.getElementById('favoriteBtn').addEventListener('click', function() {
-            isFavorite = !isFavorite;
-            const heart = this.querySelector('.heart');
-            
-            if (isFavorite) {
-                this.classList.add('active');
-                heart.textContent = '♥';
-                this.innerHTML = '<span class="heart">♥</span>Favorited';
-            } else {
-                this.classList.remove('active');
-                heart.textContent = '♡';
-                this.innerHTML = '<span class="heart">♡</span>Favorite';
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+
+            // Show corresponding content
+            document.getElementById(tabName).classList.add('active');
+        }
+
+        function closePopup() {
+            document.querySelector('.popup-overlay').style.display = 'none';
+        }
+
+        // Auto-slide every 3 seconds
+        setInterval(nextSlide, 3000);
+
+        // Close popup when clicking outside
+        document.querySelector('.popup-overlay').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closePopup();
             }
         });
 
-        // Size guide functionality
-        document.querySelector('.size-guide').addEventListener('click', function() {
-            alert('Size Guide:\n\nUK 6.5 = US 7 = EU 40\nUK 7 = US 7.5 = EU 40.5\nUK 7.5 = US 8 = EU 41\nUK 8 = US 8.5 = EU 42\nUK 8.5 = US 9 = EU 42.5\nUK 9 = US 9.5 = EU 43\nUK 9.5 = US 10 = EU 44\nUK 10 = US 10.5 = EU 44.5\nUK 10.5 = US 11 = EU 45\nUK 11 = US 11.5 = EU 45.5\nUK 11.5 = US 12 = EU 46');
+        // Prevent popup from closing when clicking inside
+        document.querySelector('.popup-container').addEventListener('click', function (e) {
+            e.stopPropagation();
         });
-
-        // Initialize
-        updateMainImage();
     </script>
 </body>
+
 </html>

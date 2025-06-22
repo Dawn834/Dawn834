@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách đơn hàng</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e8ea66 0%, #e2b562 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 18px;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-btn {
+            padding: 10px 20px;
+            background: #f8f9fa;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .nav-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        /* Order List Section */
+        .order-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: #2c3e50;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .order-item {
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e8ecef;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .order-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .order-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+
+
+        .order-info {
+            flex: 1;
+        }
+
+        .order-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+        .order-details {
+            color: #7f8c8d;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .order-status {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .status-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-processing {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .status-completed {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-cancelled {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .status-unpaid {
+            background: #ffeaa7;
+            color: #d63031;
+        }
+
+        .action-btn {
+            background: #667eea;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-left: 5px;
+        }
+
+        .action-btn:hover {
+            background: #5a6fd8;
+            transform: scale(1.05);
+        }
+
+        .payment-btn {
+            background: linear-gradient(45deg, #00b894, #00cec9);
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-left: 5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .payment-btn:hover {
+            background: linear-gradient(45deg, #009980, #00b8b8);
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 184, 148, 0.4);
+        }
+
+        .payment-btn::before {
+            content: '💳';
+            margin-right: 5px;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(249, 249, 249, 0.95);
+            backdrop-filter: blur(10px);
+            color: rgb(17, 17, 17);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn.facebook { background: #3b5998; }
+        .social-btn.twitter { background: #1da1f2; }
+        .social-btn.google { background: #dd4b39; }
+        .social-btn.linkedin { background: #0077b5; }
+
+        .social-btn:hover {
+            transform: scale(1.1) rotate(360deg);
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+
+        .search-input {
+            padding: 12px 20px;
+            border: 2px solid #e8ecef;
+            border-radius: 25px;
+            width: 300px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .search-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-btn:hover {
+            background: #5a6fd8;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .order-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .order-status {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .search-input {
+                width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="nav">
+                <div class="logo">SHOP LOGO</div>
+                <div class="nav-menu">
+                    <button class="nav-btn active">Trang chủ</button>
+                    <button class="nav-btn">Menu</button>
+                    <button class="nav-btn">Giới thiệu</button>
+                    <button class="nav-btn">Liên hệ</button>
+                    <button class="nav-btn">Đăng nhập</button>
+                    <button class="nav-btn">🛒</button>
+                </div>
+            </div>
+
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Tìm kiếm đơn hàng..." id="searchInput">
+                <button class="search-btn" onclick="searchOrders()">Tìm kiếm</button>
+            </div>
+        </div>
+
+        <!-- Order List Section -->
+        <div class="order-section">
+            <h2 class="section-title">Danh sách đơn hàng</h2>
+
+            <div class="order-item">
+                <!-- <div class="order-avatar">DH1</div> -->
+                <div class="order-info">
+                    <div class="order-title">Đơn hàng #001</div>
+                    <div class="order-details">
+                        Sản phẩm: Bánh mỳ<br>
+                        Tổng tiền: 35.000 VND | Ngày đặt: 15/06/2025
+                    </div>
+                </div>
+                <div class="order-status">
+                    <span class="status-btn status-processing">Đang xử lý</span>
+                    <button class="action-btn">Chi tiết</button>
+                </div>
+            </div>
+
+            <div class="order-item">
+                <!-- <div class="order-avatar">DH2</div> -->
+                <div class="order-info">
+                    <div class="order-title">Đơn hàng #002</div>
+                    <div class="order-details">
+                        Sản phẩm: Bánh mỳ<br>
+                        Tổng tiền: 35.000 VND | Ngày đặt: 15/06/2025
+                    </div>
+                </div>
+                <div class="order-status">
+                    <span class="status-btn status-completed">Hoàn thành</span>
+                    <button class="action-btn">Đánh giá</button>
+                </div>
+            </div>
+
+            <div class="order-item">
+                <!-- <div class="order-avatar">DH3</div> -->
+                <div class="order-info">
+                    <div class="order-title">Đơn hàng #003</div>
+                    <div class="order-details">
+                        Sản phẩm: Phở gà<br>
+                        Tổng tiền: 40.000 VND | Ngày đặt: 13/06/2025
+                    </div>
+                </div>
+                <div class="order-status">
+                    <span class="status-btn status-unpaid">Chưa thanh toán</span>
+                    <button class="payment-btn" onclick="processPayment(this, 'DH003')">Thanh toán</button>
+                    <button class="action-btn">Hủy đơn</button>
+                </div>
+            </div>
+
+            <div class="order-item">
+                <!-- <div class="order-avatar">DH4</div> -->
+                <div class="order-info">
+                    <div class="order-title">Đơn hàng #004</div>
+                    <div class="order-details">
+                        Sản phẩm: Phở gà<br>
+                        Tổng tiền: 40.000 VND | Ngày đặt: 13/06/2025
+                    </div>
+                </div>
+                <div class="order-status">
+                    <span class="status-btn status-processing">Đang giao</span>
+                    <button class="action-btn">Theo dõi</button>
+                </div>
+            </div>
+
+            <div class="order-item">
+                <!-- <div class="order-avatar">DH5</div> -->
+                <div class="order-info">
+                    <div class="order-title">Đơn hàng #005</div>
+                    <div class="order-details">
+                        Sản phẩm: Gà rán<br>
+                        Tổng tiền: 40.000 VND | Ngày đặt: 11/06/2025
+                    </div>
+                </div>
+                <div class="order-status">
+                    <span class="status-btn status-unpaid">Chưa thanh toán</span>
+                    <button class="payment-btn" onclick="processPayment(this, 'DH005')">Thanh toán</button>
+                    <button class="action-btn">Hủy đơn</button>
+                </div>
+            </div>
+
+            <div class="order-item">
+                <!-- <div class="order-avatar">DH6</div> -->
+                <div class="order-info">
+                    <div class="order-title">Đơn hàng #006</div>
+                    <div class="order-details">
+                        Sản phẩm: Gà rán<br>
+                        Tổng tiền: 40.000 VND | Ngày đặt: 11/06/2025
+                    </div>
+                </div>
+                <div class="order-status">
+                    <span class="status-btn status-completed">Hoàn thành</span>
+                    <button class="action-btn">Mua lại</button>
+                </div>
+            </div>
+
+            <div class="order-item">
+                <!-- <div class="order-avatar">DH7</div> -->
+                <div class="order-info">
+                    <div class="order-title">Đơn hàng #007</div>
+                    <div class="order-details">
+                        Sản phẩm: Gà rán<br>
+                        Tổng tiền: 40.000 VND | Ngày đặt: 11/06/2025
+                    </div>
+                </div>
+                <div class="order-status">
+                    <span class="status-btn status-processing">Đang xử lý</span>
+                    <button class="action-btn">Chi tiết</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-content">
+                <div class="logo">SHOP LOGO</div>
+                <div class="social-links">
+                    <a href="#" class="social-btn facebook">f</a>
+                    <a href="#" class="social-btn twitter">t</a>
+                    <a href="#" class="social-btn google">g+</a>
+                    <a href="#" class="social-btn linkedin">in</a>
+                </div>
+            </div>
+            <div class="contact-info">
+                <span>📍 Địa chỉ: 123 Đường ABC, Quận 1, TP.HCM</span>
+                <span>📞 Hotline: 1900-1234</span>
+                <span>✉️ Email: info@shop.com</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function searchOrders() {
+            const searchInput = document.getElementById('searchInput');
+            const searchTerm = searchInput.value.toLowerCase();
+            const orderItems = document.querySelectorAll('.order-item');
+
+            orderItems.forEach(item => {
+                const orderTitle = item.querySelector('.order-title').textContent.toLowerCase();
+                const orderDetails = item.querySelector('.order-details').textContent.toLowerCase();
+                
+                if (orderTitle.includes(searchTerm) || orderDetails.includes(searchTerm)) {
+                    item.style.display = 'flex';
+                    item.style.animation = 'fadeIn 0.5s ease';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            if (searchTerm === '') {
+                orderItems.forEach(item => {
+                    item.style.display = 'flex';
+                });
+            }
+        }
+
+        // Add event listener for Enter key in search input
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchOrders();
+            }
+        });
+
+        // Add hover effects for nav buttons
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Add click animations for action buttons
+        document.querySelectorAll('.action-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+            });
+        });
+
+        // Add CSS animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
