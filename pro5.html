@@ -13,7 +13,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: rgba(0, 0, 0, 0);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -443,14 +443,14 @@
         <nav class="sidebar">
             <div class="app-header">
                 <div class="app-icon">AS</div>
-                <span class="app-title">Alex Smith's App</span>
+                <span class="app-title">Thông tin cá nhân</span>
             </div>
             
             <div class="menu-section">
-                <div class="menu-label">General</div>
+                <div class="menu-label">Thông tin chung</div>
                 <button class="menu-item active" data-tab="general">
                     <span>📋</span>
-                    General
+                    Thông tin
                 </button>
                 <!-- <button class="menu-item" data-tab="preferences">
                     <span>⚙️</span>
@@ -462,7 +462,7 @@
                 </button> -->
                 <button class="menu-item" data-tab="security">
                     <span>🔒</span>
-                    Security
+                    Bảo mật
                 </button>
             </div>
             
@@ -498,14 +498,14 @@
                 </button>
                 <button class="menu-item">
                     <span>🚪</span>
-                    Sign out
+                    Đăng xuất
                 </button>
             </div>
         </nav>
         
         <main class="main-content">
             <div class="content-header">
-                <h1 class="content-title" id="content-title">General</h1>
+                <h1 class="content-title" id="content-title">Thông tin chung</h1>
             </div>
             
             <!-- General Content -->
@@ -513,21 +513,21 @@
                 <div class="profile-section">
                     <div class="profile-avatar">SE</div>
                     <div class="profile-info">
-                        <div class="profile-title">Profile photo</div>
-                        <div class="profile-subtitle">We support PNGs, JPEGs and GIFs under 10MB</div>
-                        <button class="btn btn-secondary">Upload new picture</button>
+                        <div class="profile-title">Ảnh cá nhân</div>
+                        <div class="profile-subtitle">Hỗ trợ ảnh PNG,JPG và ảnh dưới 100MB</div>
+                        <button class="btn btn-secondary">Tải ảnh lên</button>
                     </div>
                 </div>
                 
                 <form id="general-form">
                     <div class="form-group">
-                        <label class="form-label">First name</label>
-                        <input type="text" class="form-input" value="Summangeon" placeholder="Enter your first name">
+                        <label class="form-label">Họ và tên</label>
+                        <input type="text" class="form-input" value="Pham Quang Duc" placeholder="Enter your first name">
                     </div>
                     
                     <div class="form-group">
-                        <label class="form-label">Last name</label>
-                        <input type="text" class="form-input" value="Endy" placeholder="Enter your last name">
+                        <label class="form-label">Địa chỉ giao hàng</label>
+                        <input type="text" class="form-input" value="Địa chỉ" placeholder="Enter your last name">
                     </div>
                     
                     <div class="form-group">
@@ -540,21 +540,21 @@
                     
                     <div class="phone-section">
                         <div>
-                            <div class="form-label" style="margin-bottom: 4px;">Phone</div>
-                            <div class="phone-info">No phone number</div>
+                            <div class="form-label" style="margin-bottom: 4px;">Số điện thoại</div>
+                            <div class="phone-info">Không có số điện thoại</div>
                         </div>
-                        <button type="button" class="btn btn-secondary">Add phone number</button>
+                        <button type="button" class="btn btn-secondary">Thêm số điện thoại</button>
                     </div>
                     
                     <div class="form-actions">
-                        <button type="submit" class="btn btn-primary">Update</button>
+                        <button type="submit" class="btn btn-primary">Cập nhật</button>
                     </div>
                 </form>
                 
                 <div class="deactivate-section">
-                    <div class="deactivate-title">Deactivate account</div>
-                    <div class="deactivate-subtitle">This will remove you from all workspaces</div>
-                    <button class="btn btn-danger">Deactivate account</button>
+                    <div class="deactivate-title">Xoá tài khoản</div>
+                    <div class="deactivate-subtitle">Điều này sẽ làm mất thông tin của bạn</div>
+                    <button class="btn btn-danger">Xoá tài khoản</button>
                 </div>
             </div>
 
@@ -562,18 +562,18 @@
             <div id="security-content" class="tab-content">
                 <div class="security-section">
                     <div class="security-header">
-                        <h3 class="security-title">Change Password</h3>
+                        <h3 class="security-title">Đổi mật khẩu</h3>
                         <p class="security-subtitle">Update your password to keep your account secure</p>
                     </div>
                     
                     <form id="password-form" class="password-form">
                         <div class="form-group">
-                            <label class="form-label">Current Password</label>
+                            <label class="form-label">Mật khẩu hiện tại</label>
                             <input type="password" class="form-input" id="current-password" placeholder="Enter your current password" required>
                         </div>
                         
                         <div class="form-group">
-                            <label class="form-label">New Password</label>
+                            <label class="form-label">Mật khẩu mới</label>
                             <input type="password" class="form-input" id="new-password" placeholder="Enter your new password" required>
                             <div class="password-requirements">
                                 <small class="requirement" id="length-req">At least 8 characters</small>
@@ -584,18 +584,18 @@
                         </div>
                         
                         <div class="form-group">
-                            <label class="form-label">Confirm New Password</label>
+                            <label class="form-label">Xác nhận mật khẩu mới</label>
                             <input type="password" class="form-input" id="confirm-password" placeholder="Confirm your new password" required>
                             <div class="password-match-indicator" id="match-indicator"></div>
                         </div>
                         
                         <div class="form-actions">
-                            <button type="submit" class="btn btn-primary" id="change-password-btn">Change Password</button>
+                            <button type="submit" class="btn btn-primary" id="change-password-btn">Đổi mật khẩu</button>
                         </div>
                     </form>
                 </div>
                 
-                <div class="two-factor-section">
+                <!-- <div class="two-factor-section">
                     <div class="security-header">
                         <h3 class="security-title">Two-Factor Authentication</h3>
                         <p class="security-subtitle">Add an extra layer of security to your account</p>
@@ -611,7 +611,7 @@
                         </div>
                         <button class="btn btn-primary">Enable 2FA</button>
                     </div>
-                </div>
+                </div> -->
             </div>
         </main>
     </div>

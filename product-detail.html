@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nike Initiator Class 2.2 - Product Detail</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: 120px 1fr 400px;
+            gap: 40px;
+        }
+
+        /* Thumbnail Gallery */
+        .thumbnail-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: border-color 0.2s;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .thumbnail.active {
+            border-color: #333;
+        }
+
+        .thumbnail:hover {
+            border-color: #666;
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Main Product Image */
+        .main-image-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8f8f8;
+            border-radius: 12px;
+            min-height: 500px;
+        }
+
+        .main-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .nav-button:hover {
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .nav-button.prev {
+            left: 20px;
+        }
+
+        .nav-button.next {
+            right: 20px;
+        }
+
+        /* Product Info */
+        .product-info {
+            padding-left: 20px;
+        }
+
+        .product-title {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #111;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .stars {
+            color: #ffc107;
+            font-size: 16px;
+        }
+
+        .review-count {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .price {
+            font-size: 24px;
+            font-weight: 600;
+            color: #111;
+            margin-bottom: 5px;
+        }
+
+        .original-price {
+            color: #999;
+            text-decoration: line-through;
+            font-size: 18px;
+            margin-left: 10px;
+        }
+
+        .discount {
+            color: #059669;
+            font-size: 14px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .stock-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .viewing-count {
+            color: #666;
+        }
+
+        .stock-count {
+            color: #059669;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #111;
+        }
+
+        /* Color Selection */
+        .color-options {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .color-option {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            cursor: pointer;
+            transition: border-color 0.2s;
+            position: relative;
+        }
+
+        .color-option.active {
+            border-color: #333;
+        }
+
+        .color-option.white {
+            background-color: #f8f8f8;
+            border: 3px solid #ddd;
+        }
+
+        .color-option.white.active {
+            border-color: #333;
+        }
+
+        .color-option.beige {
+            background-color: #d4c4a8;
+        }
+
+        .color-option.black {
+            background-color: #333;
+        }
+
+        /* Size Selection */
+        .size-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .size-guide {
+            color: #666;
+            text-decoration: underline;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .size-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .size-option {
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .size-option:hover {
+            border-color: #333;
+        }
+
+        .size-option.active {
+            background-color: #333;
+            color: white;
+            border-color: #333;
+        }
+
+        .size-option.unavailable {
+            background-color: #f5f5f5;
+            color: #999;
+            cursor: not-allowed;
+            text-decoration: line-through;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .add-to-cart {
+            background-color: #111;
+            color: white;
+            padding: 16px 24px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .add-to-cart:hover {
+            background-color: #333;
+        }
+
+        .favorite-btn {
+            background-color: white;
+            color: #333;
+            padding: 16px 24px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .favorite-btn:hover {
+            border-color: #333;
+        }
+
+        .favorite-btn.active {
+            background-color: #ff4757;
+            color: white;
+            border-color: #ff4757;
+        }
+
+        /* Product Description */
+        .product-description {
+            margin-top: 30px;
+        }
+
+        .description-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #111;
+        }
+
+        .description-text {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .product-details {
+            margin-top: 20px;
+        }
+
+        .detail-item {
+            display: flex;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            width: 60px;
+            color: #111;
+        }
+
+        .detail-value {
+            color: #666;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .thumbnail-gallery {
+                flex-direction: row;
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+
+            .thumbnail {
+                flex-shrink: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+
+            .product-title {
+                font-size: 24px;
+            }
+
+            .price {
+                font-size: 20px;
+            }
+
+            .size-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .main-image {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        /* Heart icon animation */
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .favorite-btn.active .heart {
+            animation: heartBeat 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- Main Product Image -->
+        <div class="main-image-container">
+            <div class="main-image" id="mainImage" style="width: 400px; height: 400px; background: linear-gradient(45deg, #f0f0f0, #e0e0e0); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 120px;">👟</div>
+            <button class="nav-button prev">‹</button>
+            <button class="nav-button next">›</button>
+        </div>
+
+        <!-- Product Info -->
+        <div class="product-info">
+            <h1 class="product-title">Nike Initiator Class 2.2</h1>
+            
+            <div class="rating">
+                <span class="stars">★★★★★</span>
+                <span class="review-count">87 Customer Review</span>
+            </div>
+
+            <div class="price">
+                $125.00
+                <span class="original-price">$160.00</span>
+                <span class="discount">Save 23%</span>
+            </div>
+
+            <div class="stock-info">
+                <span class="viewing-count">👁 26 viewing right now</span>
+                <span class="stock-count">✅ Only 3 item(s) left in stock</span>
+            </div>
+
+            <div class="color-section">
+                <h3 class="section-title">Color</h3>
+                <div class="color-options">
+                    <div class="color-option white active" data-color="white"></div>
+                    <div class="color-option beige" data-color="beige"></div>
+                    <div class="color-option black" data-color="black"></div>
+                </div>
+            </div>
+
+            <div class="size-section">
+                <div class="size-header">
+                    <h3 class="section-title">Select Size</h3>
+                    <span class="size-guide">Size guide</span>
+                </div>
+                <div class="size-options">
+                    <div class="size-option" data-size="6.5">UK 6.5</div>
+                    <div class="size-option" data-size="6.5">UK 6.5</div>
+                    <div class="size-option active" data-size="7">UK 7</div>
+                    <div class="size-option" data-size="7.5">UK 7.5</div>
+                    <div class="size-option" data-size="8">UK 8</div>
+                    <div class="size-option" data-size="8.5">UK 8.5</div>
+                    <div class="size-option" data-size="9">UK 9</div>
+                    <div class="size-option" data-size="9.5">UK 9.5</div>
+                    <div class="size-option" data-size="10">UK 10</div>
+                    <div class="size-option" data-size="10.5">UK 10.5</div>
+                    <div class="size-option" data-size="10.5">UK 10.5</div>
+                    <div class="size-option" data-size="11">UK 11</div>
+                    <div class="size-option" data-size="11.5">UK 11.5</div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="favorite-btn" id="favoriteBtn">
+                    <span class="heart">♡</span>
+                    Favorite
+                </button>
+            </div>
+
+            <div class="product-description">
+                <h3 class="description-title">About the product</h3>
+                <p class="description-text">
+                    Go the distance in comfort with the Nike Initiator. Designed for breathability and soft cushioning, this running shoe provides the support you need to hit your stride with confidence.
+                </p>
+                
+                <div class="product-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Color:</span>
+                        <span class="detail-value">Light Bone/Limestone/Olive Aura/Khaki</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Style:</span>
+                        <span class="detail-value">NY7576-021</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Origin:</span>
+                        <span class="detail-value">Vietnam/Prod</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentImageIndex = 0;
+        const totalImages = 6;
+        let selectedColor = 'white';
+        let selectedSize = '7';
+        let isFavorite = false;
+
+        // Image data
+        const imageData = {
+            1: { bg: 'linear-gradient(45deg, #f0f0f0, #e0e0e0)', color: '#333' },
+            2: { bg: 'linear-gradient(45deg, #2c2c2c, #1c1c1c)', color: 'white' },
+            3: { bg: 'linear-gradient(45deg, #e8e8e8, #d8d8d8)', color: '#333' },
+            4: { bg: 'linear-gradient(45deg, #8B4513, #654321)', color: 'white' },
+            5: { bg: 'linear-gradient(45deg, #DC143C, #B22222)', color: 'white' },
+            6: { bg: 'linear-gradient(45deg, #f5f5f5, #e5e5e5)', color: '#333' }
+        };
+
+        // Thumbnail click functionality
+        document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
+            thumb.addEventListener('click', function() {
+                document.querySelector('.thumbnail.active').classList.remove('active');
+                this.classList.add('active');
+                currentImageIndex = index;
+                updateMainImage();
+            });
+        });
+
+        // Navigation buttons
+        document.querySelector('.nav-button.prev').addEventListener('click', function() {
+            currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
+            updateThumbnails();
+            updateMainImage();
+        });
+
+        document.querySelector('.nav-button.next').addEventListener('click', function() {
+            currentImageIndex = (currentImageIndex + 1) % totalImages;
+            updateThumbnails();
+            updateMainImage();
+        });
+
+        function updateMainImage() {
+            const mainImage = document.getElementById('mainImage');
+            const imageKey = currentImageIndex + 1;
+            const imageInfo = imageData[imageKey];
+            
+            mainImage.style.background = imageInfo.bg;
+            mainImage.style.color = imageInfo.color;
+        }
+
+        function updateThumbnails() {
+            document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
+                thumb.classList.toggle('active', index === currentImageIndex);
+            });
+        }
+
+        // Color selection
+        document.querySelectorAll('.color-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelector('.color-option.active').classList.remove('active');
+                this.classList.add('active');
+                selectedColor = this.dataset.color;
+            });
+        });
+
+        // Size selection
+        document.querySelectorAll('.size-option').forEach(option => {
+            option.addEventListener('click', function() {
+                if (this.classList.contains('unavailable')) return;
+                
+                document.querySelector('.size-option.active')?.classList.remove('active');
+                this.classList.add('active');
+                selectedSize = this.dataset.size;
+            });
+        });
+
+        // Add to cart functionality
+        document.querySelector('.add-to-cart').addEventListener('click', function() {
+            const originalText = this.textContent;
+            this.textContent = 'Added to Cart!';
+            this.style.backgroundColor = '#059669';
+            
+            setTimeout(() => {
+                this.textContent = originalText;
+                this.style.backgroundColor = '#111';
+            }, 2000);
+        });
+
+        // Favorite functionality
+        document.getElementById('favoriteBtn').addEventListener('click', function() {
+            isFavorite = !isFavorite;
+            const heart = this.querySelector('.heart');
+            
+            if (isFavorite) {
+                this.classList.add('active');
+                heart.textContent = '♥';
+                this.innerHTML = '<span class="heart">♥</span>Favorited';
+            } else {
+                this.classList.remove('active');
+                heart.textContent = '♡';
+                this.innerHTML = '<span class="heart">♡</span>Favorite';
+            }
+        });
+
+        // Size guide functionality
+        document.querySelector('.size-guide').addEventListener('click', function() {
+            alert('Size Guide:\n\nUK 6.5 = US 7 = EU 40\nUK 7 = US 7.5 = EU 40.5\nUK 7.5 = US 8 = EU 41\nUK 8 = US 8.5 = EU 42\nUK 8.5 = US 9 = EU 42.5\nUK 9 = US 9.5 = EU 43\nUK 9.5 = US 10 = EU 44\nUK 10 = US 10.5 = EU 44.5\nUK 10.5 = US 11 = EU 45\nUK 11 = US 11.5 = EU 45.5\nUK 11.5 = US 12 = EU 46');
+        });
+
+        // Initialize
+        updateMainImage();
+    </script>
+</body>
+</html>
