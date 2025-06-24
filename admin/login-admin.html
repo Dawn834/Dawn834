@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.ad_lgin-0">
     <title>Modern Login Page</title>
     <style>
         * {
@@ -13,12 +13,12 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        .tabs {
+        .ad_lgin-tabs {
             display: flex;
             margin-bottom: 20px;
         }
 
-        .tab {
+        .ad_lgin-tab {
             flex: 1;
             text-align: center;
             padding: 15px 0;
@@ -29,12 +29,12 @@
             transition: all 0.3s ease;
         }
 
-        .tab.active {
+        .ad_lgin-tab.ad_lgin-active {
             color: #ff7300;
             border-bottom: 2px solid #ff7300;
         }
 
-        #signup-form {
+        #ad_lgin-signup-form {
             display: none;
         }
 
@@ -44,12 +44,12 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: url(/asset/img/Colorful\ Retro\ Cartoon\ Playful\ Groovy\ Illustrative\ Foodie\ Favorite\ Food\ Presentation.svg) no-repeat;
             background-size: cover;
+            background:url(/asset/img/Colorful\ Retro\ Cartoon\ Playful\ Groovy\ Illustrative\ Foodie\ Favorite\ Food\ Presentation.svg) no-repeat;
         }
 
 
-        .login-container {
+        .ad_lgin-login-container {
             width: 30%;
             height: auto;
             background: white;
@@ -60,13 +60,13 @@
             flex-direction: column;
         }
 
-        .signin-up {
+        .ad_lgin-signin-up {
             display: flex;
             border-radius: 15px;
             overflow: hidden;
         }
 
-        .logo {
+        .ad_lgin-logo {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -77,14 +77,14 @@
             overflow: hidden;
         }
 
-        .logo img {
+        .ad_lgin-logo img {
             width: 50%;
             height: 50%;
             object-fit: cover;
             transform: scale(2.5);
         }
 
-        .login-panel {
+        .ad_lgin-login-panel {
             flex: 1;
             padding: 20px;
             display: flex;
@@ -92,18 +92,18 @@
             justify-content: center;
         }
 
-        .form-group {
+        .ad_lgin-form-group {
             margin-bottom: 20px;
         }
 
-        .form-label {
+        .ad_lgin-form-label {
             display: block;
             font-size: 14px;
             color: #666;
             margin-bottom: 8px;
         }
 
-        .form-input {
+        .ad_lgin-form-input {
             width: 100%;
             padding: 12px 15px;
             border: 1px solid #ddd;
@@ -112,29 +112,29 @@
             color: #333;
         }
 
-        .remember-forgot {
+        .ad_lgin-remember-forgot {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 30px;
         }
 
-        .remember-me {
+        .ad_lgin-remember-me {
             display: flex;
             align-items: center;
         }
 
-        .checkbox {
+        .ad_lgin-checkbox {
             margin-right: 8px;
         }
 
-        .forgot-link {
+        .ad_lgin-forgot-link {
             color: #ff7300;
             text-decoration: none;
             font-size: 14px;
         }
 
-        .login-btn {
+        .ad_lgin-login-btn {
             width: 100%;
             padding: 12px;
             background: #ff7300;
@@ -147,15 +147,15 @@
             margin-bottom: 30px;
         }
 
-        .signup-text {
+        .ad_lgin-signup-text {
             text-align: center;
             font-size: 14px;
             color: #666;
             margin-bottom: 20px;
         }
 
-        .signup-btn,
-        .login-btn {
+        .ad_lgin-signup-btn,
+        .ad_lgin-login-btn {
             width: 100%;
             padding: 12px;
             background: linear-gradient(135deg, #ffae00 0%, #ddff00 100%);
@@ -167,7 +167,7 @@
             cursor: pointer;
         }
 
-        .google-btn {
+        .ad_lgin-google-btn {
             display: flex;
             align-items: center;
             background-color: white;
@@ -185,12 +185,12 @@
             margin-bottom: 5%;
         }
 
-        .google-btn:hover {
+        .ad_lgin-google-btn:hover {
             background-color: #f8f8f8;
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
         }
 
-        .google-icon-wrapper {
+        .ad_lgin-google-icon-wrapper {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -199,7 +199,7 @@
             margin-left: 3px;
         }
 
-        .btn-text {
+        .ad_lgin-btn-text {
             display: flex;
             align-items: center;
             font-size: 16px;
@@ -211,48 +211,48 @@
             padding-right: 24px;
         }
 
-        a {
+        #ad_lgin-login-form a {
             display: block;
             text-align: center;
             text-decoration: none;
         }
     </style>
 </head>
-
 <body>
 
-    <div class="login-container">
-        <div class="logo">
+    <div class="ad_lgin-login-container">
+        <div class="ad_lgin-logo">
             <img src="/asset/img/logo/horizontal.png" alt="">
         </div>
-        <div class="signin-up">
-            <div class="login-panel">
-                <div class="tabs">
-                    <div class="tab active" onclick="showLogin()">Login - ADMIN</div>
+        <div class="ad_lgin-signin-up">
+            <div class="ad_lgin-login-panel">
+                <div class="ad_lgin-tabs">
+                    <div class="ad_lgin-tab active" onclick="showLogin()">Login - ADMIN</div>
                 </div>
 
-                <div id="login-form">
-                    <div class="form-group">
-                        <label class="form-label">Email address</label>
-                        <input type="email" class="form-input" placeholder="name@mail.com">
+                <div id="ad_lgin-login-form">
+                    <div class="ad_lgin-form-group">
+                        <label class="ad_lgin-form-label">Email address</label>
+                        <input type="email" class="ad_lgin-form-input" placeholder="name@mail.com">
                     </div>
-                    <div class="form-group">
-                        <label class="form-label">Password</label>
-                        <input type="password" class="form-input" placeholder="••••••••••••••">
+                    <div class="ad_lgin-form-group">
+                        <label class="ad_lgin-form-label">Password</label>
+                        <input type="password" class="ad_lgin-form-input" placeholder="••••••••••••••">
                     </div>
-                    <div class="remember-forgot">
-                        <div class="remember-me">
-                            <input type="checkbox" id="remember" class="checkbox">
+                    <div class="ad_lgin-remember-forgot">
+                        <div class="ad_lgin-remember-me">
+                            <input type="checkbox" id="remember" class="ad_lgin-checkbox">
                             <label for="remember">Remember me</label>
                         </div>
-                        <a href="/forgot-pasword.html" class="forgot-link">Forgot password?</a>
+                        <a href="/forgot-pasword.html" class="ad_lgin-forgot-link">Forgot password?</a>
                     </div>
-                    <a class="login-btn" href="./admin-index.html">Login</a>
+                    <a class="ad_lgin-login-btn" href="./admin-index.html">Login</a>
                     
                 </div>
             </div>
         </div>
     </div>
 </body>
+
 
 </html>

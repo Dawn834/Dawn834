@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,15 +19,15 @@
             line-height: 1.5;
         }
 
-        .container {
+        .ad_order_detail-container {
             max-width: 480px;
             margin: 0 auto;
             background-color: white;
             min-height: 100vh;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
 
-        .header {
+        .ad_order_detail-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -34,13 +35,13 @@
             border-bottom: 1px solid #e0e0e0;
         }
 
-        .order-number {
+        .ad_order_detail-order-number {
             font-size: 18px;
             font-weight: 600;
             color: #333;
         }
 
-        .close-btn {
+        .ad_order_detail-close-btn {
             font-size: 24px;
             cursor: pointer;
             color: #666;
@@ -54,39 +55,39 @@
             justify-content: center;
         }
 
-        .close-btn:hover {
+        .ad_order_detail-close-btn:hover {
             color: #333;
         }
 
-        .order-title {
+        .ad_order_detail-order-title {
             font-size: 16px;
             color: #666;
             margin-bottom: 8px;
         }
 
-        .section {
+        .ad_order_detail-section {
             padding: 24px;
             border-bottom: 1px solid #f0f0f0;
         }
 
-        .section:last-child {
+        .ad_order_detail-section:last-child {
             border-bottom: none;
         }
 
-        .section-title {
+        .ad_order_detail-section-title {
             font-size: 18px;
             font-weight: 600;
             color: #333;
             margin-bottom: 20px;
         }
 
-        .item {
+        .ad_order_detail-item {
             display: flex;
             align-items: center;
             gap: 16px;
         }
 
-        .item-image {
+        .ad_order_detail-item-image {
             width: 60px;
             height: 60px;
             background-color: #f8f8f8;
@@ -97,77 +98,77 @@
             border: 1px solid #e0e0e0;
         }
 
-        .item-image img {
+        .ad_order_detail-item-image img {
             width: 40px;
             height: 40px;
             object-fit: cover;
             border-radius: 4px;
         }
 
-        .item-details {
+        .ad_order_detail-item-details {
             flex: 1;
         }
 
-        .item-name {
+        .ad_order_detail-item-name {
             font-size: 16px;
             font-weight: 600;
             color: #333;
             margin-bottom: 4px;
         }
 
-        .item-category {
+        .ad_order_detail-item-category {
             font-size: 14px;
             color: #666;
         }
 
-        .item-price {
+        .ad_order_detail-item-price {
             font-size: 16px;
             font-weight: 600;
             color: #333;
         }
 
-        .item-quantity {
+        .ad_order_detail-item-quantity {
             font-size: 14px;
             color: #666;
             margin-right: 24px;
         }
 
-        .info-row {
+        .ad_order_detail-info-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 16px;
         }
 
-        .info-row:last-child {
+        .ad_order_detail-info-row:last-child {
             margin-bottom: 0;
         }
 
-        .info-label {
+        .ad_order_detail-info-label {
             font-size: 14px;
             color: #666;
         }
 
-        .info-value {
+        .ad_order_detail-info-value {
             font-size: 14px;
             color: #333;
             font-weight: 500;
         }
 
-        .email-link {
+        .ad_order_detail-email-link {
             color: #007AFF;
             text-decoration: none;
         }
 
-        .email-link:hover {
+        .ad_order_detail-email-link:hover {
             text-decoration: underline;
         }
 
-        .timeline {
+        .ad_order_detail-timeline {
             padding: 24px;
         }
 
-        .timeline-item {
+        .ad_order_detail-timeline-item {
             display: flex;
             align-items: flex-start;
             gap: 16px;
@@ -175,11 +176,11 @@
             position: relative;
         }
 
-        .timeline-item:last-child {
+        .ad_order_detail-timeline-item:last-child {
             margin-bottom: 0;
         }
 
-        .timeline-item:not(:last-child)::after {
+        .ad_order_detail-timeline-item:not(:last-child)::after {
             content: '';
             position: absolute;
             left: 12px;
@@ -189,7 +190,7 @@
             background-color: #e0e0e0;
         }
 
-        .timeline-dot {
+        .ad_order_detail-timeline-dot {
             width: 24px;
             height: 24px;
             border-radius: 50%;
@@ -202,19 +203,19 @@
             z-index: 1;
         }
 
-        .timeline-dot.active {
+        .ad_order_detail-timeline-dot.ad_order_detail-active {
             background-color: #007AFF;
         }
 
-        .timeline-dot.completed {
+        .ad_order_detail-timeline-dot.ad_order_detail-completed {
             background-color: #34C759;
         }
 
-        .timeline-dot.pending {
+        .ad_order_detail-timeline-dot.ad_order_detail-pending {
             background-color: #e0e0e0;
         }
 
-        .timeline-dot::after {
+        .ad_order_detail-timeline-dot::after {
             content: '';
             width: 8px;
             height: 8px;
@@ -222,23 +223,23 @@
             background-color: white;
         }
 
-        .timeline-content {
+        .ad_order_detail-timeline-content {
             flex: 1;
         }
 
-        .timeline-title {
+        .ad_order_detail-timeline-title {
             font-size: 16px;
             font-weight: 600;
             color: #333;
             margin-bottom: 4px;
         }
 
-        .timeline-description {
+        .ad_order_detail-timeline-description {
             font-size: 14px;
             color: #666;
         }
 
-        .jacket-icon {
+        .ad_order_detail-jacket-icon {
             width: 40px;
             height: 40px;
             background: linear-gradient(45deg, #333, #555);
@@ -247,18 +248,18 @@
             overflow: hidden;
         }
 
-        .jacket-icon::before {
+        .ad_order_detail-jacket-icon::before {
             content: '';
             position: absolute;
             top: 8px;
             left: 8px;
             right: 8px;
             bottom: 8px;
-            border: 2px solid rgba(255,255,255,0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 4px;
         }
 
-        .jacket-icon::after {
+        .ad_order_detail-jacket-icon::after {
             content: '';
             position: absolute;
             top: 12px;
@@ -266,11 +267,11 @@
             transform: translateX(-50%);
             width: 8px;
             height: 16px;
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 2px;
         }
 
-        .info-row-editable {
+        .ad_order_detail-info-row-editable {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -278,11 +279,11 @@
             position: relative;
         }
 
-        .info-row-editable:last-child {
+        .ad_order_detail-info-row-editable:last-child {
             margin-bottom: 0;
         }
 
-        .edit-btn {
+        .ad_order_detail-edit-btn {
             background: none;
             border: none;
             color: #007AFF;
@@ -294,18 +295,18 @@
             transition: background-color 0.2s;
         }
 
-        .edit-btn:hover {
+        .ad_order_detail-edit-btn:hover {
             background-color: rgba(0, 122, 255, 0.1);
         }
 
-        .info-value-container {
+        .ad_order_detail-info-value-container {
             display: flex;
             align-items: center;
             flex: 1;
             justify-content: flex-end;
         }
 
-        .edit-input {
+        .ad_order_detail-edit-input {
             border: 1px solid #007AFF;
             border-radius: 4px;
             padding: 6px 8px;
@@ -317,18 +318,19 @@
             min-width: 200px;
         }
 
-        .edit-input:focus {
+        .ad_order_detail-edit-input:focus {
             border-color: #0051d5;
             box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.2);
         }
 
-        .edit-actions {
+        .ad_order_detail-edit-actions {
             display: flex;
             gap: 8px;
             margin-left: 8px;
         }
 
-        .save-btn, .cancel-btn {
+        .ad_order_detail-save-btn,
+        .ad_order_detail-cancel-btn {
             background: none;
             border: none;
             font-size: 12px;
@@ -338,30 +340,30 @@
             font-weight: 500;
         }
 
-        .save-btn {
+        .ad_order_detail-save-btn {
             color: #34C759;
         }
 
-        .save-btn:hover {
+        .ad_order_detail-save-btn:hover {
             background-color: rgba(52, 199, 89, 0.1);
         }
 
-        .cancel-btn {
+        .ad_order_detail-cancel-btn {
             color: #FF3B30;
         }
 
-        .cancel-btn:hover {
+        .ad_order_detail-cancel-btn:hover {
             background-color: rgba(255, 59, 48, 0.1);
         }
 
-        .section-header {
+        .ad_order_detail-section-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
         }
 
-        .edit-all-btn {
+        .ad_order_detail-edit-all-btn {
             background: none;
             border: 1px solid #007AFF;
             color: #007AFF;
@@ -373,123 +375,131 @@
             transition: all 0.2s;
         }
 
-        .edit-all-btn:hover {
+        .ad_order_detail-edit-all-btn:hover {
             background-color: #007AFF;
             color: white;
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <div class="header">
+    <div class="ad_order_detail-container">
+        <div class="ad_order_detail-header">
             <div>
-                <div class="order-number">#AT456BB</div>
-                <div class="order-title">Order details</div>
+                <div class="ad_order_detail-order-number">#AT456BB</div>
+                <div class="ad_order_detail-order-title">Order details</div>
             </div>
-            <button class="close-btn">×</button>
+            <button class="ad_order_detail-close-btn">×</button>
         </div>
 
-        <div class="section">
-            <div class="section-title">Sản phẩm</div>
-            <div class="item">
-                <div class="item-image">
-                    <div class="jacket-icon"></div>
+        <div class="ad_order_detail-section">
+            <div class="ad_order_detail-section-title">Sản phẩm</div>
+            <div class="ad_order_detail-item">
+                <div class="ad_order_detail-item-image">
+                    <div class="ad_order_detail-jacket-icon"></div>
                 </div>
-                <div class="item-details">
-                    <div class="item-name">Tên món ăn</div>
-                    <div class="item-category">Tên danh mục</div>
+                <div class="ad_order_detail-item-details">
+                    <div class="ad_order_detail-item-name">Tên món ăn</div>
+                    <div class="ad_order_detail-item-category">Tên danh mục</div>
                 </div>
-                <div class="item-quantity">số lượng</div>
-                <div class="item-price">Tiền</div>
+                <div class="ad_order_detail-item-quantity">số lượng</div>
+                <div class="ad_order_detail-item-price">Tiền</div>
             </div>
         </div>
 
-        <div class="section">
-            <div class="info-row">
-                <div class="info-label">Tạo lúc</div>
-                <div class="info-value">March 03, 2024</div>
+        <div class="ad_order_detail-section">
+            <div class="ad_order_detail-info-row">
+                <div class="ad_order_detail-info-label">Tạo lúc</div>
+                <div class="ad_order_detail-info-value">March 03, 2024</div>
             </div>
-            <div class="info-row">
-                <div class="info-label">Phương thức thanh toán</div>
-                <div class="info-value">Chuyển khoản/Tiền mặt</div>
+            <div class="ad_order_detail-info-row">
+                <div class="ad_order_detail-info-label">Phương thức thanh toán</div>
+                <div class="ad_order_detail-info-value">Chuyển khoản/Tiền mặt</div>
             </div>
-            <!-- <div class="info-row">
-                <div class="info-label">Status</div>
-                <div class="info-value">Processed</div>
+            <!-- <div class="ad_order_detail-info-row">
+                <div class="ad_order_detail-info-label">Status</div>
+                <div class="ad_order_detail-info-value">Processed</div>
             </div> -->
         </div>
 
-        <div class="section">
-            <div class="section-header">
-                <div class="section-title">Thông tin khách hàng</div>
-                <button class="edit-all-btn" onclick="toggleEditAll()">Sửa tất cả</button>
+        <div class="ad_order_detail-section">
+            <div class="ad_order_detail-section-header">
+                <div class="ad_order_detail-section-title">Thông tin khách hàng</div>
+                <button class="ad_order_detail-edit-all-btn" onclick="toggleEditAll()">Sửa tất cả</button>
             </div>
-            
-            <div class="info-row-editable">
-                <div class="info-label">Tên khách hàng</div>
-                <div class="info-value-container">
-                    <div class="info-value" id="customer-name-display">Cameron Williamson</div>
-                    <input type="text" class="edit-input" id="customer-name-input" value="Cameron Williamson" style="display: none;">
-                    <button class="edit-btn" onclick="editField('customer-name')">Edit</button>
-                    <div class="edit-actions" id="customer-name-actions" style="display: none;">
-                        <button class="save-btn" onclick="saveField('customer-name')">Save</button>
-                        <button class="cancel-btn" onclick="cancelEdit('customer-name')">Cancel</button>
+
+            <div class="ad_order_detail-info-row-editable">
+                <div class="ad_order_detail-info-label">Tên khách hàng</div>
+                <div class="ad_order_detail-info-value-container">
+                    <div class="ad_order_detail-info-value" id="ad_order_detail-customer-name-display">Cameron
+                        Williamson</div>
+                    <input type="text" class="ad_order_detail-edit-input" id="ad_order_detail-customer-name-input"
+                        value="Cameron Williamson" style="display: none;">
+                    <button class="ad_order_detail-edit-btn" onclick="editField('customer-name')">Edit</button>
+                    <div class="ad_order_detail-edit-actions" id="ad_order_detail-customer-name-actions"
+                        style="display: none;">
+                        <button class="ad_order_detail-save-btn" onclick="saveField('customer-name')">Save</button>
+                        <button class="ad_order_detail-cancel-btn" onclick="cancelEdit('customer-name')">Cancel</button>
                     </div>
                 </div>
             </div>
-            
-            <div class="info-row-editable">
-                <div class="info-label">Email</div>
-                <div class="info-value-container">
-                    <div class="info-value" id="email-display">
-                        <a href="mailto:cameronwilliamson@mail.com" class="email-link">cameronwilliamson@mail.com</a>
+
+            <div class="ad_order_detail-info-row-editable">
+                <div class="ad_order_detail-info-label">Email</div>
+                <div class="ad_order_detail-info-value-container">
+                    <div class="ad_order_detail-info-value" id="ad_order_detail-email-display">
+                        <a href="mailto:cameronwilliamson@mail.com"
+                            class="ad_order_detail-email-link">cameronwilliamson@mail.com</a>
                     </div>
-                    <input type="email" class="edit-input" id="email-input" value="cameronwilliamson@mail.com" style="display: none;">
-                    <button class="edit-btn" onclick="editField('email')">Edit</button>
-                    <div class="edit-actions" id="email-actions" style="display: none;">
-                        <button class="save-btn" onclick="saveField('email')">Save</button>
-                        <button class="cancel-btn" onclick="cancelEdit('email')">Cancel</button>
+                    <input type="email" class="ad_order_detail-edit-input" id="ad_order_detail-email-input"
+                        value="cameronwilliamson@mail.com" style="display: none;">
+                    <button class="ad_order_detail-edit-btn" onclick="editField('email')">Edit</button>
+                    <div class="ad_order_detail-edit-actions" id="ad_order_detail-email-actions" style="display: none;">
+                        <button class="ad_order_detail-save-btn" onclick="saveField('email')">Save</button>
+                        <button class="ad_order_detail-cancel-btn" onclick="cancelEdit('email')">Cancel</button>
                     </div>
                 </div>
             </div>
-            
-            <div class="info-row-editable">
-                <div class="info-label">Số điện thoại</div>
-                <div class="info-value-container">
-                    <div class="info-value" id="phone-display">(+1) 840-492-1485</div>
-                    <input type="tel" class="edit-input" id="phone-input" value="(+1) 840-492-1485" style="display: none;">
-                    <button class="edit-btn" onclick="editField('phone')">Edit</button>
-                    <div class="edit-actions" id="phone-actions" style="display: none;">
-                        <button class="save-btn" onclick="saveField('phone')">Save</button>
-                        <button class="cancel-btn" onclick="cancelEdit('phone')">Cancel</button>
+
+            <div class="ad_order_detail-info-row-editable">
+                <div class="ad_order_detail-info-label">Số điện thoại</div>
+                <div class="ad_order_detail-info-value-container">
+                    <div class="ad_order_detail-info-value" id="ad_order_detail-phone-display">(+1) 840-492-1485</div>
+                    <input type="tel" class="ad_order_detail-edit-input" id="ad_order_detail-phone-input"
+                        value="(+1) 840-492-1485" style="display: none;">
+                    <button class="ad_order_detail-edit-btn" onclick="editField('phone')">Edit</button>
+                    <div class="ad_order_detail-edit-actions" id="ad_order_detail-phone-actions" style="display: none;">
+                        <button class="ad_order_detail-save-btn" onclick="saveField('phone')">Save</button>
+                        <button class="ad_order_detail-cancel-btn" onclick="cancelEdit('phone')">Cancel</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="timeline">
-            <div class="section-title">Theo dõi đơn hàng</div>
-            
-            <div class="timeline-item">
-                <div class="timeline-dot active"></div>
-                <div class="timeline-content">
-                    <div class="timeline-title">Đã tạo đơn</div>
-                    <div class="timeline-description">Đang chuẩn bị đơn</div>
+        <div class="ad_order_detail-timeline">
+            <div class="ad_order_detail-section-title">Theo dõi đơn hàng</div>
+
+            <div class="ad_order_detail-timeline-item">
+                <div class="ad_order_detail-timeline-dot active"></div>
+                <div class="ad_order_detail-timeline-content">
+                    <div class="ad_order_detail-timeline-title">Đã tạo đơn</div>
+                    <div class="ad_order_detail-timeline-description">Đang chuẩn bị đơn</div>
                 </div>
             </div>
 
-            <div class="timeline-item">
-                <div class="timeline-dot completed"></div>
-                <div class="timeline-content">
-                    <div class="timeline-title">Đang vận chuyển</div>
-                    <div class="timeline-description">Đơn hàng đang được ship đến địa chỉ của khách hàng</div>
+            <div class="ad_order_detail-timeline-item">
+                <div class="ad_order_detail-timeline-dot completed"></div>
+                <div class="ad_order_detail-timeline-content">
+                    <div class="ad_order_detail-timeline-title">Đang vận chuyển</div>
+                    <div class="ad_order_detail-timeline-description">Đơn hàng đang được ship đến địa chỉ của khách hàng
+                    </div>
                 </div>
             </div>
 
-            <div class="timeline-item">
-                <div class="timeline-dot completed"></div>
-                <div class="timeline-content">
-                    <div class="timeline-title">Đã nhận đơn</div>
+            <div class="ad_order_detail-timeline-item">
+                <div class="ad_order_detail-timeline-dot completed"></div>
+                <div class="ad_order_detail-timeline-content">
+                    <div class="ad_order_detail-timeline-title">Đã nhận đơn</div>
                 </div>
             </div>
         </div>
@@ -500,19 +510,19 @@
         let editMode = false;
 
         // Add click functionality to close button
-        document.querySelector('.close-btn').addEventListener('click', function() {
+        document.querySelector('.ad_order_detail-close-btn').addEventListener('click', function () {
             alert('Close button clicked');
         });
 
         function editField(fieldName) {
             const display = document.getElementById(fieldName + '-display');
             const input = document.getElementById(fieldName + '-input');
-            const editBtn = display.parentElement.querySelector('.edit-btn');
+            const editBtn = display.parentElement.querySelector('.ad_order_detail-edit-btn');
             const actions = document.getElementById(fieldName + '-actions');
 
             // Store original value
-            originalValues[fieldName] = fieldName === 'email' ? 
-                display.querySelector('.email-link').textContent : 
+            originalValues[fieldName] = fieldName === 'email' ?
+                display.querySelector('.ad_order_detail-email-link').textContent :
                 display.textContent;
 
             // Hide display and edit button, show input and actions
@@ -529,7 +539,7 @@
         function saveField(fieldName) {
             const display = document.getElementById(fieldName + '-display');
             const input = document.getElementById(fieldName + '-input');
-            const editBtn = display.parentElement.querySelector('.edit-btn');
+            const editBtn = display.parentElement.querySelector('.ad_order_detail-edit-btn');
             const actions = document.getElementById(fieldName + '-actions');
 
             // Validate input
@@ -545,7 +555,7 @@
 
             // Update display value
             if (fieldName === 'email') {
-                display.innerHTML = `<a href="mailto:${input.value}" class="email-link">${input.value}</a>`;
+                display.innerHTML = `<a href="mailto:${input.value}" class="ad_order_detail-email-link">${input.value}</a>`;
             } else {
                 display.textContent = input.value;
             }
@@ -563,7 +573,7 @@
         function cancelEdit(fieldName) {
             const display = document.getElementById(fieldName + '-display');
             const input = document.getElementById(fieldName + '-input');
-            const editBtn = display.parentElement.querySelector('.edit-btn');
+            const editBtn = display.parentElement.querySelector('.ad_order_detail-edit-btn');
             const actions = document.getElementById(fieldName + '-actions');
 
             // Restore original value
@@ -577,8 +587,8 @@
         }
 
         function toggleEditAll() {
-            const editAllBtn = document.querySelector('.edit-all-btn');
-            
+            const editAllBtn = document.querySelector('.ad_order_detail-edit-all-btn');
+
             if (!editMode) {
                 // Enter edit mode
                 editField('customer-name');
@@ -650,14 +660,14 @@
         }
 
         // Add keyboard shortcuts
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') {
                 // Cancel all editing
                 if (editMode) {
                     toggleEditAll();
                 }
             }
-            if (e.key === 'Enter' && e.target.classList.contains('edit-input')) {
+            if (e.key === 'Enter' && e.target.classList.contains('ad_order_detail-edit-input')) {
                 // Save field when Enter is pressed
                 const fieldName = e.target.id.replace('-input', '');
                 saveField(fieldName);
@@ -665,4 +675,5 @@
         });
     </script>
 </body>
+
 </html>
