@@ -43,7 +43,7 @@ body {
 .admin-logo {
     margin-top: 10%;
     border-bottom: 1px solid #e9ecef;
-    background-image: url(/asset/img/logo/horizontal.admin-png);
+    background-image: url(/asset/img/logo/horizontal.png);
     width: 80%;
     height: 10%;
     background-position: center;
@@ -213,7 +213,7 @@ body {
     display: none;
 }
 
-.admin-content-area.admin-active{
+.admin-content-area.active{
     display: block;
 }
 

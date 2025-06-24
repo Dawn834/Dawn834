@@ -4,8 +4,635 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Admin Dashboard</title>
-    <link rel="stylesheet" href="./admin-style.css">
+    <title> Admin Customer</title>
+    <style>
+        html {
+            font-size: 16px;
+        }
+
+        h2 {
+            font-size: 2.25rem;
+            color: #3F4255;
+            font-weight: 300;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --fs-body: 16px;
+            --main-color: #FFFFFF;
+            --sub-color: #FFE145;
+        }
+
+        body {
+            background-color: #ffffff;
+        }
+
+        .admin-container {
+            /*display: flex;*/
+            min-height: 100vh;
+        }
+
+        /* Content Area */
+        .admin-content-area {
+            flex: 1;
+            padding: 32px;
+            /*display: none;*/
+        }
+
+        .admin-content-area.active {
+            display: block;
+        }
+
+        .admin-breadcrumb {
+            font-size: 14px;
+            color: #6c757d;
+            margin-bottom: 8px;
+        }
+
+        .admin-page-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 32px;
+        }
+
+        .admin-content-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .admin-content-search {
+            position: relative;
+            width: 300px;
+        }
+
+        .admin-content-search input {
+            width: 100%;
+            padding: 10px 16px 10px 40px;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .admin-content-search .admin-search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+        }
+
+        .admin-action-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .admin-btn {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .admin-btn-primary {
+            background-color: var(--sub-color);
+        }
+
+        .admin-btn-primary:hover {
+            background-color: #f6981d;
+            color: #fff;
+        }
+
+        .admin-btn-secondary {
+            background-color: white;
+            border: 1px solid #e9ecef;
+        }
+
+        .admin-btn-secondary:hover {
+            background-color: #ef6a17;
+        }
+
+        /* Table */
+        .admin-table-container {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            font-size: 12px;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .admin-product-cell {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            overflow: hidden;
+        }
+
+        .admin-product-image {
+            width: 40px;
+            height: 30px;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+        }
+
+        .admin-product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .admin-product-name {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .admin-category-badge {
+            background-color: #e9ecef;
+            color: #6c757d;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .admin-stock-count {
+            font-weight: 500;
+        }
+
+        .admin-price {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .admin-action-buttons-cell {
+            display: flex;
+            gap: 8px;
+        }
+
+        .admin-action-btn {
+            width: 32px;
+            height: 32px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .admin-edit-btn {
+            background-color: #3b82f6;
+            color: white;
+        }
+
+        .admin-edit-btn:hover {
+            background-color: #2563eb;
+        }
+
+        .admin-delete-btn {
+            background-color: #ef4444;
+            color: white;
+        }
+
+        .admin-delete-btn:hover {
+            background-color: #dc2626;
+        }
+
+        .admin-checkbox {
+            width: 16px;
+            height: 16px;
+            accent-color: #4f46e5;
+        }
+
+        /* Css popup */
+        .admin-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .admin-modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 25px;
+            width: 60%;
+            max-width: 500px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .admin-modal h2 {
+            margin-bottom: 2%;
+        }
+
+        .admin-close {
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #aaa;
+        }
+
+        .admin-close:hover {
+            color: #000;
+        }
+
+        .admin-form-group {
+            margin-bottom: 15px;
+        }
+
+        .admin-form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .admin-form-group input,
+        .admin-form-group select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .admin-image-upload-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .admin-image-preview {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border: 1px dashed #ccc;
+        }
+
+        .admin-upload-btn {
+            background-color: #2196F3;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .admin-form-actions {
+            margin-top: 20px;
+            text-align: right;
+            display: flex;
+        }
+
+        .admin-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .admin-btn-save {
+            background-color: var(--sub-color);
+        }
+
+        .admin-btn-cancel {
+            background-color: #f44336;
+            color: white;
+            margin-right: 10px;
+        }
+
+
+        /* Popup add new product */
+
+        .admin-popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            display: none;
+        }
+
+        .admin-popup-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .admin-popup-header {
+            padding: 24px 24px 16px 24px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .admin-popup-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #111827;
+            margin: 0;
+        }
+
+        .admin-popup-content {
+            padding: 24px;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 32px;
+        }
+
+        .admin-left-section,
+        .admin-right-section {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .admin-section {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .admin-section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+            margin: 0;
+        }
+
+        .admin-form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .admin-form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .admin-input-field {
+            padding: 12px 16px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.2s;
+            background: white;
+        }
+
+        .admin-input-field:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .admin-input-field::placeholder {
+            color: #9ca3af;
+        }
+
+        .admin-textarea-field {
+            min-height: 120px;
+            resize: vertical;
+            font-family: inherit;
+        }
+
+        .admin-checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .admin-checkbox {
+            width: 18px;
+            height: 18px;
+            accent-color: #3b82f6;
+        }
+
+        .admin-checkbox-label {
+            font-size: 14px;
+            color: #374151;
+            cursor: pointer;
+        }
+
+        .admin-right-section {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .admin-image-upload {
+            border: 2px dashed #d1d5db;
+            border-radius: 8px;
+            padding: 20px 0;
+            text-align: center;
+            background: #f9fafb;
+            transition: border-color 0.2s;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .admin-image-upload img {
+            width: 100%;
+            height: 50%;
+            object-fit: cover;
+        }
+
+        .admin-image-upload:hover {
+            border-color: #3b82f6;
+            background: #f0f7ff;
+        }
+
+        .admin-upload-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 12px;
+            background: #e5e7eb;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #6b7280;
+        }
+
+        .admin-upload-text {
+            font-size: 14px;
+            color: #374151;
+            margin-bottom: 4px;
+        }
+
+        .admin-upload-hint {
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        .admin-radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .admin-radio-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .admin-radio {
+            width: 18px;
+            height: 18px;
+            accent-color: #3b82f6;
+        }
+
+        .admin-radio-label {
+            font-size: 14px;
+            color: #374151;
+            cursor: pointer;
+        }
+
+        .admin-date-input {
+            margin-top: 8px;
+        }
+
+        .admin-popup-footer {
+            padding: 16px 24px;
+            border-top: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            background: #f9fafb;
+            border-radius: 0 0 12px 12px;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .admin-footer-btn {
+            display: flex;
+            gap: 10%;
+        }
+
+        .admin-btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .admin-btn-secondary {
+            background: white;
+            color: #374151;
+            border: 1px solid #d1d5db;
+        }
+
+        .admin-btn-secondary:hover {
+            background: #f3f4f6;
+        }
+
+        .admin-hidden {
+            display: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .admin-popup-content {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .admin-form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .admin-sidebar {
+                width: 200px;
+            }
+
+            .admin-content-area {
+                padding: 16px;
+            }
+
+            .admin-content-header {
+                flex-direction: column;
+                gap: 16px;
+                align-items: stretch;
+            }
+
+            .admin-content-search {
+                width: 100%;
+            }
+
+            table {
+                font-size: 14px;
+            }
+
+            th,
+            td {
+                padding: 12px 8px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -13,32 +640,32 @@
         <!-- Main Content -->
         <main class="main-content">
             <!-- Content Area -->
-             <div class="content-area" id="tab2">
-                <div class="breadcrumb">Thống kê / Khách hàng</div>
-                <h1 class="page-title">Khách hàng</h1>
+            <div class="admin-content-area" id="admin-tab2">
+                <div class="admin-breadcrumb">Thống kê / Khách hàng</div>
+                <h1 class="admin-page-title">Khách hàng</h1>
 
-                <div class="content-header">
-                    <div class="content-search">
-                        <span class="search-icon">🔍</span>
+                <div class="admin-content-header">
+                    <div class="admin-content-search">
+                        <span class="admin-search-icon">🔍</span>
                         <input type="text" placeholder="Tìm kiếm khách hàng">
                     </div>
 
-                    <div class="action-buttons">
-                        <!-- <button class="btn btn-primary" id="openPopupBtn">
+                    <div class="admin-action-buttons">
+                        <button class="admin-btn admin-btn-primary" id="admin-openPopupBtn">
                             ➕ Thêm khách hàng
-                        </button> -->
-                        <button class="btn btn-secondary">
+                        </button>
+                        <button class="admin-btn admin-btn-secondary">
                             <strong>X</strong> Xoá
                         </button>
                     </div>
                 </div>
 
                 <!-- Products Table -->
-                <div class="table-container">
+                <div class="admin-table-container">
                     <table>
                         <thead>
                             <tr>
-                                <th><input type="checkbox" class="checkbox"></th>
+                                <th><input type="checkbox" class="admin-checkbox"></th>
                                 <th>Tên khách hàng</th>
                                 <th>Số điện thoại</th>
                                 <th>Địa chỉ giao hàng</th>
@@ -46,83 +673,83 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr id="product-1">
-                                <td><input type="checkbox" class="checkbox"></td>
+                            <tr id="admin-product-1">
+                                <td><input type="checkbox" class="admin-checkbox"></td>
                                 <td>
-                                    <div class="product-cell">
-                                        <span class="product-name">Trần Minh Anh</span>
+                                    <div class="admin-product-cell">
+                                        <span class="admin-product-name">Trần Minh Anh</span>
                                     </div>
                                 </td>
-                                <td class="stock-count">0983 451 289</td>
-                                <td class="price">Hàng Trống, Hoàn Kiếm, Hà Nội</td>
+                                <td class="admin-stock-count">0983 451 289</td>
+                                <td class="admin-price">Hàng Trống, Hoàn Kiếm, Hà Nội</td>
                                 <td>
-                                    <div class="action-buttons-cell">
-                                        <button class="action-btn edit-btn edit-product-btn" data-id="1">✏️</button>
-                                        <button class="action-btn delete-btn">🗑️</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr id="product-2">
-                                <td><input type="checkbox" class="checkbox"></td>
-                                <td>
-                                    <div class="product-cell">
-                                        <span class="product-name">Nguyễn Văn Bình</span>
-                                    </div>
-                                </td>
-                                <td class="stock-count">0912 345 678</td>
-                                <td class="price">58 Quốc Tử Giám, Văn Miếu, Đống Đa, Hà Nội</td>
-                                <td>
-                                    <div class="action-buttons-cell">
-                                        <button class="action-btn edit-btn edit-product-btn" data-id="2">✏️</button>
-                                        <button class="action-btn delete-btn">🗑️</button>
+                                    <div class="admin-action-buttons-cell">
+                                        <button class="admin-action-btn edit-btn edit-product-btn" data-id="admin-1">✏️</button>
+                                        <button class="admin-action-btn delete-btn">🗑️</button>
                                     </div>
                                 </td>
                             </tr>
-                            <tr id="product-3">
-                                <td><input type="checkbox" class="checkbox"></td>
+                            <tr id="admin-product-2">
+                                <td><input type="checkbox" class="admin-checkbox"></td>
                                 <td>
-                                    <div class="product-cell">
-                                        <span class="product-name">Lê Thị Hương</span>
+                                    <div class="admin-product-cell">
+                                        <span class="admin-product-name">Nguyễn Văn Bình</span>
                                     </div>
                                 </td>
-                                <td class="stock-count">0378 956 123</td>
-                                <td class="price">1 Tràng Tiền, Hoàn Kiếm, Hà Nội</td>
+                                <td class="admin-stock-count">0912 345 678</td>
+                                <td class="admin-price">58 Quốc Tử Giám, Văn Miếu, Đống Đa, Hà Nội</td>
                                 <td>
-                                    <div class="action-buttons-cell">
-                                        <button class="action-btn edit-btn edit-product-btn" data-id="3">✏️</button>
-                                        <button class="action-btn delete-btn">🗑️</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr id="product-4">
-                                <td><input type="checkbox" class="checkbox"></td>
-                                <td>
-                                    <div class="product-cell">
-                                        <span class="product-name">Phạm Đức Cường</span>
-                                    </div>
-                                </td>
-                                <td class="stock-count">0856 789 012</td>
-                                <td class="price">Đồng Xuân, Hoàn Kiếm, Hà Nội</td>
-                                <td>
-                                    <div class="action-buttons-cell">
-                                        <button class="action-btn edit-btn edit-product-btn" data-id="4">✏️</button>
-                                        <button class="action-btn delete-btn">🗑️</button>
+                                    <div class="admin-action-buttons-cell">
+                                        <button class="admin-action-btn edit-btn edit-product-btn" data-id="admin-2">✏️</button>
+                                        <button class="admin-action-btn delete-btn">🗑️</button>
                                     </div>
                                 </td>
                             </tr>
-                            <tr id="product-5">
-                                <td><input type="checkbox" class="checkbox"></td>
+                            <tr id="admin-product-3">
+                                <td><input type="checkbox" class="admin-checkbox"></td>
                                 <td>
-                                    <div class="product-cell">
-                                        <span class="product-name">Hoàng Thị Lan</span>
+                                    <div class="admin-product-cell">
+                                        <span class="admin-product-name">Lê Thị Hương</span>
                                     </div>
                                 </td>
-                                <td class="stock-count">0904 567 890</td>
-                                <td class="price">458 Minh Khai, Vĩnh Tuy, Hai Bà Trưng, Hà Nội</td>
+                                <td class="admin-stock-count">0378 956 123</td>
+                                <td class="admin-price">1 Tràng Tiền, Hoàn Kiếm, Hà Nội</td>
                                 <td>
-                                    <div class="action-buttons-cell">
-                                        <button class="action-btn edit-btn edit-product-btn" data-id="5">✏️</button>
-                                        <button class="action-btn delete-btn">🗑️</button>
+                                    <div class="admin-action-buttons-cell">
+                                        <button class="admin-action-btn edit-btn edit-product-btn" data-id="admin-3">✏️</button>
+                                        <button class="admin-action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="admin-product-4">
+                                <td><input type="checkbox" class="admin-checkbox"></td>
+                                <td>
+                                    <div class="admin-product-cell">
+                                        <span class="admin-product-name">Phạm Đức Cường</span>
+                                    </div>
+                                </td>
+                                <td class="admin-stock-count">0856 789 012</td>
+                                <td class="admin-price">Đồng Xuân, Hoàn Kiếm, Hà Nội</td>
+                                <td>
+                                    <div class="admin-action-buttons-cell">
+                                        <button class="admin-action-btn edit-btn edit-product-btn" data-id="admin-4">✏️</button>
+                                        <button class="admin-action-btn delete-btn">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="admin-product-5">
+                                <td><input type="checkbox" class="admin-checkbox"></td>
+                                <td>
+                                    <div class="admin-product-cell">
+                                        <span class="admin-product-name">Hoàng Thị Lan</span>
+                                    </div>
+                                </td>
+                                <td class="admin-stock-count">0904 567 890</td>
+                                <td class="admin-price">458 Minh Khai, Vĩnh Tuy, Hai Bà Trưng, Hà Nội</td>
+                                <td>
+                                    <div class="admin-action-buttons-cell">
+                                        <button class="admin-action-btn edit-btn edit-product-btn" data-id="admin-5">✏️</button>
+                                        <button class="admin-action-btn delete-btn">🗑️</button>
                                     </div>
                                 </td>
                             </tr>
