@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chi Tiết Danh Mục</title>
+    <title>Add Voucher</title>
     <style>
         * {
             margin: 0;
@@ -22,7 +22,7 @@
             padding: 20px;
         }
 
-        .popup-overlay {
+        .ad_add_voucher-popup-overlay {
             position: fixed;
             top: 0;
             left: 0;
@@ -35,7 +35,7 @@
             z-index: 1000;
         }
 
-        .popup-container {
+        .ad_add_voucher-popup-container {
             background: white;
             border-radius: 12px;
             width: 100%;
@@ -46,21 +46,21 @@
             position: relative;
         }
 
-        .popup-header {
+        .ad_add_voucher-popup-header {
             padding: 24px 24px 0 24px;
             border-bottom: 1px solid #e5e7eb;
             margin-bottom: 24px;
             position: relative;
         }
 
-        .popup-title {
+        .ad_add_voucher-popup-title {
             font-size: 24px;
             font-weight: 600;
             color: #1f2937;
             margin-bottom: 24px;
         }
 
-        .close-btn {
+        .ad_add_voucher-close-btn {
             position: absolute;
             top: 20px;
             right: 20px;
@@ -78,20 +78,20 @@
             transition: all 0.2s ease;
         }
 
-        .close-btn:hover {
+        .ad_add_voucher-close-btn:hover {
             background-color: #f3f4f6;
             color: #374151;
         }
 
-        .popup-content {
+        .ad_add_voucher-popup-content {
             padding: 0 24px 24px 24px;
         }
 
-        .form-group {
+        .ad_add_voucher-form-group {
             margin-bottom: 24px;
         }
 
-        .form-label {
+        .ad_add_voucher-form-label {
             display: block;
             font-size: 14px;
             font-weight: 500;
@@ -99,7 +99,7 @@
             margin-bottom: 8px;
         }
 
-        .form-input {
+        .ad_add_voucher-form-input {
             width: 100%;
             padding: 12px 16px;
             border: 2px solid #d1d5db;
@@ -112,19 +112,19 @@
             min-height: 44px;
         }
 
-        .form-input:focus {
+        .ad_add_voucher-form-input:focus {
             outline: none;
             border-color: #3b82f6;
             background-color: white;
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
 
-        .form-input.textarea {
+        .ad_add_voucher-form-input.ad_add_voucher-textarea {
             min-height: 100px;
             font-family: inherit;
         }
 
-        .form-select {
+        .ad_add_voucher-form-select {
             width: 100%;
             padding: 12px 16px;
             border: 2px solid #d1d5db;
@@ -132,7 +132,7 @@
             font-size: 16px;
             color: #1f2937;
             background-color: #f9fafb;
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.ad_add_voucher-w3.ad_add_voucher-org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
             background-position: right 12px center;
             background-repeat: no-repeat;
             background-size: 16px;
@@ -142,7 +142,7 @@
             transition: all 0.2s ease;
         }
 
-        .form-select:focus {
+        .ad_add_voucher-form-select:focus {
             outline: none;
             border-color: #3b82f6;
             background-color: white;
@@ -150,12 +150,12 @@
         }
 
         /* Custom Dropdown Styles */
-        .custom-dropdown {
+        .ad_add_voucher-custom-dropdown {
             position: relative;
             width: 100%;
         }
 
-        .dropdown-header {
+        .ad_add_voucher-dropdown-header {
             width: 100%;
             padding: 12px 16px;
             border: 2px solid #d1d5db;
@@ -169,33 +169,33 @@
             min-height: 48px;
         }
 
-        .dropdown-header:hover {
+        .ad_add_voucher-dropdown-header:hover {
             border-color: #9ca3af;
         }
 
-        .dropdown-header.active {
+        .ad_add_voucher-dropdown-header.ad_add_voucher-active {
             border-color: #3b82f6;
             background-color: white;
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
 
-        .dropdown-text {
+        .ad_add_voucher-dropdown-text {
             color: #374151;
             font-size: 16px;
             flex: 1;
         }
 
-        .dropdown-arrow {
+        .ad_add_voucher-dropdown-arrow {
             color: #6b7280;
             transition: transform 0.2s ease;
             font-size: 12px;
         }
 
-        .dropdown-header.active .dropdown-arrow {
+        .ad_add_voucher-dropdown-header.ad_add_voucher-active .ad_add_voucher-dropdown-arrow {
             transform: rotate(180deg);
         }
 
-        .dropdown-content {
+        .ad_add_voucher-dropdown-content {
             position: absolute;
             top: 100%;
             left: 0;
@@ -211,17 +211,17 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
-        .dropdown-content.show {
+        .ad_add_voucher-dropdown-content.ad_add_voucher-show {
             display: block;
         }
 
-        .dropdown-search {
+        .ad_add_voucher-dropdown-search {
             padding: 12px;
             border-bottom: 1px solid #e5e7eb;
             background-color: #f9fafb;
         }
 
-        .dropdown-search input {
+        .ad_add_voucher-dropdown-search input {
             width: 100%;
             padding: 8px 12px;
             border: 1px solid #d1d5db;
@@ -230,17 +230,17 @@
             outline: none;
         }
 
-        .dropdown-search input:focus {
+        .ad_add_voucher-dropdown-search input:focus {
             border-color: #3b82f6;
             box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
         }
 
-        .dropdown-options {
+        .ad_add_voucher-dropdown-options {
             max-height: 200px;
             overflow-y: auto;
         }
 
-        .dropdown-option {
+        .ad_add_voucher-dropdown-option {
             display: flex;
             align-items: center;
             padding: 12px;
@@ -249,15 +249,15 @@
             border-bottom: 1px solid #f3f4f6;
         }
 
-        .dropdown-option:hover {
+        .ad_add_voucher-dropdown-option:hover {
             background-color: #f8fafc;
         }
 
-        .dropdown-option:last-child {
+        .ad_add_voucher-dropdown-option:last-child {
             border-bottom: none;
         }
 
-        .dropdown-option img {
+        .ad_add_voucher-dropdown-option img {
             width: 40px;
             height: 40px;
             border-radius: 6px;
@@ -265,35 +265,35 @@
             object-fit: cover;
         }
 
-        .option-info {
+        .ad_add_voucher-option-info {
             flex: 1;
         }
 
-        .option-name {
+        .ad_add_voucher-option-name {
             font-weight: 500;
             color: #1f2937;
             margin-bottom: 2px;
         }
 
-        .option-price {
+        .ad_add_voucher-option-price {
             font-size: 14px;
             color: #059669;
             font-weight: 600;
         }
 
-        .option-stock {
+        .ad_add_voucher-option-stock {
             font-size: 12px;
             color: #6b7280;
             margin-left: 12px;
         }
 
-        .dropdown-footer {
+        .ad_add_voucher-dropdown-footer {
             padding: 12px;
             border-top: 1px solid #e5e7eb;
             background-color: #f9fafb;
         }
 
-        .btn-add-product {
+        .ad_add_voucher-btn-add-product {
             width: 100%;
             padding: 8px 16px;
             background-color: #3b82f6;
@@ -306,12 +306,12 @@
             transition: background-color 0.2s ease;
         }
 
-        .btn-add-product:hover {
+        .ad_add_voucher-btn-add-product:hover {
             background-color: #2563eb;
         }
 
         /* Delete product button */
-        .btn-delete-product {
+        .ad_add_voucher-btn-delete-product {
             background: none;
             border: none;
             color: #6b7280;
@@ -327,50 +327,50 @@
             height: 32px;
         }
 
-        .btn-delete-product:hover {
+        .ad_add_voucher-btn-delete-product:hover {
             background-color: #fee2e2;
             color: #dc2626;
             transform: scale(1.1);
         }
 
-        .btn-delete-product svg {
+        .ad_add_voucher-btn-delete-product svg {
             transition: transform 0.2s ease;
         }
 
-        .btn-delete-product:hover svg {
+        .ad_add_voucher-btn-delete-product:hover svg {
             transform: scale(1.1);
         }
 
         /* Hide delete button in readonly mode */
-        .dropdown-readonly .btn-delete-product {
+        .ad_add_voucher-dropdown-readonly .ad_add_voucher-btn-delete-product {
             display: none;
         }
 
         /* Scrollbar styling */
-        .dropdown-options::-webkit-scrollbar {
+        .ad_add_voucher-dropdown-options::-webkit-scrollbar {
             width: 4px;
         }
 
-        .dropdown-options::-webkit-scrollbar-track {
+        .ad_add_voucher-dropdown-options::-webkit-scrollbar-track {
             background: #f1f1f1;
         }
 
-        .dropdown-options::-webkit-scrollbar-thumb {
+        .ad_add_voucher-dropdown-options::-webkit-scrollbar-thumb {
             background: #c1c1c1;
             border-radius: 2px;
         }
 
-        .dropdown-options::-webkit-scrollbar-thumb:hover {
+        .ad_add_voucher-dropdown-options::-webkit-scrollbar-thumb:hover {
             background: #a1a1a1;
         }
 
-        .button-group {
+        .ad_add_voucher-button-group {
             display: flex;
             gap: 12px;
             margin-top: 32px;
         }
 
-        .btn {
+        .ad_add_voucher-btn {
             flex: 1;
             padding: 12px 24px;
             border: none;
@@ -386,23 +386,23 @@
             text-decoration: none;
         }
 
-        .btn-primary {
+        .ad_add_voucher-btn-primary {
             background-color: #3b82f6;
             color: white;
         }
 
-        .btn-primary:hover {
+        .ad_add_voucher-btn-primary:hover {
             background-color: #2563eb;
             transform: translateY(-1px);
             box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
         }
 
-        .btn-danger {
+        .ad_add_voucher-btn-danger {
             background-color: #ef4444;
             color: white;
         }
 
-        .btn-danger:hover {
+        .ad_add_voucher-btn-danger:hover {
             background-color: #dc2626;
             transform: translateY(-1px);
             box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
@@ -421,24 +421,24 @@
             }
         }
 
-        .popup-container {
+        .ad_add_voucher-popup-container {
             animation: fadeIn 0.3s ease-out;
         }
 
         /* Responsive */
         @media (max-width: 480px) {
-            .popup-container {
+            .ad_add_voucher-popup-container {
                 margin: 20px;
                 max-width: calc(100% - 40px);
             }
 
-            .popup-header,
-            .popup-content {
+            .ad_add_voucher-popup-header,
+            .ad_add_voucher-popup-content {
                 padding-left: 16px;
                 padding-right: 16px;
             }
 
-            .button-group {
+            .ad_add_voucher-button-group {
                 flex-direction: column;
             }
         }
@@ -446,35 +446,33 @@
 </head>
 
 <body>
-    <div class="popup-overlay" id="popupOverlay">
-        <div class="popup-container">
-            <div class="popup-header">
-                <h2 class="popup-title">Thêm khuyến mại</h2>
-                <button class="close-btn" onclick="closePopup()">&times;</button>
+    <div class="ad_add_voucher-popup-overlay" id="ad_add_voucher-popupOverlay">
+        <div class="ad_add_voucher-popup-container">
+            <div class="ad_add_voucher-popup-header">
+                <h2 class="ad_add_voucher-popup-title">Thêm khuyến mại</h2>
+                <button class="ad_add_voucher-close-btn" onclick="closePopup()">&times;</button>
             </div>
 
-            <div class="popup-content">
-                <form id="categoryForm">
-                    <div class="form-group">
-                        <label class="form-label" >Mã khuyến mại</label>
-                        <input type="text" class="form-input" value=""
-                            placeholder="mã khuyến mại..">
+            <div class="ad_add_voucher-popup-content">
+                <form id="ad_add_voucher-categoryForm">
+                    <div class="ad_add_voucher-form-group">
+                        <label class="ad_add_voucher-form-label">Mã khuyến mại</label>
+                        <input type="text" class="ad_add_voucher-form-input" value="" placeholder="mã khuyến mại..">
                     </div>
 
-                    <div class="form-group">
-                        <label class="form-label" >Phần trăm khuyến mại</label>
-                        <input type="text" class="form-input" value=""
-                            placeholder="mã khuyến mại..">
+                    <div class="ad_add_voucher-form-group">
+                        <label class="ad_add_voucher-form-label">Phần trăm khuyến mại</label>
+                        <input type="text" class="ad_add_voucher-form-input" value="" placeholder="mã khuyến mại..">
                     </div>
 
-                    <div class="form-group">
-                        <label class="form-label">Mô tả</label>
-                        <textarea class="form-input textarea"
+                    <div class="ad_add_voucher-form-group">
+                        <label class="ad_add_voucher-form-label">Mô tả</label>
+                        <textarea class="ad_add_voucher-form-input textarea"
                             placeholder="Nhập mô tả danh mục..."></textarea>
                     </div>
 
-                    <div class="button-group">
-                        <button type="button" class="btn btn-primary" onclick="updateCategory()">
+                    <div class="ad_add_voucher-button-group">
+                        <button type="button" class="ad_add_voucher-btn ad_add_voucher-btn-primary" onclick="updateCategory()">
                             Thêm khuyến mại
                         </button>
                     </div>
@@ -491,5 +489,6 @@
             }, 300);
         } -->
 </body>
+
 
 </html>

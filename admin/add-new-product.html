@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.ad_add_product-0">
     <title>Add Product Popup</title>
     <style>
         * {
@@ -21,7 +21,7 @@
             padding: 20px;
         }
 
-        .popup-overlay {
+        .ad_add_product-popup-overlay {
             position: fixed;
             top: 0;
             left: 0;
@@ -34,7 +34,7 @@
             z-index: 1000;
         }
 
-        .popup-container {
+        .ad_add_product-popup-container {
             background: white;
             border-radius: 12px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
@@ -45,57 +45,57 @@
             position: relative;
         }
 
-        .popup-header {
+        .ad_add_product-popup-header {
             padding: 24px 24px 16px 24px;
             border-bottom: 1px solid #e5e7eb;
         }
 
-        .popup-title {
+        .ad_add_product-popup-title {
             font-size: 24px;
             font-weight: 600;
             color: #111827;
             margin: 0;
         }
 
-        .popup-content {
+        .ad_add_product-popup-content {
             padding: 24px;
             display: grid;
             grid-template-columns: 1fr 300px;
             gap: 32px;
         }
 
-        .left-section {
+        .ad_add_product-left-section {
             display: flex;
             flex-direction: column;
             gap: 24px;
         }
 
-        .section {
+        .ad_add_product-section {
             display: flex;
             flex-direction: column;
             gap: 16px;
         }
 
-        .section-title {
+        .ad_add_product-section-title {
             font-size: 18px;
             font-weight: 600;
             color: #111827;
             margin: 0;
         }
 
-        .form-group {
+        .ad_add_product-form-group {
             display: flex;
             flex-direction: column;
             gap: 8px;
         }
 
-        .form-row {
+        .ad_add_product-form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 16px;
         }
 
-        .input-field {
+        .ad_add_product-input-field {
             padding: 12px 16px;
             border: 1px solid #d1d5db;
             border-radius: 8px;
@@ -104,48 +104,48 @@
             background: white;
         }
 
-        .input-field:focus {
+        .ad_add_product-input-field:focus {
             outline: none;
             border-color: #3b82f6;
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
 
-        .input-field::placeholder {
+        .ad_add_product-input-field::placeholder {
             color: #9ca3af;
         }
 
-        .textarea-field {
+        .ad_add_product-textarea-field {
             min-height: 120px;
             resize: vertical;
             font-family: inherit;
         }
 
-        .checkbox-container {
+        .ad_add_product-checkbox-container {
             display: flex;
             align-items: center;
             gap: 8px;
             margin-top: 8px;
         }
 
-        .checkbox {
+        .ad_add_product-checkbox {
             width: 18px;
             height: 18px;
             accent-color: #3b82f6;
         }
 
-        .checkbox-label {
+        .ad_add_product-checkbox-label {
             font-size: 14px;
             color: #374151;
             cursor: pointer;
         }
 
-        .right-section {
+        .ad_add_product-right-section {
             display: flex;
             flex-direction: column;
             gap: 24px;
         }
 
-        .image-upload {
+        .ad_add_product-image-upload {
             border: 2px dashed #d1d5db;
             border-radius: 8px;
             padding: 32px 16px;
@@ -155,12 +155,12 @@
             cursor: pointer;
         }
 
-        .image-upload:hover {
+        .ad_add_product-image-upload:hover {
             border-color: #3b82f6;
             background: #f0f7ff;
         }
 
-        .upload-icon {
+        .ad_add_product-upload-icon {
             width: 48px;
             height: 48px;
             margin: 0 auto 12px;
@@ -173,46 +173,46 @@
             color: #6b7280;
         }
 
-        .upload-text {
+        .ad_add_product-upload-text {
             font-size: 14px;
             color: #374151;
             margin-bottom: 4px;
         }
 
-        .upload-hint {
+        .ad_add_product-upload-hint {
             font-size: 12px;
             color: #6b7280;
         }
 
-        .radio-group {
+        .ad_add_product-radio-group {
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
 
-        .radio-option {
+        .ad_add_product-radio-option {
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .radio {
+        .ad_add_product-radio {
             width: 18px;
             height: 18px;
             accent-color: #3b82f6;
         }
 
-        .radio-label {
+        .ad_add_product-radio-label {
             font-size: 14px;
             color: #374151;
             cursor: pointer;
         }
 
-        .date-input {
+        .ad_add_product-date-input {
             margin-top: 8px;
         }
 
-        .popup-footer {
+        .ad_add_product-popup-footer {
             padding: 16px 24px;
             border-top: 1px solid #e5e7eb;
             display: flex;
@@ -222,7 +222,7 @@
             border-radius: 0 0 12px 12px;
         }
 
-        .btn {
+        .ad_add_product-btn {
             padding: 10px 20px;
             border-radius: 8px;
             font-size: 14px;
@@ -232,77 +232,77 @@
             border: none;
         }
 
-        .btn-secondary {
+        .ad_add_product-btn-secondary {
             background: white;
             color: #374151;
             border: 1px solid #d1d5db;
         }
 
-        .btn-secondary:hover {
+        .ad_add_product-btn-secondary:hover {
             background: #f3f4f6;
         }
 
-        .btn-primary {
+        .ad_add_product-btn-primary {
             background: #3b82f6;
             color: white;
         }
 
-        .btn-primary:hover {
+        .ad_add_product-btn-primary:hover {
             background: #2563eb;
         }
 
-        .hidden {
+        .ad_add_product-hidden {
             display: none;
         }
 
         @media (max-width: 768px) {
-            .popup-content {
+            .ad_add_product-popup-content {
                 grid-template-columns: 1fr;
                 gap: 24px;
             }
             
-            .form-row {
+            .ad_add_product-form-row {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <div class="popup-overlay" id="Popup-add-product" >
-        <div class="popup-container">
-            <div class="popup-header">
-                <h2 class="popup-title">Thêm sản phẩm</h2>
+    <div class="ad_add_product-popup-overlay" id="ad_add_product-Popup-add-product" >
+        <div class="ad_add_product-popup-container">
+            <div class="ad_add_product-popup-header">
+                <h2 class="ad_add_product-popup-title">Thêm sản phẩm</h2>
             </div>
             
-            <div class="popup-content">
-                <div class="left-section">
+            <div class="ad_add_product-popup-content">
+                <div class="ad_add_product-left-section">
                     <!-- Basic Information Section -->
-                    <div class="section">
-                        <h3 class="section-title">Thông tin cơ bản của sản phẩm</h3>
-                        <div class="form-group">
-                            <input type="text" class="input-field" placeholder="Tên sản phẩm" id="productName">
+                    <div class="ad_add_product-section">
+                        <h3 class="ad_add_product-section-title">Thông tin cơ bản của sản phẩm</h3>
+                        <div class="ad_add_product-form-group">
+                            <input type="text" class="ad_add_product-input-field" placeholder="Tên sản phẩm" id="ad_add_product-productName">
                         </div>
-                        <div class="form-group">
-                            <textarea class="input-field textarea-field" placeholder="Mô tả sản phẩm" id="description"></textarea>
+                        <div class="ad_add_product-form-group">
+                            <textarea class="ad_add_product-input-field textarea-field" placeholder="Mô tả sản phẩm" id="ad_add_product-description"></textarea>
                         </div>
                     </div>
 
                     <!-- Stock & Pricing Section -->
-                    <div class="section">
-                        <h3 class="section-title">Stock & Pricing</h3>
-                        <div class="form-row">
-                            <input type="number" class="input-field" placeholder="Stock" id="stock">
-                            <input type="number" class="input-field" placeholder="Price" step="0.01" id="price">
+                    <div class="ad_add_product-section">
+                        <h3 class="ad_add_product-section-title">Stock & Pricing</h3>
+                        <div class="ad_add_product-form-row">
+                            <input type="number" class="ad_add_product-input-field" placeholder="Stock" id="ad_add_product-stock">
+                            <input type="number" class="ad_add_product-input-field" placeholder="Price" step="0.01" id="ad_add_product-price">
                         </div>
                         
-                        <!-- <div class="checkbox-container">
-                            <input type="checkbox" class="checkbox" id="scheduleDiscount">
-                            <label for="scheduleDiscount" class="checkbox-label">Schedule a discount</label>
+                        <!-- <div class="ad_add_product-checkbox-container">
+                            <input type="checkbox" class="ad_add_product-checkbox" id="ad_add_product-scheduleDiscount">
+                            <label for="scheduleDiscount" class="ad_add_product-checkbox-label">Schedule a discount</label>
                         </div>
                         
-                        <div class="form-row" id="discountFields" style="display: none;">
-                            <input type="number" class="input-field" placeholder="Discount %" id="discountPercent">
-                            <div class="input-field" style="display: flex; align-items: center; gap: 8px; color: #6b7280;">
+                        <div class="ad_add_product-form-row" id="ad_add_product-discountFields" style="display: none;">
+                            <input type="number" class="ad_add_product-input-field" placeholder="Discount %" id="ad_add_product-discountPercent">
+                            <div class="ad_add_product-input-field" style="display: flex; align-items: center; gap: 8px; color: #6b7280;">
                                 <span>💰</span>
                                 <span>Select Date</span>
                             </div>
@@ -310,53 +310,53 @@
                     </div>
                 </div>
 
-                <div class="right-section">
+                <div class="ad_add_product-right-section">
                     <!-- Product Image Section -->
-                    <div class="section">
-                        <h3 class="section-title">Ảnh sản phẩm</h3>
-                        <div class="image-upload" onclick="document.getElementById('imageInput').click()">
-                            <div class="upload-icon">🖼️</div>
-                            <div class="upload-text">Tải ảnh của sản phẩm</div>
+                    <div class="ad_add_product-section">
+                        <h3 class="ad_add_product-section-title">Ảnh sản phẩm</h3>
+                        <div class="ad_add_product-image-upload" onclick="document.getElementById('ad_add_product-imageInput').click()">
+                            <div class="ad_add_product-upload-icon">🖼️</div>
+                            <div class="ad_add_product-upload-text">Tải ảnh của sản phẩm</div>
                         </div>
-                        <input type="file" id="imageInput" accept=".png,.jpg,.jpeg" style="display: none;">
+                        <input type="file" id="ad_add_product-imageInput" accept=".png,.jpg,.jpeg" style="display: none;">
                     </div>
 
                     <!-- Visibility Section -->
-                    <div class="section">
-                        <h3 class="section-title">Danh mục đồ ăn</h3>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <input type="radio" class="radio" name="visibility">
-                                <label for="published" class="radio-label">Đồ Việt</label>
+                    <div class="ad_add_product-section">
+                        <h3 class="ad_add_product-section-title">Danh mục đồ ăn</h3>
+                        <div class="ad_add_product-radio-group">
+                            <div class="ad_add_product-radio-option">
+                                <input type="radio" class="ad_add_product-radio" name="visibility">
+                                <label for="published" class="ad_add_product-radio-label">Đồ Việt</label>
                             </div>
-                            <div class="radio-option">
-                                <input type="radio" class="radio" name="visibility">
-                                <label for="scheduled" class="radio-label">Đồ Tây</label>
+                            <div class="ad_add_product-radio-option">
+                                <input type="radio" class="ad_add_product-radio" name="visibility">
+                                <label for="scheduled" class="ad_add_product-radio-label">Đồ Tây</label>
                             </div>
-                            <div class="radio-option">
-                                <input type="radio" class="radio" name="visibility" >
-                                <label for="hidden" class="radio-label">Đồ Âu</label>
+                            <div class="ad_add_product-radio-option">
+                                <input type="radio" class="ad_add_product-radio" name="visibility" >
+                                <label for="hidden" class="ad_add_product-radio-label">Đồ Âu</label>
                             </div>
                         </div>
                         
-                        <!-- <div class="date-input" id="scheduleDate">
-                            <input type="date" class="input-field" placeholder="Select Date" id="publishDate">
+                        <!-- <div class="ad_add_product-date-input" id="ad_add_product-scheduleDate">
+                            <input type="date" class="ad_add_product-input-field" placeholder="Select Date" id="ad_add_product-publishDate">
                         </div> -->
                     </div>
                 </div>
             </div>
 
-            <div class="popup-footer">
-                <button class="btn btn-secondary" onclick="closePopup()">Cancel</button>
-                <button class="btn btn-primary" onclick="addProduct()">Add Product</button>
+            <div class="ad_add_product-popup-footer">
+                <button class="ad_add_product-btn btn-secondary" onclick="closePopup()">Cancel</button>
+                <button class="ad_add_product-btn btn-primary" onclick="addProduct()">Add Product</button>
             </div>
         </div>
     </div>
 
     <script>
         // Handle discount checkbox
-        document.getElementById('scheduleDiscount').addEventListener('change', function() {
-            const discountFields = document.getElementById('discountFields');
+        document.getElementById('ad_add_product-scheduleDiscount').addEventListener('change', function() {
+            const discountFields = document.getElementById('ad_add_product-discountFields');
             if (this.checked) {
                 discountFields.style.display = 'grid';
             } else {
@@ -365,8 +365,8 @@
         });
 
         // Handle visibility radio buttons
-        const visibilityRadios = document.querySelectorAll('input[name="visibility"]');
-        const scheduleDate = document.getElementById('scheduleDate');
+        const visibilityRadios = document.querySelectorAllad_add_product-('input[name="visibility"]');
+        const scheduleDate = document.getElementById('ad_add_product-scheduleDate');
         
         visibilityRadios.forEach(radio => {
             radio.addEventListener('change', function() {
@@ -379,12 +379,12 @@
         });
 
         // Handle image upload
-        document.getElementById('imageInput').addEventListener('change', function(e) {
+        document.getElementById('ad_add_product-imageInput').addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    const uploadArea = document.querySelector('.image-upload');
+                    const uploadArea = document.querySelector('.ad_add_product-image-upload');
                     uploadArea.innerHTML = `
                         <img src="${e.target.result}" style="max-width: 100%; max-height: 200px; border-radius: 8px; object-fit: cover;">
                         <div style="margin-top: 8px; font-size: 12px; color: #6b7280;">${file.name}</div>
@@ -395,20 +395,20 @@
         });
 
         function closePopup() {
-            document.querySelector('.popup-overlay').style.display = 'none';
+            document.querySelector('.ad_add_product-popup-overlay').style.display = 'none';
         }
 
         function addProduct() {
             // Collect form data
             const productData = {
-                name: document.getElementById('productName').value,
-                description: document.getElementById('description').value,
-                stock: document.getElementById('stock').value,
-                price: document.getElementById('price').value,
-                hasDiscount: document.getElementById('scheduleDiscount').checked,
-                discountPercent: document.getElementById('discountPercent').value,
-                visibility: document.querySelector('input[name="visibility"]:checked').value,
-                publishDate: document.getElementById('publishDate').value
+                name: document.getElementById('ad_add_product-productName').value,
+                description: document.getElementById('ad_add_product-description').value,
+                stock: document.getElementById('ad_add_product-stock').value,
+                price: document.getElementById('ad_add_product-price').value,
+                hasDiscount: document.getElementById('ad_add_product-scheduleDiscount').checked,
+                discountPercent: document.getElementById('ad_add_product-discountPercent').value,
+                visibility: document.querySelector('ad_add_product-input[name="visibility"]:checked').value,
+                publishDate: document.getElementById('ad_add_product-publishDate').value
             };
 
             console.log('Product Data:', productData);
@@ -417,14 +417,14 @@
         }
 
         // Close popup when clicking outside
-        document.querySelector('.popup-overlay').addEventListener('click', function(e) {
+        document.querySelector('.ad_add_product-popup-overlay').addEventListener('click', function(e) {
             if (e.target === this) {
                 closePopup();
             }
         });
 
         // Initialize the scheduled date field as visible since "Scheduled" is selected by default
-        document.getElementById('scheduleDate').style.display = 'block';
+        document.getElementById('ad_add_product-scheduleDate').style.display = 'block';
     </script>
 </body>
 </html>
