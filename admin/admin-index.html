@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Admin Dashboard</title>
-    <link rel="stylesheet" href="./admin-style.css">
+    <link rel="stylesheet" href="admin-style.css">
 </head>
 
 <body>
     <div class="admin-container">
-        <!-- admin-Sidebar -->
+        <!-- Sidebar -->
         <aside class="admin-sidebar">
             <div class="admin-logo">
             </div>
@@ -58,7 +58,7 @@
                         <a href="#" class="admin-nav-link">
                             <span class="admin-nav-icon">💬</span>
                             Liên hệ
-                            <span class="badge">4</span>
+                            <span class="admin-badge">4</span>
                         </a>
                     </li>
                 </ul>
@@ -110,7 +110,7 @@
             </header>
             <!-- Product -->
             <!-- Content Area -->
-            <div class="amin-content-area active" id="tab1">
+            <div class="admin-amin-content-area active" id="tab1">
                 <div class="admin-breadcrumb">Thống kê / Sản phẩm</div>
                 <h1 class="admin-page-title">Sản phẩm</h1>
 
@@ -121,10 +121,10 @@
                     </div>
 
                     <div class="admin-action-buttons">
-                        <button class="admin-btn admin-btn-primary" id="openPopupBtn">
+                        <button class="admin-btn btn-primary" id="openPopupBtn">
                             ➕ Thêm sản phẩm
                         </button>
-                        <button class="admin-btn admin-btn-secondary">
+                        <button class="admin-btn btn-secondary">
                             <strong>X</strong> Xoá
                         </button>
                     </div>
@@ -145,255 +145,255 @@
                         </thead>
                         <tbody>
                             <tr id="product-1">
-                                <td><input type="checkbox" class="checkbox"></td>
+                                <td><input type="checkbox" class="admin-checkbox"></td>
                                 <td>
-                                    <div class="product-cell">
-                                        <div class="product-image">
+                                    <div class="admin-product-cell">
+                                        <div class="admin-product-image">
                                             <img id="productImage-1" src="/asset/img/category-food/banh mi.jpg"
                                                 alt="Bánh mì">
                                         </div>
-                                        <span class="product-name">Bánh mì Việt Nam</span>
+                                        <span class="admin-product-name">Bánh mì Việt Nam</span>
                                     </div>
                                 </td>
-                                <td><span class="category-badge">Đồ Việt</span></td>
-                                <td class="stock-count">220</td>
-                                <td class="price">30.000đ</td>
+                                <td><span class="admin-category-badge">Đồ Việt</span></td>
+                                <td class="admin-stock-count">220</td>
+                                <td class="admin-price">30.000đ</td>
                                 <td>
-                                    <div class="action-buttons-cell">
-                                        <button class="action-btn edit-btn edit-product-btn" data-id="1">✏️</button>
-                                        <button class="action-btn delete-btn">🗑️</button>
+                                    <div class="admin-action-buttons-cell">
+                                        <button class="admin-action-btn edit-btn edit-product-btn" data-id="1">✏️</button>
+                                        <button class="admin-action-btn delete-btn">🗑️</button>
                                     </div>
                                 </td>
                             </tr>
                             <tr id="product-2">
-                                <td><input type="checkbox" class="checkbox"></td>
+                                <td><input type="checkbox" class="admin-checkbox"></td>
                                 <td>
-                                    <div class="product-cell">
-                                        <div class="product-image">
+                                    <div class="admin-product-cell">
+                                        <div class="admin-product-image">
                                             <img id="productImage-2" src="/asset/img/category-food/buger.jpg"
                                                 alt="Buger">
                                         </div>
-                                        <span class="product-name">Buger</span>
+                                        <span class="admin-product-name">Buger</span>
                                     </div>
                                 </td>
-                                <td><span class="category-badge">Đồ Tây</span></td>
-                                <td class="stock-count">180</td>
-                                <td class="price">40.000đ</td>
+                                <td><span class="admin-category-badge">Đồ Tây</span></td>
+                                <td class="admin-stock-count">180</td>
+                                <td class="admin-price">40.000đ</td>
                                 <td>
-                                    <div class="action-buttons-cell">
-                                        <button class="action-btn edit-btn edit-product-btn" data-id="2">✏️</button>
-                                        <button class="action-btn delete-btn">🗑️</button>
+                                    <div class="admin-action-buttons-cell">
+                                        <button class="admin-action-btn edit-btn edit-product-btn" data-id="2">✏️</button>
+                                        <button class="admin-action-btn delete-btn">🗑️</button>
                                     </div>
                                 </td>
                             </tr>
                             <tr id="product-3">
-                                <td><input type="checkbox" class="checkbox"></td>
+                                <td><input type="checkbox" class="admin-checkbox"></td>
                                 <td>
-                                    <div class="product-cell">
-                                        <div class="product-image">
+                                    <div class="admin-product-cell">
+                                        <div class="admin-product-image">
                                             <img id="productImage-3" src="/asset/img/category-food/bundau.jpg"
                                                 alt="Bánh mì">
                                         </div>
-                                        <span class="product-name">Bún nem rán</span>
+                                        <span class="admin-product-name">Bún nem rán</span>
                                     </div>
                                 </td>
-                                <td><span class="category-badge">Đồ Việt</span></td>
-                                <td class="stock-count">200</td>
-                                <td class="price">40.000đ</td>
+                                <td><span class="admin-category-badge">Đồ Việt</span></td>
+                                <td class="admin-stock-count">200</td>
+                                <td class="admin-price">40.000đ</td>
                                 <td>
-                                    <div class="action-buttons-cell">
-                                        <button class="action-btn edit-btn edit-product-btn" data-id="3">✏️</button>
-                                        <button class="action-btn delete-btn">🗑️</button>
+                                    <div class="admin-action-buttons-cell">
+                                        <button class="admin-action-btn edit-btn edit-product-btn" data-id="3">✏️</button>
+                                        <button class="admin-action-btn delete-btn">🗑️</button>
                                     </div>
                                 </td>
                             </tr>
                             <tr id="product-4">
-                                <td><input type="checkbox" class="checkbox"></td>
+                                <td><input type="checkbox" class="admin-checkbox"></td>
                                 <td>
-                                    <div class="product-cell">
-                                        <div class="product-image">
+                                    <div class="admin-product-cell">
+                                        <div class="admin-product-image">
                                             <img id="productImage-4" src="/asset/img/category-food/buntron.jpg"
                                                 alt="Bánh mì">
                                         </div>
-                                        <span class="product-name">Bún trộn</span>
+                                        <span class="admin-product-name">Bún trộn</span>
                                     </div>
                                 </td>
-                                <td><span class="category-badge">Đồ Việt</span></td>
-                                <td class="stock-count">260</td>
-                                <td class="price">35.000đ</td>
+                                <td><span class="admin-category-badge">Đồ Việt</span></td>
+                                <td class="admin-stock-count">260</td>
+                                <td class="admin-price">35.000đ</td>
                                 <td>
-                                    <div class="action-buttons-cell">
-                                        <button class="action-btn edit-btn edit-product-btn" data-id="4">✏️</button>
-                                        <button class="action-btn delete-btn">🗑️</button>
+                                    <div class="admin-action-buttons-cell">
+                                        <button class="admin-action-btn edit-btn edit-product-btn" data-id="4">✏️</button>
+                                        <button class="admin-action-btn delete-btn">🗑️</button>
                                     </div>
                                 </td>
                             </tr>
                             <tr id="product-5">
-                                <td><input type="checkbox" class="checkbox"></td>
+                                <td><input type="checkbox" class="admin-checkbox"></td>
                                 <td>
-                                    <div class="product-cell">
-                                        <div class="product-image">
+                                    <div class="admin-product-cell">
+                                        <div class="admin-product-image">
                                             <img id="productImage-1" src="/asset/img/category-food/chickenfried.jpg"
                                                 alt="Bánh mì">
                                         </div>
-                                        <span class="product-name">Gà rán</span>
+                                        <span class="admin-product-name">Gà rán</span>
                                     </div>
                                 </td>
-                                <td><span class="category-badge">Đồ Tây</span></td>
-                                <td class="stock-count">123</td>
-                                <td class="price">40.000đ</td>
+                                <td><span class="admin-category-badge">Đồ Tây</span></td>
+                                <td class="admin-stock-count">123</td>
+                                <td class="admin-price">40.000đ</td>
                                 <td>
-                                    <div class="action-buttons-cell">
-                                        <button class="action-btn edit-btn edit-product-btn" data-id="5">✏️</button>
-                                        <button class="action-btn delete-btn">🗑️</button>
+                                    <div class="admin-action-buttons-cell">
+                                        <button class="admin-action-btn edit-btn edit-product-btn" data-id="5">✏️</button>
+                                        <button class="admin-action-btn delete-btn">🗑️</button>
                                     </div>
                                 </td>
                             </tr>
                             <tr id="product-6">
-                                <td><input type="checkbox" class="checkbox"></td>
+                                <td><input type="checkbox" class="admin-checkbox"></td>
                                 <td>
-                                    <div class="product-cell">
-                                        <div class="product-image">
+                                    <div class="admin-product-cell">
+                                        <div class="admin-product-image">
                                             <img id="productImage-1" src="/asset/img/category-food/nemran.jpg"
                                                 alt="Bánh mì">
                                         </div>
-                                        <span class="product-name">Nem rán</span>
+                                        <span class="admin-product-name">Nem rán</span>
                                     </div>
                                 </td>
-                                <td><span class="category-badge">Đồ Việt</span></td>
-                                <td class="stock-count">300</td>
-                                <td class="price">40.000đ</td>
+                                <td><span class="admin-category-badge">Đồ Việt</span></td>
+                                <td class="admin-stock-count">300</td>
+                                <td class="admin-price">40.000đ</td>
                                 <td>
-                                    <div class="action-buttons-cell">
-                                        <button class="action-btn edit-btn edit-product-btn" data-id="6">✏️</button>
-                                        <button class="action-btn delete-btn">🗑️</button>
+                                    <div class="admin-action-buttons-cell">
+                                        <button class="admin-action-btn edit-btn edit-product-btn" data-id="6">✏️</button>
+                                        <button class="admin-action-btn delete-btn">🗑️</button>
                                     </div>
                                 </td>
                             </tr>
                             <tr id="product-7">
-                                <td><input type="checkbox" class="checkbox"></td>
+                                <td><input type="checkbox" class="admin-checkbox"></td>
                                 <td>
-                                    <div class="product-cell">
-                                        <div class="product-image">
+                                    <div class="admin-product-cell">
+                                        <div class="admin-product-image">
                                             <img id="productImage-7" src="/asset/img/category-food/pho.jpg"
                                                 alt="Bánh mì">
                                         </div>
-                                        <span class="product-name">Phở gà</span>
+                                        <span class="admin-product-name">Phở gà</span>
                                     </div>
                                 </td>
-                                <td><span class="category-badge">Đồ Việt</span></td>
-                                <td class="stock-count">400</td>
-                                <td class="price">35.000đ</td>
+                                <td><span class="admin-category-badge">Đồ Việt</span></td>
+                                <td class="admin-stock-count">400</td>
+                                <td class="admin-price">35.000đ</td>
                                 <td>
-                                    <div class="action-buttons-cell">
-                                        <button class="action-btn edit-btn edit-product-btn" data-id="7">✏️</button>
-                                        <button class="action-btn delete-btn">🗑️</button>
+                                    <div class="admin-action-buttons-cell">
+                                        <button class="admin-action-btn edit-btn edit-product-btn" data-id="7">✏️</button>
+                                        <button class="admin-action-btn delete-btn">🗑️</button>
                                     </div>
                                 </td>
                             </tr>
                             <tr id="product-8">
-                                <td><input type="checkbox" class="checkbox"></td>
+                                <td><input type="checkbox" class="admin-checkbox"></td>
                                 <td>
-                                    <div class="product-cell">
-                                        <div class="product-image">
+                                    <div class="admin-product-cell">
+                                        <div class="admin-product-image">
                                             <img id="productImage-8" src="/asset/img/category-food/pizza.jpg"
                                                 alt="Bánh mì">
                                         </div>
-                                        <span class="product-name">Pizza</span>
+                                        <span class="admin-product-name">Pizza</span>
                                     </div>
                                 </td>
-                                <td><span class="category-badge">Đồ Âu</span></td>
-                                <td class="stock-count">100</td>
-                                <td class="price">70.000đ</td>
+                                <td><span class="admin-category-badge">Đồ Âu</span></td>
+                                <td class="admin-stock-count">100</td>
+                                <td class="admin-price">70.000đ</td>
                                 <td>
-                                    <div class="action-buttons-cell">
-                                        <button class="action-btn edit-btn edit-product-btn" data-id="8">✏️</button>
-                                        <button class="action-btn delete-btn">🗑️</button>
+                                    <div class="admin-action-buttons-cell">
+                                        <button class="admin-action-btn edit-btn edit-product-btn" data-id="8">✏️</button>
+                                        <button class="admin-action-btn delete-btn">🗑️</button>
                                     </div>
                                 </td>
                             </tr>
                             <tr id="product-9">
-                                <td><input type="checkbox" class="checkbox"></td>
+                                <td><input type="checkbox" class="admin-checkbox"></td>
                                 <td>
-                                    <div class="product-cell">
-                                        <div class="product-image">
+                                    <div class="admin-product-cell">
+                                        <div class="admin-product-image">
                                             <img id="productImage-9" src="/asset/img/category-food/rice.jpg"
                                                 alt="Bánh mì">
                                         </div>
-                                        <span class="product-name">Cơm tấm</span>
+                                        <span class="admin-product-name">Cơm tấm</span>
                                     </div>
                                 </td>
-                                <td><span class="category-badge">Đồ Việt</span></td>
-                                <td class="stock-count">430</td>
-                                <td class="price">40.000đ</td>
+                                <td><span class="admin-category-badge">Đồ Việt</span></td>
+                                <td class="admin-stock-count">430</td>
+                                <td class="admin-price">40.000đ</td>
                                 <td>
-                                    <div class="action-buttons-cell">
-                                        <button class="action-btn edit-btn edit-product-btn" data-id="9">✏️</button>
-                                        <button class="action-btn delete-btn">🗑️</button>
+                                    <div class="admin-action-buttons-cell">
+                                        <button class="admin-action-btn edit-btn edit-product-btn" data-id="9">✏️</button>
+                                        <button class="admin-action-btn delete-btn">🗑️</button>
                                     </div>
                                 </td>
                             </tr>
                             <tr id="product-10">
-                                <td><input type="checkbox" class="checkbox"></td>
+                                <td><input type="checkbox" class="admin-checkbox"></td>
                                 <td>
-                                    <div class="product-cell">
-                                        <div class="product-image">
+                                    <div class="admin-product-cell">
+                                        <div class="admin-product-image">
                                             <img id="productImage-1" src="/asset/img/category-food/spageti.jpg"
                                                 alt="Bánh mì">
                                         </div>
-                                        <span class="product-name">Mỳ spageti</span>
+                                        <span class="admin-product-name">Mỳ spageti</span>
                                     </div>
                                 </td>
-                                <td><span class="category-badge">Đồ Âu</span></td>
-                                <td class="stock-count">180</td>
-                                <td class="price">60.000đ</td>
+                                <td><span class="admin-category-badge">Đồ Âu</span></td>
+                                <td class="admin-stock-count">180</td>
+                                <td class="admin-price">60.000đ</td>
                                 <td>
-                                    <div class="action-buttons-cell">
-                                        <button class="action-btn edit-btn edit-product-btn" data-id="10">✏️</button>
-                                        <button class="action-btn delete-btn">🗑️</button>
+                                    <div class="admin-action-buttons-cell">
+                                        <button class="admin-action-btn edit-btn edit-product-btn" data-id="10">✏️</button>
+                                        <button class="admin-action-btn delete-btn">🗑️</button>
                                     </div>
                                 </td>
                             </tr>
                             <tr id="product-11">
-                                <td><input type="checkbox" class="checkbox"></td>
+                                <td><input type="checkbox" class="admin-checkbox"></td>
                                 <td>
-                                    <div class="product-cell">
-                                        <div class="product-image">
+                                    <div class="admin-product-cell">
+                                        <div class="admin-product-image">
                                             <img id="productImage-11" src="/asset/img/category-food/springroll.jpg"
                                                 alt="Bánh mì">
                                         </div>
-                                        <span class="product-name">Phở cuốn</span>
+                                        <span class="admin-product-name">Phở cuốn</span>
                                     </div>
                                 </td>
-                                <td><span class="category-badge">Đồ Việt</span></td>
-                                <td class="stock-count">500</td>
-                                <td class="price">50.000đ</td>
+                                <td><span class="admin-category-badge">Đồ Việt</span></td>
+                                <td class="admin-stock-count">500</td>
+                                <td class="admin-price">50.000đ</td>
                                 <td>
-                                    <div class="action-buttons-cell">
-                                        <button class="action-btn edit-btn edit-product-btn" data-id="11">✏️</button>
-                                        <button class="action-btn delete-btn">🗑️</button>
+                                    <div class="admin-action-buttons-cell">
+                                        <button class="admin-action-btn edit-btn edit-product-btn" data-id="11">✏️</button>
+                                        <button class="admin-action-btn delete-btn">🗑️</button>
                                     </div>
                                 </td>
                             </tr>
                             <tr id="product-12">
-                                <td><input type="checkbox" class="checkbox"></td>
+                                <td><input type="checkbox" class="admin-checkbox"></td>
                                 <td>
-                                    <div class="product-cell">
-                                        <div class="product-image">
+                                    <div class="admin-product-cell">
+                                        <div class="admin-product-image">
                                             <img id="productImage-12"
                                                 src="/asset/img/category-food/72d9af964d384fc2a16fd087c1062a7c.jpg"
                                                 alt="Bánh mì">
                                         </div>
-                                        <span class="product-name">Salad ức gà</span>
+                                        <span class="admin-product-name">Salad ức gà</span>
                                     </div>
                                 </td>
-                                <td><span class="category-badge">Đồ Tây</span></td>
-                                <td class="stock-count">200</td>
-                                <td class="price">60.000đ</td>
+                                <td><span class="admin-category-badge">Đồ Tây</span></td>
+                                <td class="admin-stock-count">200</td>
+                                <td class="admin-price">60.000đ</td>
                                 <td>
-                                    <div class="action-buttons-cell">
-                                        <button class="action-btn edit-btn edit-product-btn" data-id="12">✏️</button>
-                                        <button class="action-btn delete-btn">🗑️</button>
+                                    <div class="admin-action-buttons-cell">
+                                        <button class="admin-action-btn edit-btn edit-product-btn" data-id="12">✏️</button>
+                                        <button class="admin-action-btn delete-btn">🗑️</button>
                                     </div>
                                 </td>
                             </tr>
@@ -403,26 +403,26 @@
             </div>
 
             <!-- Popup Chỉnh sửa sản phẩm -->
-            <div id="editProductModal" class="modal">
-                <div class="modal-content">
-                    <span class="close">&times;</span>
+            <div id="editProductModal" class="admin-modal">
+                <div class="admin-modal-content">
+                    <span class="admin-close">&times;</span>
                     <h2>Chỉnh sửa sản phẩm</h2>
                     <form id="editProductForm">
                         <input type="hidden" id="editProductId">
 
-                        <div class="image-upload-container">
-                            <img id="imagePreview" class="image-preview" src="" alt="Ảnh xem trước">
+                        <div class="admin-image-upload-container">
+                            <img id="imagePreview" class="admin-image-preview" src="" alt="Ảnh xem trước">
                             <input type="file" id="imageUpload" accept="image/*" style="display: none;">
-                            <button type="button" class="upload-btn"
+                            <button type="button" class="admin-upload-btn"
                                 onclick="document.getElementById('imageUpload').click()">Chọn ảnh mới</button>
                         </div>
 
-                        <div class="form-group">
+                        <div class="admin-form-group">
                             <label for="editProductName">Tên món ăn</label>
                             <input type="text" id="editProductName" required>
                         </div>
 
-                        <div class="form-group">
+                        <div class="admin-form-group">
                             <label for="editProductCategory">Danh mục</label>
                             <select id="editProductCategory" required>
                                 <option value="Đồ Việt">Đồ Việt</option>
@@ -431,56 +431,56 @@
                             </select>
                         </div>
 
-                        <div class="form-group">
+                        <div class="admin-form-group">
                             <label for="editProductPrice">Giá bán (đồng)</label>
                             <input type="number" id="editProductPrice" required>
                         </div>
 
-                        <div class="form-actions">
-                            <button type="button" class="btn btn-cancel">Hủy</button>
-                            <button type="submit" class="btn btn-save">Lưu thay đổi</button>
+                        <div class="admin-form-actions">
+                            <button type="button" class="admin-btn btn-cancel">Hủy</button>
+                            <button type="submit" class="admin-btn btn-save">Lưu thay đổi</button>
                         </div>
                     </form>
                 </div>
             </div>
             
             <!-- Popup add new product -->
-            <div class="popup-overlay" id="Popup-add-product">
-                <div class="popup-container">
-                    <div class="popup-header">
-                        <h2 class="popup-title">Thêm sản phẩm</h2>
+            <div class="admin-popup-overlay" id="Popup-add-product">
+                <div class="admin-popup-container">
+                    <div class="admin-popup-header">
+                        <h2 class="admin-popup-title">Thêm sản phẩm</h2>
                     </div>
 
-                    <div class="popup-content">
-                        <div class="left-section">
+                    <div class="admin-popup-content">
+                        <div class="admin-left-section">
                             <!-- Basic Information Section -->
-                            <div class="section">
-                                <h3 class="section-title">Thông tin cơ bản của sản phẩm</h3>
-                                <div class="form-group">
-                                    <input type="text" class="input-field" placeholder="Tên sản phẩm" id="productName">
+                            <div class="admin-section">
+                                <h3 class="admin-section-title">Thông tin cơ bản của sản phẩm</h3>
+                                <div class="admin-form-group">
+                                    <input type="text" class="admin-input-field" placeholder="Tên sản phẩm" id="productName">
                                 </div>
-                                <div class="form-group">
-                                    <textarea class="input-field textarea-field" placeholder="Mô tả sản phẩm"
+                                <div class="admin-form-group">
+                                    <textarea class="admin-input-field textarea-field" placeholder="Mô tả sản phẩm"
                                         id="description"></textarea>
                                 </div>
                             </div>
 
                             <!-- Stock & Pricing Section -->
-                            <div class="section">
-                                <h3 class="section-title">Stock & Pricing</h3>
-                                <div class="form-row">
-                                    <input type="number" class="input-field" placeholder="Stock" id="stock">
-                                    <input type="number" class="input-field" placeholder="Price" step="0.01" id="price">
+                            <div class="admin-section">
+                                <h3 class="admin-section-title">Stock & Pricing</h3>
+                                <div class="admin-form-row">
+                                    <input type="number" class="admin-input-field" placeholder="Stock" id="stock">
+                                    <input type="number" class="admin-input-field" placeholder="Price" step="0.01" id="price">
                                 </div>
 
-                                <!-- <div class="checkbox-container">
-                            <input type="checkbox" class="checkbox" id="scheduleDiscount">
-                            <label for="scheduleDiscount" class="checkbox-label">Schedule a discount</label>
+                                <!-- <div class="admin-checkbox-container">
+                            <input type="checkbox" class="admin-checkbox" id="scheduleDiscount">
+                            <label for="scheduleDiscount" class="admin-checkbox-label">Schedule a discount</label>
                         </div>
                         
-                        <div class="form-row" id="discountFields" style="display: none;">
-                            <input type="number" class="input-field" placeholder="Discount %" id="discountPercent">
-                            <div class="input-field" style="display: flex; align-items: center; gap: 8px; color: #6b7280;">
+                        <div class="admin-form-row" id="discountFields" style="display: none;">
+                            <input type="number" class="admin-input-field" placeholder="Discount %" id="discountPercent">
+                            <div class="admin-input-field" style="display: flex; align-items: center; gap: 8px; color: #6b7280;">
                                 <span>💰</span>
                                 <span>Select Date</span>
                             </div>
@@ -488,77 +488,77 @@
                             </div>
                         </div>
 
-                        <div class="right-section">
+                        <div class="admin-right-section">
                             <!-- Product Image Section -->
-                            <div class="section">
-                                <h3 class="section-title">Ảnh sản phẩm</h3>
-                                <div class="image-upload" onclick="document.getElementById('imageInput').click()">
-                                    <div class="upload-icon">🖼️</div>
-                                    <div class="upload-text">Tải ảnh của sản phẩm</div>
+                            <div class="admin-section">
+                                <h3 class="admin-section-title">Ảnh sản phẩm</h3>
+                                <div class="admin-image-upload" onclick="document.getElementById('imageInput').click()">
+                                    <div class="admin-upload-icon">🖼️</div>
+                                    <div class="admin-upload-text">Tải ảnh của sản phẩm</div>
                                 </div>
                                 <input type="file" id="imageInput" accept=".png,.jpg,.jpeg" style="display: none;">
                             </div>
 
                             <!-- Visibility Section -->
-                            <div class="section">
-                                <h3 class="section-title">Danh mục đồ ăn</h3>
-                                <div class="radio-group">
-                                    <div class="radio-option">
-                                        <input type="radio" class="radio" name="visibility">
-                                        <label for="published" class="radio-label">Đồ Việt</label>
+                            <div class="admin-section">
+                                <h3 class="admin-section-title">Danh mục đồ ăn</h3>
+                                <div class="admin-radio-group">
+                                    <div class="admin-radio-option">
+                                        <input type="radio" class="admin-radio" name="visibility">
+                                        <label for="published" class="admin-radio-label">Đồ Việt</label>
                                     </div>
-                                    <div class="radio-option">
-                                        <input type="radio" class="radio" name="visibility">
-                                        <label for="scheduled" class="radio-label">Đồ Tây</label>
+                                    <div class="admin-radio-option">
+                                        <input type="radio" class="admin-radio" name="visibility">
+                                        <label for="scheduled" class="admin-radio-label">Đồ Tây</label>
                                     </div>
-                                    <div class="radio-option">
-                                        <input type="radio" class="radio" name="visibility">
-                                        <label for="hidden" class="radio-label">Đồ Âu</label>
+                                    <div class="admin-radio-option">
+                                        <input type="radio" class="admin-radio" name="visibility">
+                                        <label for="hidden" class="admin-radio-label">Đồ Âu</label>
                                     </div>
                                 </div>
 
-                                <!-- <div class="date-input" id="scheduleDate">
-                            <input type="date" class="input-field" placeholder="Select Date" id="publishDate">
+                                <!-- <div class="admin-date-input" id="scheduleDate">
+                            <input type="date" class="admin-input-field" placeholder="Select Date" id="publishDate">
                         </div> -->
                             </div>
                         </div>
                     </div>
 
-                    <div class="popup-footer">
-                        <button class="btn btn-secondary" onclick="closePopup()">Cancel</button>
-                        <button class="btn btn-primary" onclick="addProduct()">Add Product</button>
+                    <div class="admin-popup-footer">
+                        <button class="admin-btn btn-secondary" onclick="closePopup()">Cancel</button>
+                        <button class="admin-btn btn-primary" onclick="addProduct()">Add Product</button>
                     </div>
                 </div>
             </div>
 
             <!-- Customer -->
             <!-- Content Area -->
-            <div class="content-area" id="tab2">
-                <div class="breadcrumb">Thống kê / Khách hàng</div>
-                <h1 class="page-title">Khách hàng</h1>
+            <div class="admin-content-area" id="tab2">
+                <div class="admin-breadcrumb">Thống kê / Khách hàng</div>
+                <h1 class="admin-page-title">Khách hàng</h1>
 
-                <div class="content-header">
-                    <div class="content-search">
-                        <span class="search-icon">🔍</span>
+                <div class="admin-content-header">
+                    <div class="admin-content-search">
+                        <span class="admin-search-icon">🔍</span>
                         <input type="text" placeholder="Tìm kiếm khách hàng">
                     </div>
 
-                    <div class="action-buttons">
-                        <!-- <button class="btn btn-primary" id="openPopupBtn">
+                    <div class="admin-action-buttons">
+                        <!-- <button class="admin-btn btn-primary" id="openPopupBtn">
                             ➕ Thêm khách hàng
                         </button> -->
-                        <button class="btn btn-secondary">
+                        <button class="admin-btn btn-secondary">
                             <strong>X</strong> Xoá
                         </button>
                     </div>
                 </div>
 
                 <!-- Products Table -->
-                <div class="table-container">
+                <div class="admin-table-container">
                     <table>
                         <thead>
                             <tr>
-                                <th><input type="checkbox" class="checkbox"></th>
+                                <th><input type="checkbox" class="admin-checkbox"></th>
                                 <th>Tên khách hàng</th>
                                 <th>Số điện thoại</th>
                                 <th>Địa chỉ giao hàng</th>
@@ -567,82 +567,82 @@
                         </thead>
                         <tbody>
                             <tr id="product-1">
-                                <td><input type="checkbox" class="checkbox"></td>
+                                <td><input type="checkbox" class="admin-checkbox"></td>
                                 <td>
-                                    <div class="product-cell">
-                                        <span class="product-name">Trần Minh Anh</span>
+                                    <div class="admin-product-cell">
+                                        <span class="admin-product-name">Trần Minh Anh</span>
                                     </div>
                                 </td>
-                                <td class="stock-count">0983 451 289</td>
-                                <td class="price">Hàng Trống, Hoàn Kiếm, Hà Nội</td>
+                                <td class="admin-stock-count">0983 451 289</td>
+                                <td class="admin-price">Hàng Trống, Hoàn Kiếm, Hà Nội</td>
                                 <td>
-                                    <div class="action-buttons-cell">
-                                        <button class="action-btn edit-btn edit-product-btn" data-id="1">✏️</button>
-                                        <button class="action-btn delete-btn">🗑️</button>
+                                    <div class="admin-action-buttons-cell">
+                                        <button class="admin-action-btn edit-btn edit-product-btn" data-id="1">✏️</button>
+                                        <button class="admin-action-btn delete-btn">🗑️</button>
                                     </div>
                                 </td>
                             </tr>
                             <tr id="product-2">
-                                <td><input type="checkbox" class="checkbox"></td>
+                                <td><input type="checkbox" class="admin-checkbox"></td>
                                 <td>
-                                    <div class="product-cell">
-                                        <span class="product-name">Nguyễn Văn Bình</span>
+                                    <div class="admin-product-cell">
+                                        <span class="admin-product-name">Nguyễn Văn Bình</span>
                                     </div>
                                 </td>
-                                <td class="stock-count">0912 345 678</td>
-                                <td class="price">58 Quốc Tử Giám, Văn Miếu, Đống Đa, Hà Nội</td>
+                                <td class="admin-stock-count">0912 345 678</td>
+                                <td class="admin-price">58 Quốc Tử Giám, Văn Miếu, Đống Đa, Hà Nội</td>
                                 <td>
-                                    <div class="action-buttons-cell">
-                                        <button class="action-btn edit-btn edit-product-btn" data-id="2">✏️</button>
-                                        <button class="action-btn delete-btn">🗑️</button>
+                                    <div class="admin-action-buttons-cell">
+                                        <button class="admin-action-btn edit-btn edit-product-btn" data-id="2">✏️</button>
+                                        <button class="admin-action-btn delete-btn">🗑️</button>
                                     </div>
                                 </td>
                             </tr>
                             <tr id="product-3">
-                                <td><input type="checkbox" class="checkbox"></td>
+                                <td><input type="checkbox" class="admin-checkbox"></td>
                                 <td>
-                                    <div class="product-cell">
-                                        <span class="product-name">Lê Thị Hương</span>
+                                    <div class="admin-product-cell">
+                                        <span class="admin-product-name">Lê Thị Hương</span>
                                     </div>
                                 </td>
-                                <td class="stock-count">0378 956 123</td>
-                                <td class="price">1 Tràng Tiền, Hoàn Kiếm, Hà Nội</td>
+                                <td class="admin-stock-count">0378 956 123</td>
+                                <td class="admin-price">1 Tràng Tiền, Hoàn Kiếm, Hà Nội</td>
                                 <td>
-                                    <div class="action-buttons-cell">
-                                        <button class="action-btn edit-btn edit-product-btn" data-id="3">✏️</button>
-                                        <button class="action-btn delete-btn">🗑️</button>
+                                    <div class="admin-action-buttons-cell">
+                                        <button class="admin-action-btn edit-btn edit-product-btn" data-id="3">✏️</button>
+                                        <button class="admin-action-btn delete-btn">🗑️</button>
                                     </div>
                                 </td>
                             </tr>
                             <tr id="product-4">
-                                <td><input type="checkbox" class="checkbox"></td>
+                                <td><input type="checkbox" class="admin-checkbox"></td>
                                 <td>
-                                    <div class="product-cell">
-                                        <span class="product-name">Phạm Đức Cường</span>
+                                    <div class="admin-product-cell">
+                                        <span class="admin-product-name">Phạm Đức Cường</span>
                                     </div>
                                 </td>
-                                <td class="stock-count">0856 789 012</td>
-                                <td class="price">Đồng Xuân, Hoàn Kiếm, Hà Nội</td>
+                                <td class="admin-stock-count">0856 789 012</td>
+                                <td class="admin-price">Đồng Xuân, Hoàn Kiếm, Hà Nội</td>
                                 <td>
-                                    <div class="action-buttons-cell">
-                                        <button class="action-btn edit-btn edit-product-btn" data-id="4">✏️</button>
-                                        <button class="action-btn delete-btn">🗑️</button>
+                                    <div class="admin-action-buttons-cell">
+                                        <button class="admin-action-btn edit-btn edit-product-btn" data-id="4">✏️</button>
+                                        <button class="admin-action-btn delete-btn">🗑️</button>
                                     </div>
                                 </td>
                             </tr>
                             <tr id="product-5">
-                                <td><input type="checkbox" class="checkbox"></td>
+                                <td><input type="checkbox" class="admin-checkbox"></td>
                                 <td>
-                                    <div class="product-cell">
-                                        <span class="product-name">Hoàng Thị Lan</span>
+                                    <div class="admin-product-cell">
+                                        <span class="admin-product-name">Hoàng Thị Lan</span>
                                     </div>
                                 </td>
-                                <td class="stock-count">0904 567 890</td>
-                                <td class="price">458 Minh Khai, Vĩnh Tuy, Hai Bà Trưng, Hà Nội</td>
+                                <td class="admin-stock-count">0904 567 890</td>
+                                <td class="admin-price">458 Minh Khai, Vĩnh Tuy, Hai Bà Trưng, Hà Nội</td>
                                 <td>
-                                    <div class="action-buttons-cell">
-                                        <button class="action-btn edit-btn edit-product-btn" data-id="5">✏️</button>
-                                        <button class="action-btn delete-btn">🗑️</button>
+                                    <div class="admin-action-buttons-cell">
+                                        <button class="admin-action-btn edit-btn edit-product-btn" data-id="5">✏️</button>
+                                        <button class="admin-action-btn delete-btn">🗑️</button>
                                     </div>
                                 </td>
                             </tr>
@@ -654,32 +654,32 @@
 
             <!-- Category -->
             <!-- Content Area -->
-            <div class="content-area" id="tab3">
-                <div class="breadcrumb">Thống kê / Danh mục</div>
-                <h1 class="page-title">Danh mục</h1>
+            <div class="admin-content-area" id="tab3">
+                <div class="admin-breadcrumb">Thống kê / Danh mục</div>
+                <h1 class="admin-page-title">Danh mục</h1>
 
-                <div class="content-header">
-                    <div class="content-search">
-                        <span class="search-icon">🔍</span>
+                <div class="admin-content-header">
+                    <div class="admin-content-search">
+                        <span class="admin-search-icon">🔍</span>
                         <input type="text" placeholder="Tìm kiếm danh mục">
                     </div>
 
-                    <div class="action-buttons">
-                        <button class="btn btn-primary" id="openPopupBtn">
+                    <div class="admin-action-buttons">
+                        <button class="admin-btn btn-primary" id="openPopupBtn">
                             ➕ Thêm danh mục
                         </button>
-                        <button class="btn btn-secondary">
+                        <button class="admin-btn btn-secondary">
                             <strong>X</strong> Xoá
                         </button>
                     </div>
                 </div>
 
                 <!-- Products Table -->
-                <div class="table-container">
+                <div class="admin-table-container">
                     <table>
                         <thead>
                             <tr>
-                                <th><input type="checkbox" class="checkbox"></th>
+                                <th><input type="checkbox" class="admin-checkbox"></th>
                                 <th>Tên danh mục</th>
                                 <th>Số lượng sản phẩm</th>
                                 <th>Thao tác</th>
@@ -687,48 +687,48 @@
                         </thead>
                         <tbody>
                             <tr id="product-1">
-                                <td><input type="checkbox" class="checkbox"></td>
+                                <td><input type="checkbox" class="admin-checkbox"></td>
                                 <td>
-                                    <div class="product-cell">
-                                        <span class="product-name">Đồ Việt</span>
+                                    <div class="admin-product-cell">
+                                        <span class="admin-product-name">Đồ Việt</span>
                                     </div>
                                 </td>
-                                <td class="stock-count">07</td>
+                                <td class="admin-stock-count">07</td>
                                 <td>
-                                    <div class="action-buttons-cell">
-                                        <button class="action-btn edit-btn edit-product-btn" data-id="1">✏️</button>
-                                        <button class="action-btn delete-btn">🗑️</button>
+                                    <div class="admin-action-buttons-cell">
+                                        <button class="admin-action-btn edit-btn edit-product-btn" data-id="1">✏️</button>
+                                        <button class="admin-action-btn delete-btn">🗑️</button>
                                     </div>
                                 </td>
 
                             </tr>
                             <tr id="product-2">
-                                <td><input type="checkbox" class="checkbox"></td>
+                                <td><input type="checkbox" class="admin-checkbox"></td>
                                 <td>
-                                    <div class="product-cell">
-                                        <span class="product-name">Đồ Tây</span>
+                                    <div class="admin-product-cell">
+                                        <span class="admin-product-name">Đồ Tây</span>
                                     </div>
                                 </td>
-                                <td class="stock-count">03</td>
+                                <td class="admin-stock-count">03</td>
                                 <td>
-                                    <div class="action-buttons-cell">
-                                        <button class="action-btn edit-btn edit-product-btn" data-id="2">✏️</button>
-                                        <button class="action-btn delete-btn">🗑️</button>
+                                    <div class="admin-action-buttons-cell">
+                                        <button class="admin-action-btn edit-btn edit-product-btn" data-id="2">✏️</button>
+                                        <button class="admin-action-btn delete-btn">🗑️</button>
                                     </div>
                                 </td>
                             </tr>
                             <tr id="product-3">
-                                <td><input type="checkbox" class="checkbox"></td>
+                                <td><input type="checkbox" class="admin-checkbox"></td>
                                 <td>
-                                    <div class="product-cell">
-                                        <span class="product-name">Đồ Âu</span>
+                                    <div class="admin-product-cell">
+                                        <span class="admin-product-name">Đồ Âu</span>
                                     </div>
                                 </td>
-                                <td class="stock-count">02</td>
+                                <td class="admin-stock-count">02</td>
                                 <td>
-                                    <div class="action-buttons-cell">
-                                        <button class="action-btn edit-btn edit-product-btn" data-id="3">✏️</button>
-                                        <button class="action-btn delete-btn">🗑️</button>
+                                    <div class="admin-action-buttons-cell">
+                                        <button class="admin-action-btn edit-btn edit-product-btn" data-id="3">✏️</button>
+                                        <button class="admin-action-btn delete-btn">🗑️</button>
                                     </div>
                                 </td>
                             </tr>
@@ -739,29 +739,29 @@
 
             <!-- Order -->
             <!-- Content Area -->
-            <div class="content-area" id="tab4">
-                <div class="breadcrumb">Thống kê / Đơn hàng</div>
-                <h1 class="page-title">Đơn hàng</h1>
+            <div class="admin-content-area" id="tab4">
+                <div class="admin-breadcrumb">Thống kê / Đơn hàng</div>
+                <h1 class="admin-page-title">Đơn hàng</h1>
 
-                <div class="content-header">
-                    <div class="content-search">
-                        <span class="search-icon">🔍</span>
+                <div class="admin-content-header">
+                    <div class="admin-content-search">
+                        <span class="admin-search-icon">🔍</span>
                         <input type="text" placeholder="Tìm kiếm đơn">
                     </div>
 
-                    <div class="action-buttons">
-                        <button class="btn btn-secondary">
+                    <div class="admin-action-buttons">
+                        <button class="admin-btn btn-secondary">
                             <strong>X</strong> Xoá
                         </button>
                     </div>
                 </div>
 
                 <!-- Products Table -->
-                <div class="table-container">
+                <div class="admin-table-container">
                     <table>
                         <thead>
                             <tr>
-                                <th><input type="checkbox" class="checkbox"></th>
+                                <th><input type="checkbox" class="admin-checkbox"></th>
                                 <th>Khách hàng</th>
                                 <th>Trạng thái thanh toán</th>
                                 <th>Trạng thái đơn hàng</th>
@@ -770,82 +770,82 @@
                         </thead>
                         <tbody>
                             <tr id="product-1">
-                                <td><input type="checkbox" class="checkbox"></td>
+                                <td><input type="checkbox" class="admin-checkbox"></td>
                                 <td>
-                                    <div class="product-cell">
-                                        <span class="product-name">Trần Minh Anh</span>
+                                    <div class="admin-product-cell">
+                                        <span class="admin-product-name">Trần Minh Anh</span>
                                     </div>
                                 </td>
-                                <td class="stock-count">Đã thanh toán</td>
-                                <td class="price">Đang giao</td>
+                                <td class="admin-stock-count">Đã thanh toán</td>
+                                <td class="admin-price">Đang giao</td>
                                 <td>
-                                    <div class="action-buttons-cell">
-                                        <button class="action-btn edit-btn edit-product-btn" data-id="1">✏️</button>
-                                        <button class="action-btn delete-btn">🗑️</button>
+                                    <div class="admin-action-buttons-cell">
+                                        <button class="admin-action-btn edit-btn edit-product-btn" data-id="1">✏️</button>
+                                        <button class="admin-action-btn delete-btn">🗑️</button>
                                     </div>
                                 </td>
                             </tr>
                             <tr id="product-2">
-                                <td><input type="checkbox" class="checkbox"></td>
+                                <td><input type="checkbox" class="admin-checkbox"></td>
                                 <td>
-                                    <div class="product-cell">
-                                        <span class="product-name">Nguyễn Văn Bình</span>
+                                    <div class="admin-product-cell">
+                                        <span class="admin-product-name">Nguyễn Văn Bình</span>
                                     </div>
                                 </td>
-                                <td class="stock-count">Chưa thanh toán</td>
-                                <td class="price">Đang giao</td>
+                                <td class="admin-stock-count">Chưa thanh toán</td>
+                                <td class="admin-price">Đang giao</td>
                                 <td>
-                                    <div class="action-buttons-cell">
-                                        <button class="action-btn edit-btn edit-product-btn" data-id="2">✏️</button>
-                                        <button class="action-btn delete-btn">🗑️</button>
+                                    <div class="admin-action-buttons-cell">
+                                        <button class="admin-action-btn edit-btn edit-product-btn" data-id="2">✏️</button>
+                                        <button class="admin-action-btn delete-btn">🗑️</button>
                                     </div>
                                 </td>
                             </tr>
                             <tr id="product-3">
-                                <td><input type="checkbox" class="checkbox"></td>
+                                <td><input type="checkbox" class="admin-checkbox"></td>
                                 <td>
-                                    <div class="product-cell">
-                                        <span class="product-name">Lê Thị Hương</span>
+                                    <div class="admin-product-cell">
+                                        <span class="admin-product-name">Lê Thị Hương</span>
                                     </div>
                                 </td>
-                                <td class="stock-count">Đã thanh toán</td>
-                                <td class="price">Đã giao</td>
+                                <td class="admin-stock-count">Đã thanh toán</td>
+                                <td class="admin-price">Đã giao</td>
                                 <td>
-                                    <div class="action-buttons-cell">
-                                        <button class="action-btn edit-btn edit-product-btn" data-id="3">✏️</button>
-                                        <button class="action-btn delete-btn">🗑️</button>
+                                    <div class="admin-action-buttons-cell">
+                                        <button class="admin-action-btn edit-btn edit-product-btn" data-id="3">✏️</button>
+                                        <button class="admin-action-btn delete-btn">🗑️</button>
                                     </div>
                                 </td>
                             </tr>
                             <tr id="product-4">
-                                <td><input type="checkbox" class="checkbox"></td>
+                                <td><input type="checkbox" class="admin-checkbox"></td>
                                 <td>
-                                    <div class="product-cell">
-                                        <span class="product-name">Phạm Đức Cường</span>
+                                    <div class="admin-product-cell">
+                                        <span class="admin-product-name">Phạm Đức Cường</span>
                                     </div>
                                 </td>
-                                <td class="stock-count">Đã thanh toán</td>
-                                <td class="price">Đã giao</td>
+                                <td class="admin-stock-count">Đã thanh toán</td>
+                                <td class="admin-price">Đã giao</td>
                                 <td>
-                                    <div class="action-buttons-cell">
-                                        <button class="action-btn edit-btn edit-product-btn" data-id="4">✏️</button>
-                                        <button class="action-btn delete-btn">🗑️</button>
+                                    <div class="admin-action-buttons-cell">
+                                        <button class="admin-action-btn edit-btn edit-product-btn" data-id="4">✏️</button>
+                                        <button class="admin-action-btn delete-btn">🗑️</button>
                                     </div>
                                 </td>
                             </tr>
                             <tr id="product-5">
-                                <td><input type="checkbox" class="checkbox"></td>
+                                <td><input type="checkbox" class="admin-checkbox"></td>
                                 <td>
-                                    <div class="product-cell">
-                                        <span class="product-name">Hoàng Thị Lan</span>
+                                    <div class="admin-product-cell">
+                                        <span class="admin-product-name">Hoàng Thị Lan</span>
                                     </div>
                                 </td>
-                                <td class="stock-count">Chưa thanh toán</td>
-                                <td class="price">Đang giao</td>
+                                <td class="admin-stock-count">Chưa thanh toán</td>
+                                <td class="admin-price">Đang giao</td>
                                 <td>
-                                    <div class="action-buttons-cell">
-                                        <button class="action-btn edit-btn edit-product-btn" data-id="5">✏️</button>
-                                        <button class="action-btn delete-btn">🗑️</button>
+                                    <div class="admin-action-buttons-cell">
+                                        <button class="admin-action-btn edit-btn edit-product-btn" data-id="5">✏️</button>
+                                        <button class="admin-action-btn delete-btn">🗑️</button>
                                     </div>
                                 </td>
                             </tr>
@@ -855,32 +855,32 @@
             </div>
             
             <!-- Voucher -->
-             <div class="content-area" id="tab5">
-                <div class="breadcrumb">Thống kê / Khuyến mại</div>
-                <h1 class="page-title">Khuyến mại</h1>
+             <div class="admin-content-area" id="tab5">
+                <div class="admin-breadcrumb">Thống kê / Khuyến mại</div>
+                <h1 class="admin-page-title">Khuyến mại</h1>
 
-                <div class="content-header">
-                    <div class="content-search">
-                        <span class="search-icon">🔍</span>
+                <div class="admin-content-header">
+                    <div class="admin-content-search">
+                        <span class="admin-search-icon">🔍</span>
                         <input type="text" placeholder="Tìm kiếm khuyến mại">
                     </div>
 
-                    <div class="action-buttons">
-                        <button class="btn btn-primary" id="openPopupBtn">
+                    <div class="admin-action-buttons">
+                        <button class="admin-btn btn-primary" id="openPopupBtn">
                             ➕ Thêm khuyến mại
                         </button>
-                        <button class="btn btn-secondary">
+                        <button class="admin-btn btn-secondary">
                             <strong>X</strong> Xoá
                         </button>
                     </div>
                 </div>
 
                 <!-- Products Table -->
-                <div class="table-container">
+                <div class="admin-table-container">
                     <table>
                         <thead>
                             <tr>
-                                <th><input type="checkbox" class="checkbox"></th>
+                                <th><input type="checkbox" class="admin-checkbox"></th>
                                 <th>Sản phẩm khuyến mại</th>
                                 <th>Phần trăm khuyến mại</th>
                                 <th>Thao tác</th>
@@ -888,77 +888,77 @@
                         </thead>
                         <tbody>
                             <tr id="product-1">
-                                <td><input type="checkbox" class="checkbox"></td>
+                                <td><input type="checkbox" class="admin-checkbox"></td>
                                 <td>
-                                    <div class="product-cell">
-                                        <span class="product-name">Trần Minh Anh</span>
+                                    <div class="admin-product-cell">
+                                        <span class="admin-product-name">Trần Minh Anh</span>
                                     </div>
                                 </td>
-                                <td class="stock-count">0983 451 289</td>
+                                <td class="admin-stock-count">0983 451 289</td>
                                 <td>
-                                    <div class="action-buttons-cell">
-                                        <button class="action-btn edit-btn edit-product-btn" data-id="1">✏️</button>
-                                        <button class="action-btn delete-btn">🗑️</button>
+                                    <div class="admin-action-buttons-cell">
+                                        <button class="admin-action-btn edit-btn edit-product-btn" data-id="1">✏️</button>
+                                        <button class="admin-action-btn delete-btn">🗑️</button>
                                     </div>
                                 </td>
                             </tr>
                             <tr id="product-2">
-                                <td><input type="checkbox" class="checkbox"></td>
+                                <td><input type="checkbox" class="admin-checkbox"></td>
                                 <td>
-                                    <div class="product-cell">
-                                        <span class="product-name">Nguyễn Văn Bình</span>
+                                    <div class="admin-product-cell">
+                                        <span class="admin-product-name">Nguyễn Văn Bình</span>
                                     </div>
                                 </td>
-                                <td class="stock-count">0912 345 678</td>
+                                <td class="admin-stock-count">0912 345 678</td>
                                 <td>
-                                    <div class="action-buttons-cell">
-                                        <button class="action-btn edit-btn edit-product-btn" data-id="2">✏️</button>
-                                        <button class="action-btn delete-btn">🗑️</button>
+                                    <div class="admin-action-buttons-cell">
+                                        <button class="admin-action-btn edit-btn edit-product-btn" data-id="2">✏️</button>
+                                        <button class="admin-action-btn delete-btn">🗑️</button>
                                     </div>
                                 </td>
                             </tr>
                             <tr id="product-3">
-                                <td><input type="checkbox" class="checkbox"></td>
+                                <td><input type="checkbox" class="admin-checkbox"></td>
                                 <td>
-                                    <div class="product-cell">
-                                        <span class="product-name">Lê Thị Hương</span>
+                                    <div class="admin-product-cell">
+                                        <span class="admin-product-name">Lê Thị Hương</span>
                                     </div>
                                 </td>
-                                <td class="stock-count">0378 956 123</td>
+                                <td class="admin-stock-count">0378 956 123</td>
                                 <td>
-                                    <div class="action-buttons-cell">
-                                        <button class="action-btn edit-btn edit-product-btn" data-id="3">✏️</button>
-                                        <button class="action-btn delete-btn">🗑️</button>
+                                    <div class="admin-action-buttons-cell">
+                                        <button class="admin-action-btn edit-btn edit-product-btn" data-id="3">✏️</button>
+                                        <button class="admin-action-btn delete-btn">🗑️</button>
                                     </div>
                                 </td>
                             </tr>
                             <tr id="product-4">
-                                <td><input type="checkbox" class="checkbox"></td>
+                                <td><input type="checkbox" class="admin-checkbox"></td>
                                 <td>
-                                    <div class="product-cell">
-                                        <span class="product-name">Phạm Đức Cường</span>
+                                    <div class="admin-product-cell">
+                                        <span class="admin-product-name">Phạm Đức Cường</span>
                                     </div>
                                 </td>
-                                <td class="stock-count">0856 789 012</td>
+                                <td class="admin-stock-count">0856 789 012</td>
                                 <td>
-                                    <div class="action-buttons-cell">
-                                        <button class="action-btn edit-btn edit-product-btn" data-id="4">✏️</button>
-                                        <button class="action-btn delete-btn">🗑️</button>
+                                    <div class="admin-action-buttons-cell">
+                                        <button class="admin-action-btn edit-btn edit-product-btn" data-id="4">✏️</button>
+                                        <button class="admin-action-btn delete-btn">🗑️</button>
                                     </div>
                                 </td>
                             </tr>
                             <tr id="product-5">
-                                <td><input type="checkbox" class="checkbox"></td>
+                                <td><input type="checkbox" class="admin-checkbox"></td>
                                 <td>
-                                    <div class="product-cell">
-                                        <span class="product-name">Hoàng Thị Lan</span>
+                                    <div class="admin-product-cell">
+                                        <span class="admin-product-name">Hoàng Thị Lan</span>
                                     </div>
                                 </td>
-                                <td class="stock-count">0904 567 890</td>
+                                <td class="admin-stock-count">0904 567 890</td>
                                 <td>
-                                    <div class="action-buttons-cell">
-                                        <button class="action-btn edit-btn edit-product-btn" data-id="5">✏️</button>
-                                        <button class="action-btn delete-btn">🗑️</button>
+                                    <div class="admin-action-buttons-cell">
+                                        <button class="admin-action-btn edit-btn edit-product-btn" data-id="5">✏️</button>
+                                        <button class="admin-action-btn delete-btn">🗑️</button>
                                     </div>
                                 </td>
                             </tr>
