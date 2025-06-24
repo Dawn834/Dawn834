@@ -9,54 +9,54 @@
 </head>
 
 <body>
-    <div class="container">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="logo">
+    <div class="admin-container">
+        <!-- admin-Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="admin-logo">
             </div>
 
-            <div class="menu-section">
-                <div class="menu-title">Menu</div>
-                <ul class="nav-menu">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link active">
-                            <span class="nav-icon">📊</span>
+            <div class="admin-menu-section">
+                <div class="admin-menu-title">Menu</div>
+                <ul class="admin-nav-menu">
+                    <li class="admin-nav-item">
+                        <a href="#" class="admin-nav-link active">
+                            <span class="admin-nav-icon">📊</span>
                             Thống kê
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link" onclick="openTab('tab1')">
-                            <span class="nav-icon">📦</span>
+                    <li class="admin-nav-item">
+                        <a href="#" class="admin-nav-link" onclick="openTab('tab1')">
+                            <span class="admin-nav-icon">📦</span>
                             Sản phẩm
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link" onclick="openTab('tab2')">
-                            <span class="nav-icon">👥</span>
+                    <li class="admin-nav-item">
+                        <a href="#" class="admin-nav-link" onclick="openTab('tab2')">
+                            <span class="admin-nav-icon">👥</span>
                             Khách hàng
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link" onclick="openTab('tab3')">
-                            <span class="nav-icon">🏷️</span>
+                    <li class="admin-nav-item">
+                        <a href="#" class="admin-nav-link" onclick="openTab('tab3')">
+                            <span class="admin-nav-icon">🏷️</span>
                             Danh mục
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link" onclick="openTab('tab4')">
-                            <span class="nav-icon">📋</span>
+                    <li class="admin-nav-item">
+                        <a href="#" class="admin-nav-link" onclick="openTab('tab4')">
+                            <span class="admin-nav-icon">📋</span>
                             Đơn hàng
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link" onclick="openTab('tab5')">
-                            <span class="nav-icon">🎫</span>
+                    <li class="admin-nav-item">
+                        <a href="#" class="admin-nav-link" onclick="openTab('tab5')">
+                            <span class="admin-nav-icon">🎫</span>
                             Khuyến mại
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <span class="nav-icon">💬</span>
+                    <li class="admin-nav-item">
+                        <a href="#" class="admin-nav-link">
+                            <span class="admin-nav-icon">💬</span>
                             Liên hệ
                             <span class="badge">4</span>
                         </a>
@@ -64,18 +64,18 @@
                 </ul>
             </div>
 
-            <div class="menu-section">
-                <div class="menu-title">Other</div>
-                <ul class="nav-menu">
-                    <!-- <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <span class="nav-icon">⚙️</span>
+            <div class="admin-menu-section">
+                <div class="admin-menu-title">Other</div>
+                <ul class="admin-nav-menu">
+                    <!-- <li class="admin-nav-item">
+                        <a href="#" class="admin-nav-link">
+                            <span class="admin-nav-icon">⚙️</span>
                             Cài đặt
                         </a>
                     </li> -->
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <span class="nav-icon">🚪</span>
+                    <li class="admin-nav-item">
+                        <a href="#" class="admin-nav-link">
+                            <span class="admin-nav-icon">🚪</span>
                             Đăng xuất
                         </a>
                     </li>
@@ -84,24 +84,24 @@
         </aside>
 
         <!-- Main Content -->
-        <main class="main-content">
+        <main class="admin-main-content">
             <!-- Header -->
-            <header class="header">
-                <div class="search-container">
-                    <span class="search-icon">🔍</span>
-                    <input type="text" class="search-input" placeholder="Search something here">
+            <header class="admin-header">
+                <div class="admin-search-container">
+                    <span class="admin-search-icon">🔍</span>
+                    <input type="text" class="admin-search-input" placeholder="Search something here">
                 </div>
 
-                <div class="header-right">
-                    <button class="notification-btn">
+                <div class="admin-header-right">
+                    <button class="admin-notification-btn">
                         🔔
-                        <span class="notification-badge"></span>
+                        <span class="admin-notification-badge"></span>
                     </button>
 
-                    <div class="user-profile">
+                    <div class="admin-user-profile">
                         <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTYiIGZpbGw9IiM0RjQ2RTUiLz4KPHN2ZyB4PSI4IiB5PSI4IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSI+CjxwYXRoIGQ9Ik04IDhDMTAuMjA5MSA4IDEyIDYuMjA5MTQgMTIgNEMxMiAxLjc5MDg2IDEwLjIwOTEgMCA4IDBDNS43OTA4NiAwIDQgMS43OTA4NiA0IDRDNCA2LjIwOTE0IDUuNzkwODYgOCA4IDhaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMCAxNkMwIDEyLjY4NjMgMS43OTA4NiAxMSA0IDExSDEyQzE0LjIwOTEgMTEgMTYgMTIuNjg2MyAxNiAxNlYxNkgwVjE2WiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cjwvc3ZnPgo="
-                            alt="User Avatar" class="user-avatar">
-                        <div class="user-info">
+                            alt="User Avatar" class="admin-user-avatar">
+                        <div class="admin-user-info">
                             <h4>Arfi Ganteng</h4>
                             <p>arfi.ganteng@gmail.com</p>
                         </div>
@@ -110,32 +110,32 @@
             </header>
             <!-- Product -->
             <!-- Content Area -->
-            <div class="content-area active" id="tab1">
-                <div class="breadcrumb">Thống kê / Sản phẩm</div>
-                <h1 class="page-title">Sản phẩm</h1>
+            <div class="amin-content-area active" id="tab1">
+                <div class="admin-breadcrumb">Thống kê / Sản phẩm</div>
+                <h1 class="admin-page-title">Sản phẩm</h1>
 
-                <div class="content-header">
-                    <div class="content-search">
-                        <span class="search-icon">🔍</span>
+                <div class="admin-content-header">
+                    <div class="admin-content-search">
+                        <span class="admin-search-icon">🔍</span>
                         <input type="text" placeholder="Search in product">
                     </div>
 
-                    <div class="action-buttons">
-                        <button class="btn btn-primary" id="openPopupBtn">
+                    <div class="admin-action-buttons">
+                        <button class="admin-btn admin-btn-primary" id="openPopupBtn">
                             ➕ Thêm sản phẩm
                         </button>
-                        <button class="btn btn-secondary">
+                        <button class="admin-btn admin-btn-secondary">
                             <strong>X</strong> Xoá
                         </button>
                     </div>
                 </div>
 
                 <!-- Products Table -->
-                <div class="table-container">
+                <div class="admin-table-container">
                     <table>
                         <thead>
                             <tr>
-                                <th><input type="checkbox" class="checkbox"></th>
+                                <th><input type="checkbox" class="admin-checkbox"></th>
                                 <th>Sản phẩm</th>
                                 <th>Danh mục</th>
                                 <th>Số lượng bán</th>
